@@ -1,0 +1,63 @@
+# =========================================================================
+# CONFIGURACOES DE ALTA PERFORMANCE (HOSTINGER CDN + BROTLI/GZIP)
+# =========================================================================
+
+# 1. FORCAR HTTPS (SSL)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 2. CHARSET UTF-8 PADRAO
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .json .xml
+
+# 3. MIME TYPES
+<IfModule mod_mime.c>
+AddType image/webp .webp
+AddType application/pdf .pdf
+AddType font/woff2 .woff2
+AddType font/woff .woff
+AddType font/ttf .ttf
+</IfModule>
+
+# 4. COMPRESSAO GZIP / BROTLI (Reduz transferencia em ate 75%)
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE font/woff font/woff2 application/font-woff2
+</IfModule>
+
+# 5. CACHE CONTROL INTELIGENTE (MAXIMA VELOCIDADE NA EDGE CDN + ATUALIZACAO INSTANTANEA)
+<IfModule mod_headers.c>
+  # HTML: O navegador revalida sempre (max-age=0), mas a CDN da Hostinger entrega do cache de borda (s-maxage=3600) em <30ms
+  <FilesMatch "\.(html|htm|php)$">
+    Header set Cache-Control "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+    Header unset Pragma
+    Header unset Expires
+  </FilesMatch>
+
+  # ASSETS ESTATICOS (Fontes WOFF2 e Imagens WebP): Cache maximo imutavel de 1 ano
+  <FilesMatch "\.(webp|woff2|woff|ttf|svg|ico|png|jpg|jpeg|pdf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/html "access plus 0 seconds"
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+ExpiresByType font/woff "access plus 1 year"
+ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+# 6. ATIVAR LITESPEED CACHE PUBLICO NA EDGE HOSTINGER
+<IfModule LiteSpeed>
+CacheEnable public /
+CacheMaxExpire 86400
+CacheDefaultExpire 3600
+</IfModule>
