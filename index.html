@@ -644,6 +644,17 @@
         <p class="mt-2 text-xs sm:text-lg text-sport-gray">
           Comienza hoy mismo a transformar tu fuerza, potencia y rendimiento en la cancha.
         </p>
+
+        <!-- TIMER DE ESCASSEZ (20 MINUTOS) -->
+        <div class="mt-4 sm:mt-6 inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-black text-white px-4 sm:px-6 py-2.5 rounded-full border border-black shadow-lg">
+          <span class="text-sport-green text-sm sm:text-base animate-pulse">⏰</span>
+          <span class="text-[11px] sm:text-sm font-black uppercase tracking-wider text-white">
+            Oferta promocional expira en:
+          </span>
+          <span id="promoTimer" class="font-display font-black text-sm sm:text-base text-sport-green bg-white/10 px-2.5 py-0.5 rounded-md border border-white/15" style="font-variant-numeric: tabular-nums; letter-spacing: 1px;">
+            20:00
+          </span>
+        </div>
       </div>
 
       <!-- GRID DE 2 CARDS DE OFERTAS -->
@@ -1039,6 +1050,51 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeUpsellModal();
     });
+
+    // Timer de Escassez da Oferta (20 minutos)
+    (function initPromoTimer() {
+      const TIMER_DURATION_SEC = 20 * 60;
+      const STORAGE_KEY = 'futforce_promo_timer_end';
+
+      function getStoredEnd() {
+        try {
+          return Number(localStorage.getItem(STORAGE_KEY)) || 0;
+        } catch (e) {
+          return 0;
+        }
+      }
+
+      function setStoredEnd(val) {
+        try {
+          localStorage.setItem(STORAGE_KEY, val);
+        } catch (e) {}
+      }
+
+      let endTime = getStoredEnd();
+      const now = Date.now();
+      if (!endTime || endTime <= now || endTime > now + (TIMER_DURATION_SEC * 1000)) {
+        endTime = now + (TIMER_DURATION_SEC * 1000);
+        setStoredEnd(endTime);
+      }
+
+      function tick() {
+        const el = document.getElementById('promoTimer');
+        if (!el) return;
+        const currentNow = Date.now();
+        let diff = Math.max(0, Math.floor((endTime - currentNow) / 1000));
+        if (diff <= 0) {
+          endTime = Date.now() + (TIMER_DURATION_SEC * 1000);
+          setStoredEnd(endTime);
+          diff = TIMER_DURATION_SEC;
+        }
+        const mins = String(Math.floor(diff / 60)).padStart(2, '0');
+        const secs = String(diff % 60).padStart(2, '0');
+        el.textContent = mins + ':' + secs;
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
   </script>
 
   <!-- MODAL POP-UP DE UPSELL: PLAN COMPLETO POR $14.90 -->
