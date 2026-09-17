@@ -65,6 +65,66 @@
     .animate-scroll:hover {
       animation-play-state: paused;
     }
+  
+    /* Valores em Destaque Maior, Sem Contorno Preto e 100% Verde */
+    .price-value-big {
+      color: #16a34a !important;
+      font-size: 3.75rem !important;
+      line-height: 1 !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.04em !important;
+      text-shadow: none !important;
+      -webkit-text-stroke: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .price-value-big {
+        font-size: 5.5rem !important;
+      }
+    }
+
+    .price-cents-big {
+      color: #16a34a !important;
+      font-size: 2rem !important;
+      line-height: 1 !important;
+      font-weight: 900 !important;
+      text-shadow: none !important;
+      -webkit-text-stroke: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .price-cents-big {
+        font-size: 3.15rem !important;
+      }
+    }
+
+    .price-modal-big {
+      color: #16a34a !important;
+      font-size: 3.25rem !important;
+      line-height: 1 !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.04em !important;
+      text-shadow: none !important;
+      -webkit-text-stroke: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .price-modal-big {
+        font-size: 4.5rem !important;
+      }
+    }
+
+    .price-modal-cents {
+      color: #16a34a !important;
+      font-size: 1.75rem !important;
+      line-height: 1 !important;
+      font-weight: 900 !important;
+      text-shadow: none !important;
+      -webkit-text-stroke: 0 !important;
+    }
+    @media (min-width: 640px) {
+      .price-modal-cents {
+        font-size: 2.5rem !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -575,8 +635,8 @@
               <p class="text-sm text-sport-gray line-through font-bold">De $27.00 USD</p>
               <div role="img" aria-label="Por solo $7.90 USD" class="flex items-baseline justify-center gap-1 mt-1">
                 <span class="text-base sm:text-lg font-black text-black" aria-hidden="true">POR SOLO</span>
-                <span class="font-display text-5xl sm:text-7xl font-black tracking-tight" style="color: #39FF14; -webkit-text-stroke: 1.5px black; text-shadow: 0 2px 8px rgba(0,0,0,0.25);" aria-hidden="true">$7</span>
-                <span class="text-2xl sm:text-4xl font-black" style="color: #39FF14; -webkit-text-stroke: 1px black; text-shadow: 0 1px 4px rgba(0,0,0,0.25);" aria-hidden="true">.90</span>
+                <span class="font-display price-value-big" aria-hidden="true">$7</span>
+                <span class="price-cents-big" aria-hidden="true">.90</span>
                 <span class="text-xs sm:text-base font-bold text-sport-gray ml-0.5" aria-hidden="true">USD</span>
               </div>
               <p class="mt-1.5 text-[11px] text-sport-gray font-medium">
@@ -658,8 +718,8 @@
               <p class="text-sm text-sport-gray line-through font-bold">De $47.00 USD</p>
               <div role="img" aria-label="Por solo $14.90 USD" class="flex items-baseline justify-center gap-1 mt-1">
                 <span class="text-base sm:text-lg font-black text-black" aria-hidden="true">POR SOLO</span>
-                <span class="font-display text-5xl sm:text-7xl font-black tracking-tight" style="color: #39FF14; -webkit-text-stroke: 1.5px black; text-shadow: 0 2px 8px rgba(0,0,0,0.25);" aria-hidden="true">$14</span>
-                <span class="text-2xl sm:text-4xl font-black" style="color: #39FF14; -webkit-text-stroke: 1px black; text-shadow: 0 1px 4px rgba(0,0,0,0.25);" aria-hidden="true">.90</span>
+                <span class="font-display price-value-big" aria-hidden="true">$14</span>
+                <span class="price-cents-big" aria-hidden="true">.90</span>
                 <span class="text-xs sm:text-base font-bold text-sport-gray ml-0.5" aria-hidden="true">USD</span>
               </div>
               <p class="mt-1.5 text-[11px] text-sport-gray font-medium">
@@ -801,7 +861,7 @@
             <span id="faq-icon-4" class="text-black text-lg font-black shrink-0" aria-hidden="true">＋</span>
           </button>
           <div id="faq-ans-4" class="hidden px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-sport-gray leading-relaxed border-t border-sport-border/60 pt-3">
-            No, ninguno. Pagas únicamente $9.90 USD una sola vez y obtienes acceso vitalicio e ilimitado para siempre a las +150 rutinas, vídeos y los 4 bonos de regalo.
+            No, ninguno. Pagas únicamente $14.90 USD una sola vez y obtienes acceso vitalicio e ilimitado para siempre a las +150 rutinas, vídeos y los 4 bonos de regalo.
           </div>
         </div>
 
@@ -1002,8 +1062,8 @@
       <div role="img" aria-label="Hoy solo $10.90 USD" class="flex items-baseline justify-center gap-1 mb-3.5">
         <span class="text-xs sm:text-sm text-sport-gray line-through font-bold" aria-hidden="true">Normal $14.90</span>
         <span class="text-xs sm:text-base font-black text-black ml-1.5" aria-hidden="true">HOY SOLO</span>
-        <span class="font-display text-4xl sm:text-6xl font-black tracking-tight" style="color: #39FF14; -webkit-text-stroke: 1.5px black; text-shadow: 0 2px 8px rgba(0,0,0,0.25);" aria-hidden="true">$10</span>
-        <span class="text-xl sm:text-3xl font-black" style="color: #39FF14; -webkit-text-stroke: 1px black; text-shadow: 0 1px 4px rgba(0,0,0,0.25);" aria-hidden="true">.90</span>
+        <span class="font-display price-modal-big" aria-hidden="true">$10</span>
+                <span class="price-modal-cents" aria-hidden="true">.90</span>
         <span class="text-xs font-bold text-sport-gray ml-0.5" aria-hidden="true">USD</span>
       </div>
 
