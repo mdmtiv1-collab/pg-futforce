@@ -132,6 +132,32 @@
         -webkit-text-stroke: 1.4px #39ff14 !important;
       }
     }
+  
+    /* Headline Principal com Tamanho Grande e de Alto Impacto */
+    .hero-headline {
+      font-size: 2.25rem !important;
+      line-height: 1.15 !important;
+      letter-spacing: -0.035em !important;
+    }
+    @media (min-width: 640px) {
+      .hero-headline {
+        font-size: 3.35rem !important;
+        line-height: 1.12 !important;
+      }
+    }
+    @media (min-width: 768px) {
+      .hero-headline {
+        font-size: 4.15rem !important;
+        line-height: 1.08 !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero-headline {
+        font-size: 4.85rem !important;
+        line-height: 1.06 !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -144,7 +170,7 @@
 
   <!-- HERO SECTION (PRIORIZADA PARA LCP E FCP ULTRA RÁPIDOS) -->
   <section class="relative overflow-hidden bg-white text-black pt-6 pb-12 sm:py-16">
-    <div class="relative mx-auto flex flex-col items-center max-w-4xl px-4 text-center">
+    <div class="relative mx-auto flex flex-col items-center max-w-5xl px-4 text-center">
       
       <!-- Tag / Badge -->
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black text-sport-green text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
@@ -152,7 +178,7 @@
       </div>
 
       <!-- Headline Principal (Mobile First) -->
-      <h1 class="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.18] text-black">
+      <h1 class="font-display hero-headline font-black text-black">
         +150 Entrenamientos Funcionales <br class="hidden sm:inline" />
         y de Gimnasio <br class="hidden sm:inline" />
         <span class="text-sport-green bg-black px-2.5 py-1 rounded-lg inline-block mt-1 sm:mt-2 text-[92%] sm:text-inherit">
