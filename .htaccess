@@ -2,11 +2,15 @@
 # CONFIGURACOES DE ALTA PERFORMANCE & ATUALIZACAO INSTANTANEA
 # =========================================================================
 
-# 1. FORCAR HTTPS (SSL)
+# 1. FORCAR HTTPS (SSL) & ROTAS LIMPAS
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Rotas limpas para versoes internacionais (preservando parametros UTM)
+RewriteRule ^en/?$ index-en.html [L,QSA]
+RewriteRule ^fr/?$ index-fr.html [L,QSA]
 </IfModule>
 
 # 2. CHARSET UTF-8 PADRAO
