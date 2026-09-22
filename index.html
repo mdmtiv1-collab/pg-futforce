@@ -8,7 +8,8 @@
   
   <!-- Preload Local de Alta Prioridade: Fonte Crítica Plus Jakarta Sans e Hero Image (Zero Render-Blocking) -->
   <link rel="preload" href="plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" as="image" href="hero-mockup-es.jpg" fetchpriority="high" type="image/jpeg" />
+  <link rel="preload" as="image" href="hero-mockup-es-mobile.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="hero-mockup-es.webp" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="+150 Entrenamientos Funcionales y de Gimnasio para Futbolistas" />
@@ -252,17 +253,21 @@
       </p>
 
       <!-- Mockup do Produto Ultra Otimizado em Alta Resolução (Retina HD) -->
-      <div class="mt-6 sm:mt-8 w-full max-w-sm sm:max-w-2xl relative overflow-hidden rounded-2xl" style="contain: layout paint;">
-        <img src="hero-mockup-es.jpg" 
-            alt="Mockup Oficial +150 Rutinas de Gimnasio y Funcional para Futbolistas Método FUTFORCE" 
-            class="w-full h-auto drop-shadow-2xl rounded-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            width="1024"
-            height="682"
-            style="width: 100%; height: auto;"
-          />
+      <div class="mt-6 sm:mt-8 w-full max-w-sm sm:max-w-2xl relative overflow-hidden rounded-2xl" style="contain: layout paint; aspect-ratio: 1024/682;">
+        <picture>
+          <source type="image/avif" srcset="hero-mockup-es-mobile.avif 540w, hero-mockup-es.avif 1024w" sizes="(max-width: 640px) 100vw, 672px" />
+          <source type="image/webp" srcset="hero-mockup-es-mobile.webp 540w, hero-mockup-es.webp 1024w" sizes="(max-width: 640px) 100vw, 672px" />
+          <img src="hero-mockup-es.webp" 
+              alt="Mockup Oficial +150 Rutinas de Gimnasio y Funcional para Futbolistas Método FUTFORCE" 
+              class="w-full h-auto drop-shadow-2xl rounded-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              width="1024"
+              height="682"
+              style="width: 100%; height: auto; aspect-ratio: 1024/682;"
+            />
+        </picture>
       </div>
 
       <!-- Botão CTA Principal -->
@@ -375,36 +380,36 @@
       <div class="animate-scroll gap-3 sm:gap-4 py-2">
         <!-- Loop 1 -->
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-01.webp" alt="01. Fuerza General del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-01.webp" srcset="ficha-01-mobile.webp 400w, ficha-01.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="01. Fuerza General del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-02.webp" alt="02. Piernas Fuertes para Ganar Duelos" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-02.webp" srcset="ficha-02-mobile.webp 400w, ficha-02.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="02. Piernas Fuertes para Ganar Duelos" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-03.webp" alt="03. Fuerza Unilateral para Aceleración" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-03.webp" srcset="ficha-03-mobile.webp 400w, ficha-03.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="03. Fuerza Unilateral para Aceleración" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-04.webp" alt="04. Fuerza Funcional con Peso Corporal" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-04.webp" srcset="ficha-04-mobile.webp 400w, ficha-04.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="04. Fuerza Funcional con Peso Corporal" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-05.webp" alt="05. Cadena Posterior del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-05.webp" srcset="ficha-05-mobile.webp 400w, ficha-05.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="05. Cadena Posterior del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
 
         <!-- Loop 2 (Duplicado para loop infinito 100% fluido) -->
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-01.webp" alt="01. Fuerza General del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-01.webp" srcset="ficha-01-mobile.webp 400w, ficha-01.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="01. Fuerza General del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-02.webp" alt="02. Piernas Fuertes para Ganar Duelos" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-02.webp" srcset="ficha-02-mobile.webp 400w, ficha-02.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="02. Piernas Fuertes para Ganar Duelos" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-03.webp" alt="03. Fuerza Unilateral para Aceleración" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-03.webp" srcset="ficha-03-mobile.webp 400w, ficha-03.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="03. Fuerza Unilateral para Aceleración" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-04.webp" alt="04. Fuerza Funcional con Peso Corporal" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-04.webp" srcset="ficha-04-mobile.webp 400w, ficha-04.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="04. Fuerza Funcional con Peso Corporal" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
         <div class="w-[200px] sm:w-[280px] shrink-0 rounded-2xl overflow-hidden border-2 border-sport-border shadow-md bg-white" style="aspect-ratio: 585/1024; contain: layout paint;">
-          <img src="ficha-05.webp" alt="05. Cadena Posterior del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
+          <img src="ficha-05.webp" srcset="ficha-05-mobile.webp 400w, ficha-05.webp 585w" sizes="(max-width: 640px) 200px, 280px" alt="05. Cadena Posterior del Futbolista" class="w-full h-auto block" loading="lazy" decoding="async" width="585" height="1024" style="aspect-ratio: 585/1024;" />
         </div>
       </div>
     </div>
