@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="es" class="dark h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Área de Miembros VIP | +162 Rutinas & Método FUTFORCE</title>
+  
+  <!-- Google Fonts: Archivo Black & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'sport-green': '#39FF14',
+            'sport-dark': '#0B0F12',
+            'sport-surface': '#131920',
+            'sport-card': '#1A232E',
+            'sport-border': '#283545',
+            'sport-gray': '#94A3B8',
+          },
+          fontFamily: {
+            display: ['"Archivo Black"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0F12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #283545;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #39FF14;
+    }
+    /* 9:16 Vertical Video Container */
+    .vertical-video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.9);
+    }
+    .vertical-video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: #000;
+    }
+    /* Safe Area Padding for Mobile */
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+  </style>
+</head>
+
+<body class="bg-sport-dark text-slate-100 font-sans min-h-full flex flex-col antialiased selection:bg-sport-green selection:text-black pb-20 lg:pb-6">
+
+  <!-- NAVBAR / HEADER VIP -->
+  <header class="sticky top-0 z-40 bg-sport-surface/95 backdrop-blur-md border-b border-sport-border px-3.5 py-3 sm:px-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-2.5">
+        <div class="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-black border border-sport-green/40 flex items-center justify-center font-display font-black text-sport-green text-base sm:text-lg shadow-[0_0_15px_rgba(57,255,20,0.3)] shrink-0">
+          FP
+        </div>
+        <div class="truncate">
+          <span class="font-display text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1">
+            MÉTODO <span class="text-sport-green">FUTFORCE</span>
+          </span>
+          <span class="text-[9px] sm:text-[10px] text-sport-gray font-bold tracking-wider uppercase block -mt-1 truncate">
+            +162 RUTINAS PDF • VIDEOS EXPLICATIVOS • 4 BONOS
+          </span>
+        </div>
+      </div>
+
+      <!-- Selector de Secciones Principales (Desktop) -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        
+        <nav class="hidden md:flex items-center gap-1 bg-sport-card p-1 rounded-xl border border-sport-border text-xs font-bold">
+          <button onclick="switchMainView('videos')" id="nav-btn-videos" class="px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all">
+            <span>🎥</span> <span>Videos Explicativos</span>
+          </button>
+          <button onclick="switchMainView('fichas')" id="nav-btn-fichas" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all">
+            <span>📑</span> <span>+162 Rutinas PDF</span>
+          </button>
+          <button onclick="switchMainView('bonos')" id="nav-btn-bonos" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all">
+            <span>🎁</span> <span>4 Bonos VIP</span>
+          </button>
+        </nav>
+
+        <!-- Progress Info (Desktop) -->
+        <div class="hidden xl:flex flex-col items-end gap-0.5 text-right pl-2 border-l border-sport-border/60">
+          <div class="flex items-center gap-1.5 text-xs font-bold text-white">
+            <span>Progreso:</span>
+            <span id="progress-text" class="text-sport-green font-black">0%</span>
+            <span class="text-sport-gray text-[10px]">(<span id="completed-count">0</span>/20)</span>
+          </div>
+          <div class="w-28 h-1.5 bg-sport-border rounded-full overflow-hidden">
+            <div id="progress-bar" class="h-full bg-sport-green transition-all duration-500 rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Botón Menú Mobile (Drawer de Lecciones) -->
+        <button 
+          onclick="toggleMobileSidebar()" 
+          class="lg:hidden p-2 rounded-xl bg-sport-card border border-sport-border text-white hover:text-sport-green flex items-center gap-1 text-xs font-bold"
+          aria-label="Abrir Lecciones"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <span class="hidden sm:inline">Aulas</span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Barra de Progreso Mobile -->
+    <div class="md:hidden mt-2 pt-2 border-t border-sport-border/60 flex items-center justify-between text-[11px] text-sport-gray">
+      <span>Progreso de Videos: <strong id="progress-text-mobile" class="text-sport-green">0%</strong> (<span id="completed-count-mobile">0</span>/20)</span>
+      <div class="w-28 h-1.5 bg-sport-border rounded-full overflow-hidden">
+        <div id="progress-bar-mobile" class="h-full bg-sport-green transition-all duration-500 rounded-full" style="width: 0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 1: VIDEOS 9:16 Y FICHA TÉCNICA (VISTA PRINCIPAL DE AULAS) -->
+  <!-- ========================================================================= -->
+  <main id="view-videos" class="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+    
+    <!-- COLUMNA IZQUIERDA: REPRODUCTOR VERTICAL 9:16 (5 COLS) -->
+    <section class="lg:col-span-5 flex flex-col items-center w-full">
+      
+      <div class="w-full bg-sport-surface border border-sport-border p-3 sm:p-4 rounded-3xl shadow-2xl flex flex-col items-center">
+        
+        <!-- REPRODUCTOR FORMATO 9:16 DIRECTO EN PANTALLA (YOUTUBE EMBED 100% FUNCIONAL) -->
+        <div class="vertical-video-wrapper border-2 border-sport-green/50 relative group bg-black overflow-hidden shadow-2xl">
+          <iframe 
+            id="video-frame"
+            src="https://www.youtube-nocookie.com/embed/I2hjTfU5S34?autoplay=0&playsinline=1&rel=0&modestbranding=1"
+            title="Reproductor de Video FUTFORCE"
+            class="w-full h-full absolute inset-0 border-0 rounded-2xl"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <!-- CONTROLES DE NAVEGACIÓN RÁPIDA -->
+        <div class="w-full max-w-[360px] mt-3 flex items-center justify-between gap-2">
+          <button 
+            onclick="prevLesson()"
+            class="flex-1 py-2.5 px-3 rounded-xl bg-sport-card border border-sport-border hover:border-sport-green text-xs font-bold text-white flex items-center justify-center gap-1.5 transition-all active:scale-95"
+          >
+            <span>⏮ Anterior</span>
+          </button>
+          <a 
+            id="btn-youtube-link"
+            href="https://www.youtube.com/watch?v=I2hjTfU5S34"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="py-2.5 px-3.5 rounded-xl bg-sport-green text-black hover:bg-emerald-400 text-xs font-black flex items-center justify-center gap-1 transition-all shadow-md active:scale-95"
+          >
+            <span>📺 Abrir Video</span>
+          </a>
+          <button 
+            onclick="nextLesson()"
+            class="flex-1 py-2.5 px-3 rounded-xl bg-sport-card border border-sport-border hover:border-sport-green text-xs font-bold text-white flex items-center justify-center gap-1.5 transition-all active:scale-95"
+          >
+            <span>Siguiente ⏭</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- BANNER ACCESO RÁPIDO EN MOBILE -->
+      <div class="w-full mt-4 grid grid-cols-2 gap-2.5 sm:hidden">
+        <button 
+          onclick="switchMainView('fichas')" 
+          class="p-3 rounded-2xl bg-sport-card border border-sport-border hover:border-sport-green flex flex-col items-center text-center gap-1 text-xs font-bold text-white"
+        >
+          <span class="text-xl">📑</span>
+          <span>+162 Rutinas PDF</span>
+          <span class="text-[10px] text-sport-green font-bold">171 Páginas</span>
+        </button>
+        <button 
+          onclick="switchMainView('bonos')" 
+          class="p-3 rounded-2xl bg-sport-card border border-sport-border hover:border-sport-green flex flex-col items-center text-center gap-1 text-xs font-bold text-white"
+        >
+          <span class="text-xl">🎁</span>
+          <span>4 Bonos VIP</span>
+          <span class="text-[10px] text-sport-green font-bold">Ver Manuales</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- COLUMNA DERECHA: FICHA TÉCNICA + LISTA DE 20 LECCIONES (7 COLS) -->
+    <section class="lg:col-span-7 flex flex-col gap-5 w-full">
+      
+      <!-- DETALLES DE LA LECCIÓN & FICHA TÉCNICA -->
+      <div class="bg-sport-surface border border-sport-border p-4 sm:p-6 rounded-3xl shadow-xl">
+        
+        <!-- Header de la Lección Actual -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-sport-border">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+              <span id="badge-module" class="px-2.5 py-0.5 rounded-md bg-sport-card border border-sport-border text-[10px] sm:text-[11px] font-bold text-sport-green uppercase tracking-wider">
+                MÓDULO 1: FUERZA Y TREN SUPERIOR
+              </span>
+              <span class="px-2 py-0.5 rounded-md bg-black text-[10px] font-medium text-slate-300">
+                Formato 9:16
+              </span>
+            </div>
+            <h1 id="lesson-title" class="font-display text-base sm:text-xl font-black text-white leading-tight">
+              1. Rutina Completa Tren Superior para Futbolistas
+            </h1>
+          </div>
+
+          <!-- Botón de Conclusión -->
+          <button 
+            id="btn-complete"
+            onclick="toggleCurrentLessonCompleted()"
+            class="shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-display text-xs font-black uppercase tracking-wider transition-all duration-300 bg-sport-card border-2 border-sport-green text-sport-green hover:bg-sport-green hover:text-black shadow-md active:scale-95"
+          >
+            <span id="complete-icon">⭕</span>
+            <span id="complete-label">Marcar como Completada</span>
+          </button>
+        </div>
+
+        <!-- Pestañas de Apoyo -->
+        <div class="mt-4">
+          <div class="flex items-center gap-2 border-b border-sport-border pb-3 mb-4 overflow-x-auto text-xs font-bold">
+            <button onclick="switchTab('ficha')" id="tab-btn-ficha" class="px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap">
+              📋 Ficha de Esta Aula
+            </button>
+            <button onclick="switchTab('consejos')" id="tab-btn-consejos" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap">
+              ⚠️ Errores Frecuentes
+            </button>
+            <button onclick="switchTab('notas')" id="tab-btn-notas" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap">
+              📝 Mis Cargas
+            </button>
+          </div>
+
+          <!-- TAB 1: FICHA TÉCNICA -->
+          <div id="tab-ficha" class="space-y-4 text-xs sm:text-sm text-slate-300">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
+                <span class="text-[10px] text-sport-gray uppercase block font-bold">Series</span>
+                <span id="tech-series" class="text-sm sm:text-base font-black text-white">4 Series</span>
+              </div>
+              <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
+                <span class="text-[10px] text-sport-gray uppercase block font-bold">Repeticiones</span>
+                <span id="tech-reps" class="text-sm sm:text-base font-black text-sport-green">6 - 8 reps</span>
+              </div>
+              <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
+                <span class="text-[10px] text-sport-gray uppercase block font-bold">Descanso</span>
+                <span id="tech-rest" class="text-sm sm:text-base font-black text-white">90 seg</span>
+              </div>
+              <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
+                <span class="text-[10px] text-sport-gray uppercase block font-bold">Objetivo</span>
+                <span id="tech-goal" class="text-xs sm:text-sm font-black text-white truncate">Fuerza y Duelos</span>
+              </div>
+            </div>
+
+            <div class="bg-sport-card p-3.5 rounded-xl border border-sport-border space-y-1.5">
+              <h4 class="font-display font-black text-white text-xs sm:text-sm">💡 Claves de Ejecución Correcta:</h4>
+              <p id="tech-desc" class="text-slate-300 leading-relaxed text-xs sm:text-sm">
+                Ejecuta cada repetición con velocidad explosiva y control en la fase de descenso para transferir potencia en los choques cuerpo a cuerpo.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 2: ERRORES FRECUENTES -->
+          <div id="tab-consejos" class="hidden space-y-3 text-xs sm:text-sm">
+            <div class="bg-red-500/10 border border-red-500/30 p-3.5 rounded-xl text-red-200">
+              <h4 class="font-bold mb-1 flex items-center gap-1.5">
+                <span>❌</span> <span>Lo que NUNCA debes hacer:</span>
+              </h4>
+              <ul id="tech-mistakes" class="list-disc list-inside space-y-1 text-slate-300">
+                <li>No sacrifiques la postura por levantar más peso.</li>
+                <li>Controla el core en todo momento para no arquear la zona lumbar.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- TAB 3: NOTAS DE PESO / CARGAS -->
+          <div id="tab-notas" class="hidden space-y-3">
+            <label class="block text-xs text-sport-gray font-bold uppercase">
+              Registra tus sensaciones y cargas para este ejercicio:
+            </label>
+            <textarea 
+              id="user-notes" 
+              rows="3" 
+              placeholder="Ej: Hoy levanté 40kg sintiendo máxima explosividad..."
+              class="w-full p-3 rounded-xl bg-sport-card border border-sport-border text-white text-xs sm:text-sm focus:border-sport-green focus:outline-none resize-none"
+              oninput="saveUserNotes()"
+            ></textarea>
+            <span id="notes-saved-msg" class="text-[11px] text-sport-green font-bold hidden">✓ Guardado automáticamente</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- LISTA DE 20 LECCIONES ORGANIZADAS POR MÓDULOS -->
+      <aside id="sidebar-lessons" class="bg-sport-surface border border-sport-border rounded-3xl p-4 sm:p-5 flex flex-col shadow-xl">
+        <div class="flex items-center justify-between pb-3 border-b border-sport-border mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-sport-green text-base">⚡</span>
+            <h2 class="font-display text-xs sm:text-sm font-black text-white uppercase tracking-wider">
+              Videos Explicativos de Entrenamiento
+            </h2>
+          </div>
+          <span class="text-[11px] text-sport-gray font-bold bg-sport-card px-2 py-0.5 rounded-md border border-sport-border">
+            5 Módulos
+          </span>
+        </div>
+
+        <div id="modules-list" class="space-y-3 overflow-y-auto max-h-[480px] pr-1">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </aside>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 2: BIBLIOTECA OFICIAL: +162 RUTINAS DE GIMNASIO Y FUNCIONAL (PDF) -->
+  <!-- ========================================================================= -->
+  <main id="view-fichas" class="hidden flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 space-y-6">
+    
+    <!-- Hero Banner do Ebook Principal -->
+    <div class="bg-gradient-to-r from-sport-surface via-sport-card to-sport-surface border border-sport-green/30 rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-sport-green/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-3xl space-y-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="px-3 py-1 rounded-full bg-sport-green/20 border border-sport-green/50 text-[11px] font-black text-sport-green uppercase tracking-widest">
+            PREPARACIÓN FÍSICA PARA FÚTBOL
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-black text-[11px] font-bold text-slate-300">
+            171 Páginas • 162 Rutinas
+          </span>
+        </div>
+        <h2 class="font-display text-xl sm:text-3xl font-black text-white">
+          +162 Rutinas de Gimnasio y Funcional para Futbolistas
+        </h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          Desarrollá fuerza explosiva, velocidad, resistencia y potencia física con rutinas listas para el gimnasio y el trabajo funcional, pensadas para marcar una verdadera diferencia dentro de la cancha.
+        </p>
+        <div class="pt-2 flex flex-wrap gap-3">
+          <button 
+            onclick="downloadPDF('+162 Rutinas de Gimnasio y Funcional para Futbolistas (Libro Completo - 171 Págs)')"
+            class="px-5 py-3 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg hover:scale-105 active:scale-95 inline-flex items-center gap-2"
+          >
+            <span>📥</span>
+            <span>DESCARGAR LIBRO MAESTRO COMPLETO (+162 RUTINAS PDF)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA DE PLAN SEMANAL SUGERIDO (OFICIAL DEL PDF) -->
+    <div class="bg-sport-surface border border-sport-border p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
+      <div class="flex items-center justify-between border-b border-sport-border pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-sport-green text-lg">📅</span>
+          <h3 class="font-display text-sm sm:text-base font-black text-white uppercase tracking-wider">
+            Plan Semanal Sugerido (Distribución Óptima)
+          </h3>
+        </div>
+        <span class="text-[11px] text-sport-gray font-bold bg-sport-card px-2.5 py-1 rounded-md border border-sport-border">
+          Fútbol Amateur / Semi-Pro
+        </span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm border-collapse">
+          <thead>
+            <tr class="bg-sport-card text-sport-gray text-[11px] uppercase font-black tracking-wider border-b border-sport-border">
+              <th class="p-3">Día</th>
+              <th class="p-3">Capacidad / Enfoque</th>
+              <th class="p-3">Sugerencia de Rutina</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-sport-border/60 text-slate-300">
+            <tr class="hover:bg-white/5">
+              <td class="p-3 font-bold text-white">Lunes</td>
+              <td class="p-3 text-sport-green font-bold">Fuerza Explosiva</td>
+              <td class="p-3">Rutina de gimnasio + core (10 min)</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="p-3 font-bold text-white">Martes</td>
+              <td class="p-3 text-cyan-400 font-bold">Velocidad</td>
+              <td class="p-3">Rutina funcional de velocidad + movilidad</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="p-3 font-bold text-white">Miércoles</td>
+              <td class="p-3 text-yellow-400 font-bold">Resistencia (suave) o descanso activo</td>
+              <td class="p-3">Circuito básico o recuperación</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="p-3 font-bold text-white">Jueves</td>
+              <td class="p-3 text-purple-400 font-bold">Potencia</td>
+              <td class="p-3">Rutina de gimnasio o funcional según disponibilidad</td>
+            </tr>
+            <tr class="hover:bg-white/5">
+              <td class="p-3 font-bold text-white">Viernes</td>
+              <td class="p-3 text-orange-400 font-bold">Velocidad + Core</td>
+              <td class="p-3">Sesión corta e intensa, previa a partido</td>
+            </tr>
+            <tr class="hover:bg-white/5 bg-sport-green/5">
+              <td class="p-3 font-bold text-sport-green">Sábado / Domingo</td>
+              <td class="p-3 font-bold text-white">Partido o Descanso</td>
+              <td class="p-3">Estiramiento y recuperación activa</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- LOS 5 BLOQUES OFICIALES DE ENTRENAMIENTO -->
+    <div class="space-y-4">
+      <h3 class="font-display text-sm sm:text-base font-black text-white uppercase tracking-wider flex items-center gap-2">
+        <span>🏋️</span> <span>Los 5 Bloques del Libro (Descarga por Separado o Conjunta):</span>
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        
+        <!-- BLOQUE 1: FUERZA EXPLOSIVA -->
+        <div class="bg-sport-surface border border-red-500/30 hover:border-red-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🔴</span>
+              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/40">36 RUTINAS</span>
+            </div>
+            <h4 class="font-display font-black text-white text-base group-hover:text-red-400 transition-colors">
+              Bloque 1: Fuerza Explosiva
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Desarrollar la capacidad de generar la máxima fuerza posible en el menor tiempo. Base para ganar duelos y proteger el balón.
+            </p>
+            <div class="text-[11px] text-sport-gray space-y-1 bg-sport-card p-2.5 rounded-lg border border-sport-border">
+              <div>• Gimnasio (Básico #1-6, Intermedio #7-12, Avanzado #13-18)</div>
+              <div>• Funcional (Básico #19-24, Intermedio #25-30, Avanzado #31-36)</div>
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Páginas</span>
+            <button 
+              onclick="downloadPDF('Bloque 1: Fuerza Explosiva (36 Rutinas)')"
+              class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-red-500 hover:text-white text-white text-xs font-black border border-sport-border transition-all"
+            >
+              Descargar Bloque 1
+            </button>
+          </div>
+        </div>
+
+        <!-- BLOQUE 2: VELOCIDAD -->
+        <div class="bg-sport-surface border border-cyan-500/30 hover:border-cyan-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🔵</span>
+              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">36 RUTINAS</span>
+            </div>
+            <h4 class="font-display font-black text-white text-base group-hover:text-cyan-400 transition-colors">
+              Bloque 2: Velocidad
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Mejorar la aceleración (0-20m), la velocidad máxima (20-40m) y los cambios de dirección que definen momentos decisivos.
+            </p>
+            <div class="text-[11px] text-sport-gray space-y-1 bg-sport-card p-2.5 rounded-lg border border-sport-border">
+              <div>• Gimnasio (Básico #37-42, Intermedio #43-48, Avanzado #49-54)</div>
+              <div>• Funcional (Básico #55-60, Intermedio #61-66, Avanzado #67-72)</div>
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Páginas</span>
+            <button 
+              onclick="downloadPDF('Bloque 2: Velocidad (36 Rutinas)')"
+              class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-cyan-500 hover:text-black text-white text-xs font-black border border-sport-border transition-all"
+            >
+              Descargar Bloque 2
+            </button>
+          </div>
+        </div>
+
+        <!-- BLOQUE 3: RESISTENCIA -->
+        <div class="bg-sport-surface border border-emerald-500/30 hover:border-emerald-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🟢</span>
+              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">36 RUTINAS</span>
+            </div>
+            <h4 class="font-display font-black text-white text-base group-hover:text-emerald-400 transition-colors">
+              Bloque 3: Resistencia
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Elevar la capacidad de repetir esfuerzos de alta intensidad durante los 90 minutos sin caer el rendimiento físico ni técnico.
+            </p>
+            <div class="text-[11px] text-sport-gray space-y-1 bg-sport-card p-2.5 rounded-lg border border-sport-border">
+              <div>• Gimnasio (Básico #73-78, Intermedio #79-84, Avanzado #85-90)</div>
+              <div>• Funcional (Básico #91-96, Intermedio #97-102, Avanzado #103-108)</div>
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Páginas</span>
+            <button 
+              onclick="downloadPDF('Bloque 3: Resistencia (36 Rutinas)')"
+              class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-emerald-500 hover:text-black text-white text-xs font-black border border-sport-border transition-all"
+            >
+              Descargar Bloque 3
+            </button>
+          </div>
+        </div>
+
+        <!-- BLOQUE 4: POTENCIA -->
+        <div class="bg-sport-surface border border-purple-500/30 hover:border-purple-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🟣</span>
+              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-400 border border-purple-500/40">36 RUTINAS</span>
+            </div>
+            <h4 class="font-display font-black text-white text-base group-hover:text-purple-400 transition-colors">
+              Bloque 4: Potencia
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Combinar fuerza y velocidad para saltar, rematar, disparar y arrancar con la máxima explosividad posible.
+            </p>
+            <div class="text-[11px] text-sport-gray space-y-1 bg-sport-card p-2.5 rounded-lg border border-sport-border">
+              <div>• Gimnasio (Básico #109-114, Intermedio #115-120, Avanzado #121-126)</div>
+              <div>• Funcional (Básico #127-132, Intermedio #133-138, Avanzado #139-144)</div>
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Páginas</span>
+            <button 
+              onclick="downloadPDF('Bloque 4: Potencia (36 Rutinas)')"
+              class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-purple-500 hover:text-white text-white text-xs font-black border border-sport-border transition-all"
+            >
+              Descargar Bloque 4
+            </button>
+          </div>
+        </div>
+
+        <!-- BLOQUE 5: CORE Y PREVENCIÓN DE LESIONES -->
+        <div class="bg-sport-surface border border-teal-500/30 hover:border-teal-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🛡️</span>
+              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-teal-500/20 text-teal-400 border border-teal-500/40">18 RUTINAS</span>
+            </div>
+            <h4 class="font-display font-black text-white text-base group-hover:text-teal-400 transition-colors">
+              Bloque 5: Core y Prevención de Lesiones
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Fortalecer el centro del cuerpo y blindar las zonas más lesionadas en el fútbol: isquiotibiales, aductores, rodillas y tobillos.
+            </p>
+            <div class="text-[11px] text-sport-gray space-y-1 bg-sport-card p-2.5 rounded-lg border border-sport-border">
+              <div>• Funcional (Básico #145-150, Intermedio #151-156, Avanzado #157-162)</div>
+              <div>• Nordic hamstring curls, copenhagen plank, pallof press</div>
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+            <span class="text-[11px] text-sport-gray font-bold">PDF • 20 Páginas</span>
+            <button 
+              onclick="downloadPDF('Bloque 5: Core y Prevención de Lesiones (18 Rutinas)')"
+              class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-teal-500 hover:text-black text-white text-xs font-black border border-sport-border transition-all"
+            >
+              Descargar Bloque 5
+            </button>
+          </div>
+        </div>
+
+        <!-- SEGUIMIENTO Y PROGRESIÓN -->
+        <div class="bg-sport-surface border border-sport-green/30 hover:border-sport-green/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">📊</span>
+              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-sport-green/20 text-sport-green border border-sport-green/40">PLANTILLA</span>
+            </div>
+            <h4 class="font-display font-black text-white text-base group-hover:text-sport-green transition-colors">
+              Hojas de Seguimiento y Progresión (RPE)
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Planilla imprimible para registrar fecha, rutina, carga utilizada y escala de esfuerzo percibido (RPE 1-10).
+            </p>
+            <div class="text-[11px] text-sport-gray space-y-1 bg-sport-card p-2.5 rounded-lg border border-sport-border">
+              <div>• Registro semanal de constancia y cargas</div>
+              <div>• Control de fatiga para evitar sobreentrenamiento</div>
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+            <span class="text-[11px] text-sport-gray font-bold">PDF Imprimible</span>
+            <button 
+              onclick="downloadPDF('Plantilla de Seguimiento y Progresión RPE')"
+              class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-sport-green hover:text-black text-white text-xs font-black border border-sport-border transition-all"
+            >
+              Descargar Plantilla
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 3: LOS 4 BONOS EXCLUSIVOS OFICIALES (EN ESPAÑOL) -->
+  <!-- ========================================================================= -->
+  <main id="view-bonos" class="hidden flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 space-y-6">
+    
+    <!-- Hero Banner de Bonos -->
+    <div class="bg-gradient-to-r from-sport-surface via-sport-card to-sport-surface border border-sport-green/30 rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+      <div class="max-w-3xl space-y-3">
+        <span class="px-3 py-1 rounded-full bg-sport-green/20 border border-sport-green/50 text-xs font-black text-sport-green uppercase tracking-widest inline-block">
+          🎁 4 BONOS EXCLUSIVOS VIP INCLUIDOS
+        </span>
+        <h2 class="font-display text-xl sm:text-3xl font-black text-white">
+          Manuales Oficiales de <span class="text-sport-green">Alto Rendimiento</span>
+        </h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          Acceso liberado a las 4 guías complementarias oficiales: Movilidad para Futbolistas, Nutrición Deportiva, Protocolo Anti-Lesiones y Guía de Suplementación basada en evidencia.
+        </p>
+      </div>
+    </div>
+
+    <!-- Grid de los 4 Bonos Oficiales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      
+      <!-- BONO #1: MOVILIDAD PARA FUTBOLISTAS -->
+      <div class="bg-sport-surface border border-sport-border hover:border-sport-green/60 p-5 sm:p-6 rounded-3xl flex flex-col justify-between transition-all group shadow-xl">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🤸</span>
+            <span class="text-[10px] font-black px-2.5 py-1 rounded-full bg-sport-green/20 text-sport-green border border-sport-green/40">BONO #1 • 15 PÁGS</span>
+          </div>
+          <h3 class="font-display font-black text-white text-lg group-hover:text-sport-green transition-colors">
+            Movilidad para Futbolistas
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Rutinas guiadas de movilidad articular para ganar rango de movimiento, reducir el riesgo de lesión y moverte más libre dentro de la cancha.
+          </p>
+          <div class="bg-sport-card p-3 rounded-xl border border-sport-border text-xs text-sport-gray space-y-1">
+            <div>✓ 5 Zonas: Tobillo, Cadera, Rodilla/Cadena Posterior, Columna/Core, Hombro</div>
+            <div>✓ Rutina pre-entrenamiento (dinámica 8-10m), post (estática 6-8m) y día libre (12-15m)</div>
+            <div>✓ Movimientos: 90/90 hip switch, dorsiflexión en pared, gato-camello, bisagra</div>
+          </div>
+        </div>
+        <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+          <span class="text-xs text-sport-gray font-bold">Manual PDF • 15 Páginas</span>
+          <button 
+            onclick="downloadPDF('Bono #1: Movilidad para Futbolistas (15 Páginas)')"
+            class="px-4 py-2 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-black text-xs transition-all shadow-md active:scale-95"
+          >
+            📥 Descargar Bono #1
+          </button>
+        </div>
+      </div>
+
+      <!-- BONO #2: GUÍA DE NUTRICIÓN DEPORTIVA -->
+      <div class="bg-sport-surface border border-sport-border hover:border-sport-green/60 p-5 sm:p-6 rounded-3xl flex flex-col justify-between transition-all group shadow-xl">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🥗</span>
+            <span class="text-[10px] font-black px-2.5 py-1 rounded-full bg-sport-green/20 text-sport-green border border-sport-green/40">BONO #2 • 14 PÁGS</span>
+          </div>
+          <h3 class="font-display font-black text-white text-lg group-hover:text-sport-green transition-colors">
+            Guía de Nutrición Deportiva
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Qué comer, cuándo y por qué: la estrategia nutricional para entrenar más fuerte, rendir en cada partido y recuperarte más rápido.
+          </p>
+          <div class="bg-sport-card p-3 rounded-xl border border-sport-border text-xs text-sport-gray space-y-1">
+            <div>✓ Macronutrientes exactos: Carbohidratos (5-8g/kg), Proteínas (1.6-2.2g/kg), Grasas (1-1.5g/kg)</div>
+            <div>✓ Timing: 3-4h antes, 1-2h antes, durante el partido (30-60g carbohidratos/hora) y post-partido</div>
+            <div>✓ Plan de comidas completo para días de entrenamiento y días de partido</div>
+          </div>
+        </div>
+        <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+          <span class="text-xs text-sport-gray font-bold">Manual PDF • 14 Páginas</span>
+          <button 
+            onclick="downloadPDF('Bono #2: Guía de Nutrición Deportiva (14 Páginas)')"
+            class="px-4 py-2 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-black text-xs transition-all shadow-md active:scale-95"
+          >
+            📥 Descargar Bono #2
+          </button>
+        </div>
+      </div>
+
+      <!-- BONO #3: PROTOCOLO ANTI-LESIONES -->
+      <div class="bg-sport-surface border border-sport-border hover:border-sport-green/60 p-5 sm:p-6 rounded-3xl flex flex-col justify-between transition-all group shadow-xl">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">🛡️</span>
+            <span class="text-[10px] font-black px-2.5 py-1 rounded-full bg-sport-green/20 text-sport-green border border-sport-green/40">BONO #3 • 14 PÁGS</span>
+          </div>
+          <h3 class="font-display font-black text-white text-lg group-hover:text-sport-green transition-colors">
+            Protocolo Anti-Lesiones
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Un protocolo de calentamiento y fuerza preventiva, basado en principios validados científicamente, para reducir el riesgo de las lesiones más comunes del fútbol.
+          </p>
+          <div class="bg-sport-card p-3 rounded-xl border border-sport-border text-xs text-sport-gray space-y-1">
+            <div>✓ Calentamiento estructurado en 3 partes: Carrera (Parte 1), Fuerza/Equilibrio (Parte 2), Velocidad (Parte 3)</div>
+            <div>✓ Prevención específica de isquiotibiales (Nordic curl 2x semana), tobillo, rodilla/LCA y aductores</div>
+            <div>✓ Gestión de carga con escala RPE y señales de alarma</div>
+          </div>
+        </div>
+        <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+          <span class="text-xs text-sport-gray font-bold">Manual PDF • 14 Páginas</span>
+          <button 
+            onclick="downloadPDF('Bono #3: Protocolo Anti-Lesiones (14 Páginas)')"
+            class="px-4 py-2 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-black text-xs transition-all shadow-md active:scale-95"
+          >
+            📥 Descargar Bono #3
+          </button>
+        </div>
+      </div>
+
+      <!-- BONO #4: GUÍA DE SUPLEMENTACIÓN -->
+      <div class="bg-sport-surface border border-sport-border hover:border-sport-green/60 p-5 sm:p-6 rounded-3xl flex flex-col justify-between transition-all group shadow-xl">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-3xl">💊</span>
+            <span class="text-[10px] font-black px-2.5 py-1 rounded-full bg-sport-green/20 text-sport-green border border-sport-green/40">BONO #4 • 14 PÁGS</span>
+          </div>
+          <h3 class="font-display font-black text-white text-lg group-hover:text-sport-green transition-colors">
+            Guía de Suplementación
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Qué suplementos tienen evidencia real para un futbolista, cómo usarlos con seguridad y qué evitar para cuidar tu salud y tu carrera.
+          </p>
+          <div class="bg-sport-card p-3 rounded-xl border border-sport-border text-xs text-sport-gray space-y-1">
+            <div>✓ Suplementos clase A: Creatina monohidrato (3-5g/día), Cafeína (3-6mg/kg), Proteína, Beta-alanina</div>
+            <div>✓ Electrolitos, Omega-3 y Vitamina D para rendimiento continuo</div>
+            <div>✓ Riesgo de dopaje, sellos certificados (Informed Sport) y qué suplementos NO comprar</div>
+          </div>
+        </div>
+        <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
+          <span class="text-xs text-sport-gray font-bold">Manual PDF • 14 Páginas</span>
+          <button 
+            onclick="downloadPDF('Bono #4: Guía de Suplementación (14 Páginas)')"
+            class="px-4 py-2 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-black text-xs transition-all shadow-md active:scale-95"
+          >
+            📥 Descargar Bono #4
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- BOTTOM NAVIGATION BAR FOR MOBILE (1-THUMB NAVIGATION) -->
+  <!-- ========================================================================= -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 bg-sport-surface/98 backdrop-blur-lg border-t border-sport-border z-40 px-2 py-2 flex items-center justify-around pb-safe">
+    <button onclick="switchMainView('videos')" id="mob-nav-videos" class="flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]">
+      <span class="text-lg">🎥</span>
+      <span>Videos</span>
+    </button>
+    <button onclick="switchMainView('fichas')" id="mob-nav-fichas" class="flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]">
+      <span class="text-lg">📑</span>
+      <span>+162 PDFs</span>
+    </button>
+    <button onclick="switchMainView('bonos')" id="mob-nav-bonos" class="flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]">
+      <span class="text-lg">🎁</span>
+      <span>4 Bonos</span>
+    </button>
+    <button onclick="toggleMobileSidebar()" class="flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]">
+      <span class="text-lg">📋</span>
+      <span>Lecciones</span>
+    </button>
+  </nav>
+
+  <!-- MODAL / DRAWER MOBILE OVERLAY -->
+  <div id="mobile-overlay" onclick="toggleMobileSidebar()" class="hidden fixed inset-0 bg-black/80 z-40 lg:hidden backdrop-blur-sm"></div>
+
+  <!-- NOTIFICACIÓN TOAST DE DESCARGA -->
+  <div id="download-toast" class="fixed top-5 right-5 z-50 bg-sport-green text-black px-4 py-3 rounded-2xl font-display font-black text-xs shadow-2xl flex items-center gap-2 transform translate-y-[-100px] transition-transform duration-300">
+    <span>📥</span>
+    <span id="toast-text">Descargando archivo...</span>
+  </div>
+
+  <!-- JAVASCRIPT: GESTIÓN DE AULAS, FICHAS Y BONOS -->
+  <script>
+    // 20 LECCIONES CON LOS VIDEOS MP4 NATIVOS 9:16 E POSTERS EM HD
+    const courseData = [
+      // MÓDULO 1: FUERZA Y TREN SUPERIOR
+      {
+        id: 1,
+        moduleId: 1,
+        moduleTitle: "Módulo 1: Fuerza y Tren Superior",
+        title: "1. Rutina Completa Tren Superior para Futbolistas",
+        youtubeId: "I2hjTfU5S34",
+        videoFile: "videos/video_1.mp4",
+        poster: "https://i.ytimg.com/vi/I2hjTfU5S34/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "8 - 10 reps",
+        rest: "90 seg",
+        goal: "Fuerza de Empuje y Protección en Duelos",
+        desc: "Trabajo integral de torso y hombros para ganar estabilidad y protección en las disputas de balón.",
+        mistakes: ["No arquees la espalda baja al empujar.", "Controla la fase de descenso."]
+      },
+      {
+        id: 2,
+        moduleId: 1,
+        moduleTitle: "Módulo 1: Fuerza y Tren Superior",
+        title: "2. Sesión de Tren Superior Post-Partido",
+        youtubeId: "0KF365xbeMo",
+        videoFile: "videos/video_2.mp4",
+        poster: "https://i.ytimg.com/vi/0KF365xbeMo/hqdefault.jpg",
+        duration: "0:50 min",
+        level: "Intermedio",
+        series: "3 Series",
+        reps: "10 reps",
+        rest: "75 seg",
+        goal: "Activación y Descarga sin Fatiga de Piernas",
+        desc: "Cómo entrenar el torso después del partido para mantener la fuerza sin sobrecargar las piernas.",
+        mistakes: ["No utilices cargas máximas el día post-partido.", "Prioriza el rango completo."]
+      },
+      {
+        id: 3,
+        moduleId: 1,
+        moduleTitle: "Módulo 1: Fuerza y Tren Superior",
+        title: "3. Rutina de Gimnasio Tren Superior para Fútbol",
+        youtubeId: "atdfkSerQXU",
+        videoFile: "videos/video_3.mp4",
+        poster: "https://i.ytimg.com/vi/atdfkSerQXU/hqdefault.jpg",
+        duration: "0:40 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "8 reps",
+        rest: "90 seg",
+        goal: "Fuerza Funcional de Torso",
+        desc: "Ejercicios de tracción y empuje diseñados específicamente para deportistas de campo.",
+        mistakes: ["Evita tirones bruscos con el cuello.", "Mantén los codos alineados."]
+      },
+      {
+        id: 4,
+        moduleId: 1,
+        moduleTitle: "Módulo 1: Fuerza y Tren Superior",
+        title: "4. Rutina de Tren Superior y Potencia",
+        youtubeId: "jFuI3dUIPzI",
+        videoFile: "videos/video_4.mp4",
+        poster: "https://i.ytimg.com/vi/jFuI3dUIPzI/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Intermedio - Avanzado",
+        series: "4 Series",
+        reps: "6 - 8 reps",
+        rest: "90 seg",
+        goal: "Potencia de Brazos y Estabilidad",
+        desc: "Desarrollo de potencia en tren superior para mejorar el braceo y la aceleración en carrera.",
+        mistakes: ["No balancees el cuerpo para impulsarte.", "Mantén el abdomen firme."]
+      },
+
+      // MÓDULO 2: PLIOMETRÍA Y SALTO VERTICAL
+      {
+        id: 5,
+        moduleId: 2,
+        moduleTitle: "Módulo 2: Pliometría y Salto",
+        title: "5. Pliometría Fundamental para Futbolistas",
+        youtubeId: "FcUfeD2AsPw",
+        videoFile: "videos/video_5.mp4",
+        poster: "https://i.ytimg.com/vi/FcUfeD2AsPw/hqdefault.jpg",
+        duration: "0:50 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "5 Saltos Máximos",
+        rest: "90 seg",
+        goal: "Despegue y Reactividad",
+        desc: "Entrenamiento pliométrico básico para aumentar el salto vertical y la potencia de despegue.",
+        mistakes: ["Nunca aterrices con las rodillas rígidas.", "Amortigua con mediopié."]
+      },
+      {
+        id: 6,
+        moduleId: 2,
+        moduleTitle: "Módulo 2: Pliometría y Salto",
+        title: "6. Mejora Fuerza para Saltar con Mancuernas",
+        youtubeId: "I04P2eHY0p4",
+        videoFile: "videos/video_6.mp4",
+        poster: "https://i.ytimg.com/vi/I04P2eHY0p4/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Intermedio",
+        series: "4 Series",
+        reps: "6 saltos con sobrecarga ligera",
+        rest: "90 seg",
+        goal: "Potencia en Salto de Cabeza",
+        desc: "Sobrecarga específica para activar fibras rápidas y ganar altura en balones divididos.",
+        mistakes: ["No uses mancuernas excesivamente pesadas.", "Asegura un aterrizaje suave."]
+      },
+      {
+        id: 7,
+        moduleId: 2,
+        moduleTitle: "Módulo 2: Pliometría y Salto",
+        title: "7. Pliometría Reactiva para Velocidad",
+        youtubeId: "aepMghc3NNs",
+        videoFile: "videos/video_7.mp4",
+        poster: "https://i.ytimg.com/vi/aepMghc3NNs/hqdefault.jpg",
+        duration: "0:40 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "6 despegues rápidos",
+        rest: "60 seg",
+        goal: "Reducir Tiempo de Contacto con el Suelo",
+        desc: "Rebotes elásticos para convertir las piernas en resortes en los cambios de ritmo.",
+        mistakes: ["No pauses en el suelo entre saltos.", "Usa los brazos como palanca."]
+      },
+      {
+        id: 8,
+        moduleId: 2,
+        moduleTitle: "Módulo 2: Pliometría y Salto",
+        title: "8. Pliometría en Casa sin Material",
+        youtubeId: "rUls6Xauvnw",
+        videoFile: "videos/video_8.mp4",
+        poster: "https://i.ytimg.com/vi/rUls6Xauvnw/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Básico - Intermedio",
+        series: "3 Series",
+        reps: "8 saltos continuos",
+        rest: "60 seg",
+        goal: "Entrenamiento Pliométrico en Cualquier Lugar",
+        desc: "Ejercicios con peso corporal que puedes realizar en tu casa o antes del partido.",
+        mistakes: ["Realiza los ejercicios con calzado adecuado.", "Mantén la postura erguida."]
+      },
+
+      // MÓDULO 3: FUERZA EXPLOSIVA Y POTENCIA
+      {
+        id: 9,
+        moduleId: 3,
+        moduleTitle: "Módulo 3: Fuerza Explosiva y Potencia",
+        title: "9. Rutina de Potencia Integral para Futbolistas",
+        youtubeId: "uvHiMHk7yW4",
+        videoFile: "videos/video_9.mp4",
+        poster: "https://i.ytimg.com/vi/uvHiMHk7yW4/hqdefault.jpg",
+        duration: "0:50 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "6 reps explosivas",
+        rest: "90 seg",
+        goal: "Potencia Total en Cancha",
+        desc: "Combinación de ejercicios de fuerza aplicada para mejorar la explosividad en el campo.",
+        mistakes: ["No sacrifiques la velocidad de subida.", "Descansa completamente."]
+      },
+      {
+        id: 10,
+        moduleId: 3,
+        moduleTitle: "Módulo 3: Fuerza Explosiva y Potencia",
+        title: "10. Mejora la Fuerza Explosiva en el Gimnasio",
+        youtubeId: "ylabUoa8CbA",
+        videoFile: "videos/video_10.mp4",
+        poster: "https://i.ytimg.com/vi/ylabUoa8CbA/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Intermedio - Avanzado",
+        series: "4 Series",
+        reps: "5 reps a máxima velocidad",
+        rest: "90 seg",
+        goal: "Aceleración en los Primeros Metros",
+        desc: "Claves de fuerza explosiva en gimnasio explicadas paso a paso por preparadores físicos.",
+        mistakes: ["No llegues al fallo muscular.", "Enfócate en la intención de máxima velocidad."]
+      },
+      {
+        id: 11,
+        moduleId: 3,
+        moduleTitle: "Módulo 3: Fuerza Explosiva y Potencia",
+        title: "11. Ejercicio de Potencia para Deportistas",
+        youtubeId: "WGdB-gvWAwU",
+        videoFile: "videos/video_11.mp4",
+        poster: "https://i.ytimg.com/vi/WGdB-gvWAwU/hqdefault.jpg",
+        duration: "0:40 min",
+        level: "Todos los Niveles",
+        series: "3 Series",
+        reps: "6 reps",
+        rest: "75 seg",
+        goal: "Transferencia de Potencia",
+        desc: "Movimiento clave para generar fuerza de cadera y potencia en los 90 minutos.",
+        mistakes: ["Mantén el centro de gravedad bajo.", "Aprieta los glúteos al extender."]
+      },
+      {
+        id: 12,
+        moduleId: 3,
+        moduleTitle: "Módulo 3: Fuerza Explosiva y Potencia",
+        title: "12. Fuerza Explosiva en Gimnasio para Fútbol",
+        youtubeId: "-e32hLFWLNk",
+        videoFile: "videos/video_12.mp4",
+        poster: "https://i.ytimg.com/vi/-e32hLFWLNk/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Avanzado",
+        series: "4 Series",
+        reps: "5 reps",
+        rest: "90 seg",
+        goal: "Potencia de Golpeo y Arranque",
+        desc: "Técnica avanzada para transferir la fuerza del gimnasio a la velocidad real de juego.",
+        mistakes: ["No redondees la columna lumbar.", "Mantén los apoyos firmes."]
+      },
+
+      // MÓDULO 4: CORE Y PREPARACIÓN FÍSICA
+      {
+        id: 13,
+        moduleId: 4,
+        moduleTitle: "Módulo 4: Core y Preparación Física",
+        title: "13. Entrenamiento de Fuerza para el Fútbol",
+        youtubeId: "4Zk1R33HvQM",
+        videoFile: "videos/video_13.mp4",
+        poster: "https://i.ytimg.com/vi/4Zk1R33HvQM/hqdefault.jpg",
+        duration: "0:50 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "8 reps",
+        rest: "90 seg",
+        goal: "Fuerza Funcional Global",
+        desc: "Metodología de entrenamiento de fuerza adaptada para jugadores de todas las posiciones.",
+        mistakes: ["No entrenes como culturista; busca rendimiento dinámico."]
+      },
+      {
+        id: 14,
+        moduleId: 4,
+        moduleTitle: "Módulo 4: Core y Preparación Física",
+        title: "14. Qué Entrenar en el Gimnasio como Arquero / Portero",
+        youtubeId: "JIu88PjwXs0",
+        videoFile: "videos/video_14.mp4",
+        poster: "https://i.ytimg.com/vi/JIu88PjwXs0/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "6 reps por lado",
+        rest: "75 seg",
+        goal: "Reflejos, Salto Lateral y Potencia",
+        desc: "Rutina especializada para porteros: potencia de piernas, core y tren superior.",
+        mistakes: ["No descuides la movilidad de hombros."]
+      },
+      {
+        id: 15,
+        moduleId: 4,
+        moduleTitle: "Módulo 4: Core y Preparación Física",
+        title: "15. Ejercicios de Core para Futbolistas",
+        youtubeId: "UZLgKhXqhgA",
+        videoFile: "videos/video_15.mp4",
+        poster: "https://i.ytimg.com/vi/UZLgKhXqhgA/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Todos los Niveles",
+        series: "3 Series",
+        reps: "12 reps por lado",
+        rest: "45 seg",
+        goal: "Estabilidad Lumbo-Pélvica",
+        desc: "Ejercicios antirrotacionales para blindar la espalda y resistir las cargas rivales.",
+        mistakes: ["No dejes caer la pelvis.", "Respira con normalidad."]
+      },
+      {
+        id: 16,
+        moduleId: 4,
+        moduleTitle: "Módulo 4: Core y Preparación Física",
+        title: "16. Core y Resistencia para Futbolistas",
+        youtubeId: "gV4hvn9pF0E",
+        videoFile: "videos/video_16.mp4",
+        poster: "https://i.ytimg.com/vi/gV4hvn9pF0E/hqdefault.jpg",
+        duration: "0:40 min",
+        level: "Todos los Niveles",
+        series: "3 Series",
+        reps: "15 por lado",
+        rest: "45 seg",
+        goal: "Fuerza en Duelos 1 vs 1",
+        desc: "Acondicionamiento del tronco para mantener la potencia intacta hasta el final del partido.",
+        mistakes: ["No curves la espalda.", "Aprieta el ombligo hacia adentro."]
+      },
+
+      // MÓDULO 5: RECUPERACIÓN, ERRORES Y RENDIMIENTO
+      {
+        id: 17,
+        moduleId: 5,
+        moduleTitle: "Módulo 5: Recuperación y Rendimiento",
+        title: "17. Preparación Física Completa para Fútbol",
+        youtubeId: "teYW2I0IeFM",
+        videoFile: "videos/video_17.mp4",
+        poster: "https://i.ytimg.com/vi/teYW2I0IeFM/hqdefault.jpg",
+        duration: "0:50 min",
+        level: "Todos los Niveles",
+        series: "3 Series",
+        reps: "10 reps",
+        rest: "60 seg",
+        goal: "Condición Física Total",
+        desc: "Estructura de preparación física para futbolistas que buscan llegar a su máximo nivel.",
+        mistakes: ["No sobreentrenes sin periodización."]
+      },
+      {
+        id: 18,
+        moduleId: 5,
+        moduleTitle: "Módulo 5: Recuperación y Rendimiento",
+        title: "18. Cómo Recuperarte Después de tu Partido",
+        youtubeId: "MOTCjlVo4OY",
+        videoFile: "videos/video_18.mp4",
+        poster: "https://i.ytimg.com/vi/MOTCjlVo4OY/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Todos los Niveles",
+        series: "3 Series",
+        reps: "Rutina completa",
+        rest: "30 seg",
+        goal: "Acelerar Recuperación Muscular",
+        desc: "Protocolo de recuperación post-partido para eliminar la fatiga y prevenir lesiones musculares.",
+        mistakes: ["No ignores la hidratación y el estiramiento dinámico."]
+      },
+      {
+        id: 19,
+        moduleId: 5,
+        moduleTitle: "Módulo 5: Recuperación y Rendimiento",
+        title: "19. Errores en el Gimnasio que Arruinan tu Rendimiento",
+        youtubeId: "Oq3__6IJ3FU",
+        videoFile: "videos/video_19.mp4",
+        poster: "https://i.ytimg.com/vi/Oq3__6IJ3FU/hqdefault.jpg",
+        duration: "0:45 min",
+        level: "Todos los Niveles",
+        series: "Teoría y Práctica",
+        reps: "Revisión técnica",
+        rest: "-",
+        goal: "Evitar Fatiga Innecesaria",
+        desc: "Lo que nunca debes hacer en el gimnasio si juegas al fútbol para no perder velocidad ni agilidad.",
+        mistakes: ["No entrenes con rutinas de culturismo pesado antes de partidos."]
+      },
+      {
+        id: 20,
+        moduleId: 5,
+        moduleTitle: "Módulo 5: Recuperación y Rendimiento",
+        title: "20. Si sos Futbolista Entrena Fuerza",
+        youtubeId: "NhXqY9cbmgU",
+        videoFile: "videos/video_20.mp4",
+        poster: "https://i.ytimg.com/vi/NhXqY9cbmgU/hqdefault.jpg",
+        duration: "0:50 min",
+        level: "Todos los Niveles",
+        series: "4 Series",
+        reps: "6 reps",
+        rest: "90 seg",
+        goal: "Mentalidad y Fuerza para Competir",
+        desc: "Por qué el entrenamiento de fuerza es el pilar #1 para destacar y dominar en el fútbol moderno.",
+        mistakes: ["No temas a las pesas; la fuerza es velocidad."]
+      }
+    ];
+
+    let completedLessons = JSON.parse(localStorage.getItem('futforce_completed_lessons') || '[]');
+    let currentLessonId = 1;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSidebarModules();
+      loadLesson(1);
+      updateGlobalProgress();
+      loadSavedNotes();
+    });
+
+    // NAVEGACIÓN ENTRE VISTAS PRINCIPALES (VIDEOS / FICHAS / BONOS)
+    function switchMainView(viewName) {
+      document.getElementById('view-videos').classList.add('hidden');
+      document.getElementById('view-fichas').classList.add('hidden');
+      document.getElementById('view-bonos').classList.add('hidden');
+
+      // Desktop Nav States
+      const navVideos = document.getElementById('nav-btn-videos');
+      const navFichas = document.getElementById('nav-btn-fichas');
+      const navBonos = document.getElementById('nav-btn-bonos');
+
+      navVideos.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all";
+      navFichas.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all";
+      navBonos.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all";
+
+      // Mobile Nav States
+      const mobVideos = document.getElementById('mob-nav-videos');
+      const mobFichas = document.getElementById('mob-nav-fichas');
+      const mobBonos = document.getElementById('mob-nav-bonos');
+
+      mobVideos.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]";
+      mobFichas.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]";
+      mobBonos.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]";
+
+      if (viewName === 'videos') {
+        document.getElementById('view-videos').classList.remove('hidden');
+        navVideos.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all";
+        mobVideos.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]";
+      } else if (viewName === 'fichas') {
+        document.getElementById('view-fichas').classList.remove('hidden');
+        navFichas.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all";
+        mobFichas.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]";
+      } else if (viewName === 'bonos') {
+        document.getElementById('view-bonos').classList.remove('hidden');
+        navBonos.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all";
+        mobBonos.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]";
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderSidebarModules() {
+      const container = document.getElementById('modules-list');
+      container.innerHTML = '';
+
+      const modules = [
+        { id: 1, title: "🏋️ Módulo 1: Fuerza y Tren Superior", lessons: courseData.filter(l => l.moduleId === 1) },
+        { id: 2, title: "⚡ Módulo 2: Pliometría y Salto Vertical", lessons: courseData.filter(l => l.moduleId === 2) },
+        { id: 3, title: "💥 Módulo 3: Fuerza Explosiva y Potencia", lessons: courseData.filter(l => l.moduleId === 3) },
+        { id: 4, title: "🛡️ Módulo 4: Core y Preparación Física", lessons: courseData.filter(l => l.moduleId === 4) },
+        { id: 5, title: "🩺 Módulo 5: Recuperación y Rendimiento", lessons: courseData.filter(l => l.moduleId === 5) }
+      ];
+
+      modules.forEach(mod => {
+        const modEl = document.createElement('div');
+        modEl.className = "rounded-xl border border-sport-border bg-sport-card/80 overflow-hidden";
+        
+        let lessonsHtml = mod.lessons.map(lesson => {
+          const isDone = completedLessons.includes(lesson.id);
+          const isCurrent = lesson.id === currentLessonId;
+
+          return `
+            <div 
+              onclick="loadLesson(${lesson.id})"
+              id="lesson-item-${lesson.id}"
+              class="p-2.5 px-3 flex items-center justify-between gap-3 text-xs cursor-pointer border-t border-sport-border/40 transition-all ${isCurrent ? 'bg-sport-green/15 border-l-4 border-l-sport-green font-bold text-white' : 'hover:bg-white/5 text-slate-300'}"
+            >
+              <div class="flex items-center gap-2.5 truncate">
+                <!-- Thumbnail Mini -->
+                <div class="w-10 h-7 rounded bg-black shrink-0 overflow-hidden border border-sport-border relative">
+                  <img src="${lesson.poster}" alt="Thumb" class="w-full h-full object-cover" />
+                </div>
+                <span class="${isDone ? 'text-sport-green font-black' : 'text-sport-gray'} text-xs">
+                  ${isDone ? '✓' : '▶'}
+                </span>
+                <span class="truncate">${lesson.title}</span>
+              </div>
+              <span class="text-[10px] text-sport-gray shrink-0 font-medium">${lesson.duration}</span>
+            </div>
+          `;
+        }).join('');
+
+        modEl.innerHTML = `
+          <div class="p-2.5 bg-black/40 font-display text-[11px] font-black text-slate-200 uppercase tracking-wider flex items-center justify-between">
+            <span>${mod.title}</span>
+            <span class="text-[10px] text-sport-green">${mod.lessons.filter(l => completedLessons.includes(l.id)).length}/${mod.lessons.length}</span>
+          </div>
+          <div>${lessonsHtml}</div>
+        `;
+
+        container.appendChild(modEl);
+      });
+    }
+
+    function loadLesson(id) {
+      currentLessonId = id;
+      const lesson = courseData.find(l => l.id === id);
+      if (!lesson) return;
+
+      // Asegurar vista de videos activa
+      if (document.getElementById('view-videos').classList.contains('hidden')) {
+        switchMainView('videos');
+      }
+
+      // Actualizar Video Frame (YouTube Embed 100% Operativo)
+      const frame = document.getElementById('video-frame');
+      if (frame && lesson.youtubeId) {
+        frame.src = "https://www.youtube-nocookie.com/embed/" + lesson.youtubeId + "?autoplay=1&playsinline=1&rel=0&modestbranding=1";
+      }
+      const ytLink = document.getElementById('btn-youtube-link');
+      if (ytLink && lesson.youtubeId) {
+        ytLink.href = "https://www.youtube.com/watch?v=" + lesson.youtubeId;
+      }
+
+      // Actualizar Textos
+      document.getElementById('badge-module').innerText = lesson.moduleTitle.toUpperCase();
+      document.getElementById('lesson-title').innerText = lesson.title;
+
+      // Actualizar Ficha Técnica
+      document.getElementById('tech-series').innerText = lesson.series;
+      document.getElementById('tech-reps').innerText = lesson.reps;
+      document.getElementById('tech-rest').innerText = lesson.rest;
+      document.getElementById('tech-goal').innerText = lesson.goal;
+      document.getElementById('tech-desc').innerText = lesson.desc;
+
+      document.getElementById('tech-mistakes').innerHTML = lesson.mistakes.map(m => `<li>${m}</li>`).join('');
+
+      updateCompletionButtonState();
+      loadSavedNotes();
+      renderSidebarModules();
+      closeMobileSidebar();
+
+      if (window.innerWidth < 1024) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function playOrPauseVideo() {
+      const player = document.getElementById('video-player');
+      const btn = document.getElementById('btn-play-pause');
+      if (player.paused) {
+        player.play();
+        btn.innerHTML = '<span>⏸ Pausar</span>';
+      } else {
+        player.pause();
+        btn.innerHTML = '<span>▶ Reproducir</span>';
+      }
+    }
+
+    function nextLesson() {
+      if (currentLessonId < courseData.length) {
+        loadLesson(currentLessonId + 1);
+      }
+    }
+
+    function prevLesson() {
+      if (currentLessonId > 1) {
+        loadLesson(currentLessonId - 1);
+      }
+    }
+
+    function toggleCurrentLessonCompleted() {
+      const idx = completedLessons.indexOf(currentLessonId);
+      if (idx > -1) {
+        completedLessons.splice(idx, 1);
+      } else {
+        completedLessons.push(currentLessonId);
+      }
+
+      localStorage.setItem('futforce_completed_lessons', JSON.stringify(completedLessons));
+      updateCompletionButtonState();
+      updateGlobalProgress();
+      renderSidebarModules();
+    }
+
+    function updateCompletionButtonState() {
+      const isDone = completedLessons.includes(currentLessonId);
+      const btn = document.getElementById('btn-complete');
+      const icon = document.getElementById('complete-icon');
+      const label = document.getElementById('complete-label');
+
+      if (isDone) {
+        btn.className = "shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-display text-xs font-black uppercase tracking-wider transition-all duration-300 bg-sport-green text-black border-2 border-sport-green shadow-[0_0_15px_rgba(57,255,20,0.4)] active:scale-95";
+        icon.innerText = "✓";
+        label.innerText = "Completada";
+      } else {
+        btn.className = "shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-display text-xs font-black uppercase tracking-wider transition-all duration-300 bg-sport-card border-2 border-sport-green text-sport-green hover:bg-sport-green hover:text-black shadow-md active:scale-95";
+        icon.innerText = "⭕";
+        label.innerText = "Marcar como Completada";
+      }
+    }
+
+    function updateGlobalProgress() {
+      const total = courseData.length;
+      const count = completedLessons.length;
+      const pct = Math.round((count / total) * 100);
+
+      document.getElementById('completed-count').innerText = count;
+      document.getElementById('progress-text').innerText = `${pct}%`;
+      document.getElementById('progress-bar').style.width = `${pct}%`;
+
+      document.getElementById('completed-count-mobile').innerText = count;
+      document.getElementById('progress-text-mobile').innerText = `${pct}%`;
+      document.getElementById('progress-bar-mobile').style.width = `${pct}%`;
+    }
+
+    function switchTab(tabName) {
+      document.getElementById('tab-ficha').classList.add('hidden');
+      document.getElementById('tab-consejos').classList.add('hidden');
+      document.getElementById('tab-notas').classList.add('hidden');
+
+      document.getElementById('tab-btn-ficha').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap";
+      document.getElementById('tab-btn-consejos').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap";
+      document.getElementById('tab-btn-notas').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap";
+
+      if (tabName === 'ficha') {
+        document.getElementById('tab-ficha').classList.remove('hidden');
+        document.getElementById('tab-btn-ficha').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap";
+      } else if (tabName === 'consejos') {
+        document.getElementById('tab-consejos').classList.remove('hidden');
+        document.getElementById('tab-btn-consejos').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap";
+      } else if (tabName === 'notas') {
+        document.getElementById('tab-notas').classList.remove('hidden');
+        document.getElementById('tab-btn-notas').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap";
+      }
+    }
+
+    function saveUserNotes() {
+      const text = document.getElementById('user-notes').value;
+      localStorage.setItem(`futforce_notes_${currentLessonId}`, text);
+      const msg = document.getElementById('notes-saved-msg');
+      msg.classList.remove('hidden');
+      setTimeout(() => msg.classList.add('hidden'), 2000);
+    }
+
+    function loadSavedNotes() {
+      const saved = localStorage.getItem(`futforce_notes_${currentLessonId}`) || '';
+      document.getElementById('user-notes').value = saved;
+    }
+
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('sidebar-lessons');
+      const overlay = document.getElementById('mobile-overlay');
+
+      if (sidebar.classList.contains('fixed')) {
+        closeMobileSidebar();
+      } else {
+        sidebar.classList.add('fixed', 'inset-y-0', 'right-0', 'z-50', 'w-5/6', 'max-w-sm', 'h-full', 'rounded-none');
+        overlay.classList.remove('hidden');
+      }
+    }
+
+    function closeMobileSidebar() {
+      const sidebar = document.getElementById('sidebar-lessons');
+      const overlay = document.getElementById('mobile-overlay');
+
+      sidebar.classList.remove('fixed', 'inset-y-0', 'right-0', 'z-50', 'w-5/6', 'max-w-sm', 'h-full', 'rounded-none');
+      overlay.classList.add('hidden');
+    }
+
+    // SISTEMA OFICIAL DE DESCARGAS DE PDF
+    function downloadPDF(itemKey, customName) {
+      let pdfUrl = 'pdfs/libro-162-rutinas-futforce.pdf';
+      let downloadName = 'Libro-Maestro-162-Rutinas-Futforce.pdf';
+      let displayName = '+162 Rutinas de Gimnasio y Funcional';
+
+      const key = (itemKey || '').toLowerCase();
+      if (key.includes('bono 1') || key.includes('bono #1') || key.includes('movilidad')) {
+        pdfUrl = 'pdfs/bono1-movilidad-futbolistas.pdf';
+        downloadName = 'Bono-1-Movilidad-para-Futbolistas.pdf';
+        displayName = 'Bono #1: Movilidad para Futbolistas';
+      } else if (key.includes('bono 2') || key.includes('bono #2') || key.includes('nutrici')) {
+        pdfUrl = 'pdfs/bono2-nutricion-deportiva.pdf';
+        downloadName = 'Bono-2-Nutricion-Deportiva.pdf';
+        displayName = 'Bono #2: Guía de Nutrición Deportiva';
+      } else if (key.includes('bono 3') || key.includes('bono #3') || key.includes('lesion') || key.includes('anti-lesiones')) {
+        pdfUrl = 'pdfs/bono3-protocolo-antilesiones.pdf';
+        downloadName = 'Bono-3-Protocolo-Anti-Lesiones.pdf';
+        displayName = 'Bono #3: Protocolo Anti-Lesiones';
+      } else if (key.includes('bono 4') || key.includes('bono #4') || key.includes('suplementaci')) {
+        pdfUrl = 'pdfs/bono4-guia-suplementacion.pdf';
+        downloadName = 'Bono-4-Guia-de-Suplementacion.pdf';
+        displayName = 'Bono #4: Guía de Suplementación';
+      } else if (key.includes('bloque 1')) {
+        displayName = 'Bloque 1 (Libro Maestro FUTFORCE)';
+      } else if (key.includes('bloque 2')) {
+        displayName = 'Bloque 2 (Libro Maestro FUTFORCE)';
+      } else if (key.includes('bloque 3')) {
+        displayName = 'Bloque 3 (Libro Maestro FUTFORCE)';
+      } else if (key.includes('bloque 4')) {
+        displayName = 'Bloque 4 (Libro Maestro FUTFORCE)';
+      } else if (key.includes('bloque 5')) {
+        displayName = 'Bloque 5 (Libro Maestro FUTFORCE)';
+      } else if (key.includes('plantilla')) {
+        displayName = 'Plantilla de Seguimiento (Libro Maestro)';
+      }
+
+      if (customName) downloadName = customName;
+
+      // Mostrar notificación Toast
+      const toast = document.getElementById('download-toast');
+      const text = document.getElementById('toast-text');
+      if (toast && text) {
+        text.innerText = `¡Descargando ${displayName}!`;
+        toast.classList.remove('translate-y-[-100px]');
+        toast.classList.add('translate-y-0');
+
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0');
+          toast.classList.add('translate-y-[-100px]');
+        }, 3500);
+      }
+
+      // Disparar descarga real del archivo PDF
+      try {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.setAttribute('download', downloadName);
+        link.setAttribute('target', '_blank');
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => {
+          document.body.removeChild(link);
+        }, 200);
+      } catch (err) {
+        console.error('Error al descargar:', err);
+        window.open(pdfUrl, '_blank');
+      }
+    }
+  </script>
+
+</body>
+</html>
+
