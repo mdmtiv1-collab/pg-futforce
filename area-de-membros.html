@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Área de Miembros VIP | +162 Rutinas & Método FUTFORCE</title>
   
   <!-- Google Fonts: Archivo Black & Inter -->
@@ -160,6 +161,17 @@
       <div class="w-full bg-sport-surface border border-sport-border p-3 sm:p-4 rounded-3xl shadow-2xl flex flex-col items-center">
         
         <!-- REPRODUCTOR FORMATO 9:16 DIRECTO EN PANTALLA (YOUTUBE EMBED 100% FUNCIONAL) -->
+        <!-- AVISO INTELIGENTE DE TEST LOCAL (SI SE ABRE VÍA FILE://) -->
+        <div id="local-file-notice" class="hidden w-full max-w-[360px] mb-3 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs leading-relaxed shadow-lg">
+          <div class="flex items-start gap-2">
+            <span class="text-base leading-none">💡</span>
+            <div>
+              <strong class="font-bold text-amber-300 block mb-0.5">Nota de Vista Previa Local (file://) :</strong>
+              Al abrir el archivo directamente en Windows, la seguridad de YouTube puede mostrar Error 153 por falta de encabezados web referer. ¡En tu servidor online (Hostinger), los videos se reproducen fluidamente! También puedes hacer clic en <strong class="text-sport-green">Abrir Video</strong> abajo para verlo directamente en YouTube.
+            </div>
+          </div>
+        </div>
+
         <div class="vertical-video-wrapper border-2 border-sport-green/50 relative group bg-black overflow-hidden shadow-2xl">
           <iframe 
             id="video-frame"
@@ -167,6 +179,8 @@
             title="Reproductor de Video FUTFORCE"
             class="w-full h-full absolute inset-0 border-0 rounded-2xl"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy"
             allowfullscreen
           ></iframe>
         </div>
@@ -1282,7 +1296,8 @@
       // Actualizar Video Frame (YouTube Embed 100% Operativo)
       const frame = document.getElementById('video-frame');
       if (frame && lesson.youtubeId) {
-        frame.src = "https://www.youtube-nocookie.com/embed/" + lesson.youtubeId + "?autoplay=1&playsinline=1&rel=0&modestbranding=1";
+        frame.src = "https://www.youtube.com/embed/" + lesson.youtubeId + "?autoplay=1&playsinline=1&rel=0&modestbranding=1";
+        frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
       }
       const ytLink = document.getElementById('btn-youtube-link');
       if (ytLink && lesson.youtubeId) {
