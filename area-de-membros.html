@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark h-full">
+<html lang="pt-PT" class="dark h-full">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <title>Área de Membros VIP | FutForce - 124 Exercícios & +162 Rotinas</title>
+  <title id="html-title">Área de Membros VIP | FutForce - 124 Exercícios & +162 Treinos</title>
   
   <!-- Google Fonts: Archivo Black & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,46 +45,35 @@
     }
     ::-webkit-scrollbar-thumb {
       background: #283545;
-      border-radius: 4px;
+      border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
       background: #39FF14;
     }
-    /* Athletic Video Wrapper */
+
+    .pb-safe {
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    }
+
+    /* Video player container formato vertical reels/shorts */
     .exercise-video-container {
-      position: relative;
       width: 100%;
       max-width: 380px;
-      margin: 0 auto;
-      aspect-ratio: 4 / 5;
-      background: #000;
+      aspect-ratio: 9/16;
       border-radius: 1.5rem;
       overflow: hidden;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9);
-    }
-    .exercise-video-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background-color: #000;
-    }
-    .pb-safe {
-      padding-bottom: env(safe-area-inset-bottom, 20px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
     }
   </style>
 </head>
-
-<body class="bg-sport-dark text-slate-100 font-sans min-h-full flex flex-col antialiased selection:bg-sport-green selection:text-black pb-24 lg:pb-8">
+<body class="bg-sport-dark text-slate-100 font-sans antialiased min-h-full flex flex-col selection:bg-sport-green selection:text-black pb-24 md:pb-8">
 
   <!-- NAVBAR / HEADER VIP -->
   <header class="sticky top-0 z-40 bg-sport-surface/95 backdrop-blur-md border-b border-sport-border px-3.5 py-3 sm:px-6">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       
       <!-- Brand Logo -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-2.5 min-w-0">
         <div class="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-black border border-sport-green/40 flex items-center justify-center font-display font-black text-sport-green text-base sm:text-lg shadow-[0_0_15px_rgba(57,255,20,0.3)] shrink-0">
           FP
         </div>
@@ -92,30 +81,32 @@
           <span class="font-display text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1">
             MÉTODO <span class="text-sport-green">FUTFORCE</span>
           </span>
-          <span class="text-[9px] sm:text-[10px] text-sport-gray font-bold tracking-wider uppercase block -mt-1 truncate">
-            124 EXERCÍCIOS EM VÍDEO (FASES 1-5) • +162 ROTINAS PDF • 4 BÔNUS VIP
+          <span id="brand-subtitle" class="text-[9px] sm:text-[10px] text-sport-gray font-bold tracking-wider uppercase block -mt-1 truncate">
+            124 EXERCÍCIOS EM VÍDEO (FASES 1-5) • +162 TREINOS PDF • 4 BÓNUS VIP
           </span>
         </div>
       </div>
 
-      <!-- Navigation Views (Desktop) -->
-      <div class="flex items-center gap-2 sm:gap-4">
+      <!-- Navigation Views & Language Switcher -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
         
         <!-- SELETOR DE IDIOMA BILÍNGUE (ESPAÑOL / PORTUGUÊS) -->
         <div class="flex items-center bg-sport-card p-1 rounded-xl border border-sport-border text-xs font-bold shadow-inner">
           <button 
+            type="button"
             onclick="setLanguage('es')" 
             id="lang-btn-es" 
-            class="px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-black transition-all flex items-center gap-1 bg-sport-green text-black shadow-sm"
+            class="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs font-bold text-sport-gray hover:text-white transition-all flex items-center gap-1 cursor-pointer"
             title="Cambiar a Español"
           >
             <span>🇪🇸</span> <span class="text-[11px] font-black">ES</span>
           </button>
           <button 
+            type="button"
             onclick="setLanguage('pt')" 
             id="lang-btn-pt" 
-            class="px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold text-sport-gray hover:text-white transition-all flex items-center gap-1"
-            title="Mudar para Português de Portugal"
+            class="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs font-black transition-all flex items-center gap-1 bg-sport-green text-black shadow-sm cursor-pointer"
+            title="Mudar para Português"
           >
             <span>🇵🇹</span> <span class="text-[11px] font-black">PT</span>
           </button>
@@ -123,20 +114,20 @@
 
         <nav class="hidden md:flex items-center gap-1 bg-sport-card p-1 rounded-xl border border-sport-border text-xs font-bold">
           <button onclick="switchMainView('exercicios')" id="nav-btn-exercicios" class="px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all">
-            <span>⚡</span> <span>124 Exercícios (Fases 1-5)</span>
+            <span>⚡</span> <span id="nav-text-exercicios">124 Exercícios (Fases 1-5)</span>
           </button>
           <button onclick="switchMainView('fichas')" id="nav-btn-fichas" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all">
-            <span>📑</span> <span>+162 Rotinas PDF</span>
+            <span>📑</span> <span id="nav-text-fichas">+162 Treinos PDF</span>
           </button>
           <button onclick="switchMainView('bonos')" id="nav-btn-bonos" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all">
-            <span>🎁</span> <span>4 Bônus VIP</span>
+            <span>🎁</span> <span id="nav-text-bonos">4 Bónus VIP</span>
           </button>
         </nav>
 
         <!-- Progress Info (Desktop) -->
         <div class="hidden xl:flex flex-col items-end gap-0.5 text-right pl-2 border-l border-sport-border/60">
           <div class="flex items-center gap-1.5 text-xs font-bold text-white">
-            <span>Progresso:</span>
+            <span id="lbl-desktop-progress">Progresso:</span>
             <span id="progress-text" class="text-sport-green font-black">0%</span>
             <span class="text-sport-gray text-[10px]">(<span id="completed-count">0</span>/124)</span>
           </div>
@@ -152,7 +143,7 @@
           aria-label="Abrir Lista"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-          <span class="hidden sm:inline">Lista</span>
+          <span class="hidden sm:inline" id="btn-text-list">Lista</span>
         </button>
 
       </div>
@@ -161,12 +152,7 @@
 
     <!-- Barra de Progresso Mobile -->
     <div class="md:hidden mt-2 pt-2 border-t border-sport-border/60 flex items-center justify-between text-[11px] text-sport-gray">
-      <!-- Seletor Mobile -->
-      <div class="flex items-center bg-sport-card p-0.5 rounded-lg border border-sport-border text-[10px] font-bold">
-        <button onclick="setLanguage('es')" id="mob-lang-es" class="px-2 py-0.5 rounded bg-sport-green text-black font-black">🇪🇸 ES</button>
-        <button onclick="setLanguage('pt')" id="mob-lang-pt" class="px-2 py-0.5 rounded text-sport-gray font-bold">🇵🇹 PT</button>
-      </div>
-      <span>Progresso: <strong id="progress-text-mobile" class="text-sport-green">0%</strong> (<span id="completed-count-mobile">0</span>/124)</span>
+      <span><span id="lbl-mob-progress">Progresso:</span> <strong id="progress-text-mobile" class="text-sport-green">0%</strong> (<span id="completed-count-mobile">0</span>/124)</span>
       <div class="w-28 h-1.5 bg-sport-border rounded-full overflow-hidden">
         <div id="progress-bar-mobile" class="h-full bg-sport-green transition-all duration-500 rounded-full" style="width: 0%"></div>
       </div>
@@ -211,7 +197,7 @@
           <!-- Badges superiores no player -->
           <div class="absolute top-3 left-3 bg-black/85 backdrop-blur-md px-3 py-1 rounded-full border border-sport-green/50 flex items-center gap-1.5 text-[10px] font-black text-sport-green pointer-events-none shadow-md">
             <span class="text-xs">🔄</span>
-            <span>LOOPING CONTÍNUO</span>
+            <span id="badge-loop-text">LOOPING CONTÍNUO</span>
           </div>
 
           <div id="speed-badge" class="absolute top-3 right-3 bg-black/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 text-[10px] font-bold text-white pointer-events-none">
@@ -226,7 +212,7 @@
             class="py-2.5 px-3 rounded-xl bg-sport-card border border-sport-border hover:border-sport-green text-xs font-bold text-white flex items-center justify-center gap-1 transition-all active:scale-95"
             title="Exercício Anterior"
           >
-            <span>⏮ Anterior</span>
+            <span id="btn-text-prev">⏮ Anterior</span>
           </button>
           
           <button 
@@ -234,7 +220,7 @@
             onclick="togglePlayPause()"
             class="flex-1 py-2.5 px-4 rounded-xl bg-sport-green text-black hover:bg-emerald-400 font-display font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-[0_0_15px_rgba(57,255,20,0.3)] active:scale-95"
           >
-            <span>⏸ Pausar</span>
+            <span id="btn-text-play-pause">⏸ Pausar</span>
           </button>
 
           <button 
@@ -242,13 +228,13 @@
             class="py-2.5 px-3 rounded-xl bg-sport-card border border-sport-border hover:border-sport-green text-xs font-bold text-white flex items-center justify-center gap-1 transition-all active:scale-95"
             title="Próximo Exercício"
           >
-            <span>Próximo ⏭</span>
+            <span id="btn-text-next">Próximo ⏭</span>
           </button>
         </div>
 
         <!-- SELETOR DE VELOCIDADE (SLOW-MO TÉCNICO) -->
         <div class="w-full max-w-[380px] mt-2.5 pt-2.5 border-t border-sport-border/60 flex items-center justify-between text-xs">
-          <span class="text-[11px] text-sport-gray font-bold">Velocidade:</span>
+          <span id="lbl-speed" class="text-[11px] text-sport-gray font-bold">Velocidade:</span>
           <div class="flex items-center gap-1.5">
             <button onclick="setVideoSpeed(0.5)" id="speed-05" class="px-2 py-0.5 rounded-lg bg-sport-card border border-sport-border text-[11px] font-bold text-sport-gray hover:text-white transition-all">0.5x (Técnica)</button>
             <button onclick="setVideoSpeed(1.0)" id="speed-10" class="px-2 py-0.5 rounded-lg bg-sport-green text-black font-black text-[11px] transition-all">1.0x (Normal)</button>
@@ -256,7 +242,7 @@
           </div>
         </div>
 
-        <div class="w-full max-w-[380px] mt-2 bg-sport-card/60 p-2.5 rounded-xl border border-sport-border/60 text-[11px] text-sport-gray text-center leading-relaxed">
+        <div id="lbl-loop-tip" class="w-full max-w-[380px] mt-2 bg-sport-card/60 p-2.5 rounded-xl border border-sport-border/60 text-[11px] text-sport-gray text-center leading-relaxed">
           💡 <strong class="text-white">Looping automático:</strong> O vídeo fica rodando continuamente após o despause. Ele só pausa se você clicar em Pausar ou na tela.
         </div>
 
@@ -266,19 +252,19 @@
       <div class="w-full mt-4 grid grid-cols-2 gap-2.5 sm:hidden">
         <button 
           onclick="switchMainView('fichas')" 
-          class="p-3 rounded-2xl bg-sport-card border border-sport-border hover:border-sport-green flex flex-col items-center text-center gap-1 text-xs font-bold text-white"
+          class="p-3 rounded-2xl bg-sport-card border border-sport-border hover:border-sport-green flex flex-col items-center text-center gap-1 text-xs font-bold text-white active:scale-95"
         >
           <span class="text-xl">📑</span>
-          <span>+162 Rotinas PDF</span>
-          <span class="text-[10px] text-sport-green font-bold">171 Páginas</span>
+          <span id="quick-fichas-title">+162 Treinos PDF</span>
+          <span class="text-[10px] text-sport-green font-bold" id="quick-fichas-sub">171 Páginas</span>
         </button>
         <button 
           onclick="switchMainView('bonos')" 
-          class="p-3 rounded-2xl bg-sport-card border border-sport-border hover:border-sport-green flex flex-col items-center text-center gap-1 text-xs font-bold text-white"
+          class="p-3 rounded-2xl bg-sport-card border border-sport-border hover:border-sport-green flex flex-col items-center text-center gap-1 text-xs font-bold text-white active:scale-95"
         >
           <span class="text-xl">🎁</span>
-          <span>4 Bônus VIP</span>
-          <span class="text-[10px] text-sport-green font-bold">Baixar PDFs</span>
+          <span id="quick-bonos-title">4 Bónus VIP</span>
+          <span class="text-[10px] text-sport-green font-bold" id="quick-bonos-sub">Baixar PDFs</span>
         </button>
       </div>
 
@@ -321,13 +307,13 @@
         <div class="mt-4">
           <div class="flex items-center gap-2 border-b border-sport-border pb-3 mb-4 overflow-x-auto text-xs font-bold">
             <button onclick="switchTab('ficha')" id="tab-btn-ficha" class="px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap">
-              📋 Ficha do Exercício
+              📋 <span id="tab-text-ficha">Ficha do Exercício</span>
             </button>
             <button onclick="switchTab('consejos')" id="tab-btn-consejos" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap">
-              ⚠️ Erros Comuns
+              ⚠️ <span id="tab-text-consejos">Erros Comuns</span>
             </button>
             <button onclick="switchTab('notas')" id="tab-btn-notas" class="px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap">
-              📝 Minhas Cargas
+              📝 <span id="tab-text-notas">Minhas Cargas</span>
             </button>
           </div>
 
@@ -335,27 +321,27 @@
           <div id="tab-ficha" class="space-y-4 text-xs sm:text-sm text-slate-300">
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
-                <span class="text-[10px] text-sport-gray uppercase block font-bold">Séries</span>
+                <span id="lbl-series" class="text-[10px] text-sport-gray uppercase block font-bold">Séries</span>
                 <span id="tech-series" class="text-sm sm:text-base font-black text-white">4 Séries</span>
               </div>
               <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
-                <span class="text-[10px] text-sport-gray uppercase block font-bold">Repetições</span>
+                <span id="lbl-reps" class="text-[10px] text-sport-gray uppercase block font-bold">Repetições</span>
                 <span id="tech-reps" class="text-sm sm:text-base font-black text-sport-green">6 - 8 reps</span>
               </div>
               <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
-                <span class="text-[10px] text-sport-gray uppercase block font-bold">Descanso</span>
+                <span id="lbl-rest" class="text-[10px] text-sport-gray uppercase block font-bold">Descanso</span>
                 <span id="tech-rest" class="text-sm sm:text-base font-black text-white">90 seg</span>
               </div>
               <div class="bg-sport-card p-3 rounded-xl border border-sport-border">
-                <span class="text-[10px] text-sport-gray uppercase block font-bold">Objetivo</span>
+                <span id="lbl-goal" class="text-[10px] text-sport-gray uppercase block font-bold">Objetivo</span>
                 <span id="tech-goal" class="text-xs sm:text-sm font-black text-white truncate">Força Máxima</span>
               </div>
             </div>
 
             <div class="bg-sport-card p-3.5 rounded-xl border border-sport-border space-y-1.5">
-              <h4 class="font-display font-black text-white text-xs sm:text-sm">💡 Chaves de Execução no Futebol:</h4>
+              <h4 id="lbl-keys" class="font-display font-black text-white text-xs sm:text-sm">💡 Chaves de Execução no Futebol:</h4>
               <p id="tech-desc" class="text-slate-300 leading-relaxed text-xs sm:text-sm">
-                Desça com controle mantendo a coluna selada e suba com intenção de máxima aceleração.
+                Desça com controle mantendo a coluna alinhada e suba com intenção de máxima aceleração.
               </p>
             </div>
           </div>
@@ -363,7 +349,7 @@
           <!-- TAB 2: ERROS COMUNS -->
           <div id="tab-consejos" class="hidden space-y-3 text-xs sm:text-sm">
             <div class="bg-red-500/10 border border-red-500/30 p-3.5 rounded-xl text-red-200">
-              <h4 class="font-bold mb-1 flex items-center gap-1.5">
+              <h4 id="lbl-mistakes" class="font-bold mb-1 flex items-center gap-1.5">
                 <span>❌</span> <span>O que NUNCA fazer neste movimento:</span>
               </h4>
               <ul id="tech-mistakes" class="list-disc list-inside space-y-1 text-slate-300">
@@ -375,7 +361,7 @@
 
           <!-- TAB 3: MINHAS CARGAS -->
           <div id="tab-notas" class="hidden space-y-3">
-            <label class="block text-xs text-sport-gray font-bold uppercase">
+            <label id="lbl-notes" class="block text-xs text-sport-gray font-bold uppercase">
               Registre suas cargas e anotações para este exercício:
             </label>
             <textarea 
@@ -397,11 +383,21 @@
         
         <!-- Header da Lista -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-sport-border gap-2 mb-3">
-          <div class="flex items-center gap-2">
-            <span class="text-sport-green text-base">⚡</span>
-            <h2 class="font-display text-xs sm:text-sm font-black text-white uppercase tracking-wider">
-              Banco de 124 Exercícios do FutForce
-            </h2>
+          <div class="flex items-center justify-between w-full sm:w-auto">
+            <div class="flex items-center gap-2">
+              <span class="text-sport-green text-base">⚡</span>
+              <h2 id="sidebar-title" class="font-display text-xs sm:text-sm font-black text-white uppercase tracking-wider">
+                Banco de 124 Exercícios do FutForce
+              </h2>
+            </div>
+            <!-- Botão Fechar Drawer Mobile -->
+            <button 
+              onclick="closeMobileSidebar()" 
+              class="lg:hidden p-1 px-2.5 rounded-lg bg-sport-card border border-sport-border text-xs font-bold text-white hover:text-red-400"
+              aria-label="Fechar"
+            >
+              ✕ <span id="btn-text-close-sidebar">Fechar</span>
+            </button>
           </div>
           
           <!-- Campo de Busca Rápida -->
@@ -448,327 +444,95 @@
       <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-sport-green/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="max-w-3xl space-y-3">
         <div class="flex items-center gap-2 flex-wrap">
-          <span class="px-3 py-1 rounded-full bg-sport-green/20 border border-sport-green/50 text-[11px] font-black text-sport-green uppercase tracking-widest">
+          <span id="fichas-badge" class="px-3 py-1 rounded-full bg-sport-green/20 border border-sport-green/50 text-[11px] font-black text-sport-green uppercase tracking-widest">
             PREPARAÇÃO FÍSICA PARA FUTEBOL
           </span>
-          <span class="px-2.5 py-1 rounded-full bg-black text-[11px] font-bold text-slate-300">
-            171 Páginas • 162 Rotinas
+          <span id="fichas-pages" class="px-2.5 py-1 rounded-full bg-black text-[11px] font-bold text-slate-300">
+            171 Páginas • 162 Treinos
           </span>
         </div>
-        <h2 class="font-display text-xl sm:text-3xl font-black text-white">
-          +162 Rotinas de Ginásio e Funcional para Jogadores
+        <h2 id="fichas-hero-title" class="font-display text-xl sm:text-3xl font-black text-white">
+          +162 Treinos de Ginásio e Funcional para Futebolistas
         </h2>
-        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-          Desenvolva força explosiva, velocidade, resistência e potência física com rotinas prontas para academia e campo, pensadas para fazer a diferença nos 90 minutos de jogo.
+        <p id="fichas-hero-desc" class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          Desenvolve força explosiva, velocidade, resistência e potência física com treinos prontos para academia e campo, pensados para fazer a diferença nos 90 minutos de jogo.
         </p>
+
         <!-- DUAL DOWNLOAD: BAIXAR EM ESPANHOL & BAIXAR EM PORTUGUÊS -->
         <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl w-full">
-          <!-- Opção 1: Espanhol -->
+          <!-- Card Espanhol -->
           <div class="bg-black/60 border border-amber-400/40 hover:border-amber-400 p-4 sm:p-5 rounded-2xl flex flex-col justify-between gap-3 shadow-lg transition-all group">
             <div class="space-y-1">
               <div class="flex items-center gap-2">
                 <span class="text-2xl">🇪🇸</span>
-                <span class="text-xs font-black text-amber-400 uppercase tracking-wider">Versión en Español</span>
+                <span id="pdf-card-es-tag" class="text-xs font-black text-amber-400 uppercase tracking-wider">Versão em Espanhol</span>
               </div>
-              <h4 class="font-display font-black text-white text-base">Baixar em Espanhol</h4>
-              <p class="text-[11px] text-slate-300 leading-snug">+162 Rutinas de Gimnasio y Funcional (171 Páginas • PDF)</p>
+              <h4 id="pdf-card-es-title" class="font-display font-black text-white text-base">Baixar em Espanhol</h4>
+              <p id="pdf-card-es-desc" class="text-[11px] text-slate-300 leading-snug">+162 Rutinas de Gimnasio y Funcional (171 Páginas • PDF)</p>
             </div>
             <button 
               onclick="downloadPDF('libro-maestro', 'es')"
-              class="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-display font-black text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+              class="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-display font-black text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>📥</span>
-              <span>Baixar em Espanhol</span>
+              <span id="pdf-card-es-btn">Baixar em Espanhol</span>
             </button>
           </div>
 
-          <!-- Opção 2: Português -->
+          <!-- Card Português -->
           <div class="bg-black/60 border border-sport-green/40 hover:border-sport-green p-4 sm:p-5 rounded-2xl flex flex-col justify-between gap-3 shadow-lg transition-all group">
             <div class="space-y-1">
               <div class="flex items-center gap-2">
                 <span class="text-2xl">🇵🇹</span>
-                <span class="text-xs font-black text-sport-green uppercase tracking-wider">Versão em Português</span>
+                <span id="pdf-card-pt-tag" class="text-xs font-black text-sport-green uppercase tracking-wider">Versão em Português</span>
               </div>
-              <h4 class="font-display font-black text-white text-base">Baixar em Português</h4>
-              <p class="text-[11px] text-slate-300 leading-snug">+162 Fichas de Treino de Ginásio (171 Páginas • PDF)</p>
+              <h4 id="pdf-card-pt-title" class="font-display font-black text-white text-base">Baixar em Português</h4>
+              <p id="pdf-card-pt-desc" class="text-[11px] text-slate-300 leading-snug">+162 Fichas de Treino de Ginásio (171 Páginas • PDF)</p>
             </div>
             <button 
               onclick="downloadPDF('libro-maestro', 'pt')"
-              class="w-full py-3 px-4 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+              class="w-full py-3 px-4 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>📥</span>
-              <span>Baixar em Português</span>
+              <span id="pdf-card-pt-btn">Baixar em Português</span>
             </button>
           </div>
         </div>
+
       </div>
     </div>
 
     <!-- OS 5 BLOCOS DO PROGRAMA -->
     <div class="space-y-4">
-      <h3 class="font-display text-sm sm:text-base font-black text-white uppercase tracking-wider flex items-center gap-2">
+      <h3 id="blocks-section-title" class="font-display text-sm sm:text-base font-black text-white uppercase tracking-wider flex items-center gap-2">
         <span>🏋️</span> <span>Os 5 Blocos do Programa (Descarregue por Bloco ou Livro Completo):</span>
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        
-        <!-- BLOQUE 1: FORÇA EXPLOSIVA -->
-        <div class="bg-sport-surface border border-red-500/30 hover:border-red-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-2xl">🔴</span>
-              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/40">36 ROTINAS</span>
-            </div>
-            <h4 class="font-display font-black text-white text-base group-hover:text-red-400 transition-colors">
-              Bloco 1: Força Explosiva
-            </h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Capacidade de gerar força máxima no menor tempo. Base para vencer disputas e arranques.
-            </p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
-            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Págs</span>
-            <button onclick="downloadPDF('Bloco 1: Força Explosiva')" class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-red-500 hover:text-white text-white text-xs font-black border border-sport-border transition-all">
-              Descarregar Bloco 1
-            </button>
-          </div>
-        </div>
-
-        <!-- BLOQUE 2: VELOCIDADE -->
-        <div class="bg-sport-surface border border-cyan-500/30 hover:border-cyan-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-2xl">🔵</span>
-              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">36 ROTINAS</span>
-            </div>
-            <h4 class="font-display font-black text-white text-base group-hover:text-cyan-400 transition-colors">
-              Bloco 2: Velocidade
-            </h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Aceleração (0-10m), velocidade máxima e mudanças rápidas de direção.
-            </p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
-            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Págs</span>
-            <button onclick="downloadPDF('Bloco 2: Velocidade')" class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-cyan-500 hover:text-black text-white text-xs font-black border border-sport-border transition-all">
-              Descarregar Bloco 2
-            </button>
-          </div>
-        </div>
-
-        <!-- BLOQUE 3: RESISTÊNCIA -->
-        <div class="bg-sport-surface border border-emerald-500/30 hover:border-emerald-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-2xl">🟢</span>
-              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">36 ROTINAS</span>
-            </div>
-            <h4 class="font-display font-black text-white text-base group-hover:text-emerald-400 transition-colors">
-              Bloco 3: Resistência de Jogo
-            </h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Capacidade de repetir sprints em alta intensidade até o minuto 90.
-            </p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
-            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Págs</span>
-            <button onclick="downloadPDF('Bloco 3: Resistência')" class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-emerald-500 hover:text-black text-white text-xs font-black border border-sport-border transition-all">
-              Descarregar Bloco 3
-            </button>
-          </div>
-        </div>
-
-        <!-- BLOQUE 4: POTÊNCIA -->
-        <div class="bg-sport-surface border border-purple-500/30 hover:border-purple-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-2xl">🟣</span>
-              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-purple-500/20 text-purple-400 border border-purple-500/40">36 ROTINAS</span>
-            </div>
-            <h4 class="font-display font-black text-white text-base group-hover:text-purple-400 transition-colors">
-              Bloco 4: Potência & Salto
-            </h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Combinação de força e velocidade para saltar, rematar e arrancar.
-            </p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
-            <span class="text-[11px] text-sport-gray font-bold">PDF • 38 Págs</span>
-            <button onclick="downloadPDF('Bloco 4: Potência')" class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-purple-500 hover:text-white text-white text-xs font-black border border-sport-border transition-all">
-              Descarregar Bloco 4
-            </button>
-          </div>
-        </div>
-
-        <!-- BLOQUE 5: PREVENÇÃO & CORE -->
-        <div class="bg-sport-surface border border-teal-500/30 hover:border-teal-500/70 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">
-          <div class="space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-2xl">🛡️</span>
-              <span class="text-[10px] font-black px-2.5 py-0.5 rounded bg-teal-500/20 text-teal-400 border border-teal-500/40">18 ROTINAS</span>
-            </div>
-            <h4 class="font-display font-black text-white text-base group-hover:text-teal-400 transition-colors">
-              Bloco 5: Blindagem & Prevenção
-            </h4>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Proteção de isquiotibiais, adutores, joelhos e tornozelos contra lesões.
-            </p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between">
-            <span class="text-[11px] text-sport-gray font-bold">PDF • 20 Págs</span>
-            <button onclick="downloadPDF('Bloco 5: Prevenção')" class="px-3 py-1.5 rounded-lg bg-sport-card hover:bg-teal-500 hover:text-black text-white text-xs font-black border border-sport-border transition-all">
-              Descarregar Bloco 5
-            </button>
-          </div>
-        </div>
-
+      <div id="blocks-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Renderizado dinamicamente com base no idioma -->
       </div>
     </div>
 
   </main>
 
   <!-- ========================================================================= -->
-  <!-- SEÇÃO 3: 4 BÔNUS VIP (MANUAIS OFICIAIS EM PDF) -->
+  <!-- SEÇÃO 3: OS 4 BÔNUS VIP -->
   <!-- ========================================================================= -->
   <main id="view-bonos" class="hidden flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 space-y-6">
     <div class="text-center max-w-2xl mx-auto space-y-2">
-      <span class="text-xs font-black text-sport-green uppercase tracking-widest bg-sport-green/10 border border-sport-green/30 px-3 py-1 rounded-full">
+      <span id="bonos-badge" class="text-xs font-black text-sport-green uppercase tracking-widest bg-sport-green/10 border border-sport-green/30 px-3 py-1 rounded-full">
         EXCLUSIVO PARA ALUNOS VIP
       </span>
-      <h2 class="font-display text-2xl sm:text-3xl font-black text-white">
-        4 Bônus de Alta Performance
+      <h2 id="bonos-hero-title" class="font-display text-2xl sm:text-3xl font-black text-white">
+        4 Bónus de Alta Performance
       </h2>
-      <p class="text-sport-gray text-xs sm:text-sm">
+      <p id="bonos-hero-desc" class="text-sport-gray text-xs sm:text-sm">
         Manuais complementares para acelerar a sua recuperação, nutrição e blindagem muscular.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-      
-      <!-- BÔNUS 1 -->
-      <div class="bg-sport-surface border border-sport-border p-5 rounded-2xl flex flex-col justify-between shadow-xl">
-        <div class="space-y-2">
-          <span class="text-xs font-black text-sport-green uppercase">BÔNUS #1</span>
-          <h3 class="font-display text-lg font-black text-white">Manual de Mobilidade para Futebolistas</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">Rotinas dinâmicas para soltar o quadril, tornozelos e coluna torácica antes dos treinos.</p>
-        </div>
-        <div class="pt-4 mt-4 border-t border-sport-border space-y-2.5">
-          <div class="flex items-center justify-between text-xs text-sport-gray font-bold">
-            <span>Opções de Download:</span>
-            <span class="text-slate-300 font-semibold">PDF Oficial • 14 Páginas</span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            <button 
-              onclick="downloadPDF('Bono 1', 'pt')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descarregar Bónus em Português"
-            >
-              <span>🇵🇹</span> <span>Baixar em Português</span>
-            </button>
-            <button 
-              onclick="downloadPDF('Bono 1', 'es')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-card hover:bg-amber-400 hover:text-black border border-sport-border hover:border-amber-400 text-white font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descargar Bono en Español"
-            >
-              <span>🇪🇸</span> <span>Baixar em Espanhol</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- BÔNUS 2 -->
-      <div class="bg-sport-surface border border-sport-border p-5 rounded-2xl flex flex-col justify-between shadow-xl">
-        <div class="space-y-2">
-          <span class="text-xs font-black text-cyan-400 uppercase">BÔNUS #2</span>
-          <h3 class="font-display text-lg font-black text-white">Guia de Nutrição Esportiva para Jogadores</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">O que comer no pré-jogo, no intervalo e no pós-jogo para ter energia de ponta a ponta.</p>
-        </div>
-        <div class="pt-4 mt-4 border-t border-sport-border space-y-2.5">
-          <div class="flex items-center justify-between text-xs text-sport-gray font-bold">
-            <span>Opções de Download:</span>
-            <span class="text-slate-300 font-semibold">PDF Oficial • 14 Páginas</span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            <button 
-              onclick="downloadPDF('Bono 2', 'pt')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descarregar Bónus em Português"
-            >
-              <span>🇵🇹</span> <span>Baixar em Português</span>
-            </button>
-            <button 
-              onclick="downloadPDF('Bono 2', 'es')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-card hover:bg-amber-400 hover:text-black border border-sport-border hover:border-amber-400 text-white font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descargar Bono en Español"
-            >
-              <span>🇪🇸</span> <span>Baixar em Espanhol</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- BÔNUS 3 -->
-      <div class="bg-sport-surface border border-sport-border p-5 rounded-2xl flex flex-col justify-between shadow-xl">
-        <div class="space-y-2">
-          <span class="text-xs font-black text-red-400 uppercase">BÔNUS #3</span>
-          <h3 class="font-display text-lg font-black text-white">Protocolo Anti-Lesões no Futebol</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">Exercícios práticos para blindar os tendões e eliminar dores na virilha e joelhos.</p>
-        </div>
-        <div class="pt-4 mt-4 border-t border-sport-border space-y-2.5">
-          <div class="flex items-center justify-between text-xs text-sport-gray font-bold">
-            <span>Opções de Download:</span>
-            <span class="text-slate-300 font-semibold">PDF Oficial • 14 Páginas</span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            <button 
-              onclick="downloadPDF('Bono 3', 'pt')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descarregar Bónus em Português"
-            >
-              <span>🇵🇹</span> <span>Baixar em Português</span>
-            </button>
-            <button 
-              onclick="downloadPDF('Bono 3', 'es')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-card hover:bg-amber-400 hover:text-black border border-sport-border hover:border-amber-400 text-white font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descargar Bono en Español"
-            >
-              <span>🇪🇸</span> <span>Baixar em Espanhol</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- BÔNUS 4 -->
-      <div class="bg-sport-surface border border-sport-border p-5 rounded-2xl flex flex-col justify-between shadow-xl">
-        <div class="space-y-2">
-          <span class="text-xs font-black text-purple-400 uppercase">BÔNUS #4</span>
-          <h3 class="font-display text-lg font-black text-white">Guia de Suplementação Estratégica</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">Creatina, beta-alanina, eletrólitos e cafeína explicados de forma direta para o atleta.</p>
-        </div>
-        <div class="pt-4 mt-4 border-t border-sport-border space-y-2.5">
-          <div class="flex items-center justify-between text-xs text-sport-gray font-bold">
-            <span>Opções de Download:</span>
-            <span class="text-slate-300 font-semibold">PDF Oficial • 14 Páginas</span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            <button 
-              onclick="downloadPDF('Bono 4', 'pt')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descarregar Bónus em Português"
-            >
-              <span>🇵🇹</span> <span>Baixar em Português</span>
-            </button>
-            <button 
-              onclick="downloadPDF('Bono 4', 'es')"
-              class="w-full py-2.5 px-3 rounded-xl bg-sport-card hover:bg-amber-400 hover:text-black border border-sport-border hover:border-amber-400 text-white font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
-              title="Descargar Bono en Español"
-            >
-              <span>🇪🇸</span> <span>Baixar em Espanhol</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
+    <div id="bonos-grid-container" class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      <!-- Renderizado dinamicamente com base no idioma -->
     </div>
   </main>
 
@@ -776,34 +540,34 @@
   <nav class="md:hidden fixed bottom-0 inset-x-0 bg-sport-surface/95 backdrop-blur-md border-t border-sport-border py-2 px-3 flex items-center justify-around z-40 pb-safe">
     <button onclick="switchMainView('exercicios')" id="mob-nav-exercicios" class="flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]">
       <span class="text-lg">⚡</span>
-      <span>124 Aulas</span>
+      <span id="mob-text-exercicios">124 Exercícios</span>
     </button>
     <button onclick="switchMainView('fichas')" id="mob-nav-fichas" class="flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]">
       <span class="text-lg">📑</span>
-      <span>+162 Rotinas</span>
+      <span id="mob-text-fichas">+162 Treinos</span>
     </button>
     <button onclick="switchMainView('bonos')" id="mob-nav-bonos" class="flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]">
       <span class="text-lg">🎁</span>
-      <span>4 Bônus</span>
+      <span id="mob-text-bonos">4 Bónus VIP</span>
     </button>
     <button onclick="toggleMobileSidebar()" class="flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]">
-      <span class="text-lg">📋</span>
-      <span>Exercícios</span>
+      <span class="text-lg">☰</span>
+      <span id="mob-text-sidebar">Lista</span>
     </button>
   </nav>
 
   <!-- MODAL / DRAWER MOBILE OVERLAY -->
-  <div id="mobile-overlay" onclick="toggleMobileSidebar()" class="hidden fixed inset-0 bg-black/80 z-40 lg:hidden backdrop-blur-sm"></div>
+  <div id="mobile-overlay" onclick="closeMobileSidebar()" class="hidden fixed inset-0 bg-black/80 z-40 lg:hidden backdrop-blur-sm"></div>
 
   <!-- NOTIFICAÇÃO TOAST DE DESCARGA -->
   <div id="download-toast" class="fixed top-5 right-5 z-50 bg-sport-green text-black px-4 py-3 rounded-2xl font-display font-black text-xs shadow-2xl flex items-center gap-2 transform translate-y-[-100px] transition-transform duration-300">
     <span>📥</span>
-    <span id="toast-text">Baixando arquivo...</span>
+    <span id="toast-text">A transferir ficheiro...</span>
   </div>
 
-  <!-- JAVASCRIPT: DADOS, PLAYER DE LOOPING E CONTROLES -->
+  <!-- JAVASCRIPT: DADOS DOS 124 EXERCÍCIOS, MOTOR BILÍNGUE E REPRODUTOR -->
   <script>
-    // DADOS DOS 124 EXERCÍCIOS CATALOGADOS
+    // 124 EXERCÍCIOS CATALOGADOS
     const exercisesData = [
   {
     "id": 1,
@@ -3045,46 +2809,468 @@
   }
 ];
 
+    // DICIONÁRIO BILÍNGUE COMPLETO (ESPAÑOL / PORTUGUÊS)
+    const i18n = {
+      es: {
+        htmlTitle: "Área de Miembros VIP | FutForce - 124 Ejercicios & +162 Rutinas",
+        brandSubtitle: "124 EJERCICIOS EN VIDEO (FASES 1-5) • +162 RUTINAS PDF • 4 BONOS VIP",
+        navExercicios: "124 Ejercicios (Fases 1-5)",
+        navFichas: "+162 Rutinas PDF",
+        navBonos: "4 Bonos VIP",
+        lblProgress: "Progreso:",
+        btnList: "Lista",
+        badgeLoop: "BUCLE CONTINUO",
+        btnPrev: "⏮ Anterior",
+        btnNext: "Siguiente ⏭",
+        btnPlay: "▶ Reanudar (Bucle)",
+        btnPause: "⏸ Pausar",
+        lblSpeed: "Velocidad:",
+        loopTip: '💡 <strong class="text-white">Bucle continuo:</strong> El video se repite sin parar. Solo se pausa si haces clic en la pantalla o en Pausar.',
+        quickFichasTitle: "+162 Rutinas PDF",
+        quickFichasSub: "171 Páginas",
+        quickBonosTitle: "4 Bonos VIP",
+        quickBonosSub: "Descargar PDFs",
+        btnComplete: "Marcar como Completado",
+        btnCompleted: "✓ Completado",
+        tabFicha: "Ficha del Ejercicio",
+        tabConsejos: "Errores Frecuentes",
+        tabNotas: "Mis Cargas",
+        lblSeries: "Series",
+        lblReps: "Repeticiones",
+        lblRest: "Descanso",
+        lblGoal: "Objetivo",
+        lblKeys: "💡 Claves de Ejecución en el Fútbol:",
+        lblMistakes: "<span>❌</span> <span>Lo que NUNCA debes hacer en este movimiento:</span>",
+        lblNotes: "Registra tus cargas y anotaciones para este ejercicio:",
+        notesPlaceholder: "Ej: Hoy levanté 70kg, sentí excelente explosión en la subida...",
+        notesSaved: "✓ Guardado automáticamente",
+        sidebarTitle: "Banco de 124 Ejercicios de FutForce",
+        searchPlaceholder: "Buscar ejercicio...",
+        closeSidebar: "Cerrar",
+        filterAll: "Todas (124)",
+        filter1: "Fase 1: Fuerza Base (24)",
+        filter2: "Fase 2: Potencia (23)",
+        filter3: "Fase 3: Velocidad (23)",
+        filter4: "Fase 4: Prevención (28)",
+        filter5: "Fase 5: Core Atleta (26)",
+        fichasBadge: "PREPARACIÓN FÍSICA PARA FÚTBOL",
+        fichasPages: "171 Páginas • 162 Rutinas",
+        fichasHeroTitle: "+162 Rutinas de Gimnasio y Funcional para Futbolistas",
+        fichasHeroDesc: "Desarrollá fuerza explosiva, velocidad, resistencia y potencia física con rutinas listas para el gimnasio y el trabajo funcional, pensadas para marcar una verdadera diferencia dentro de la cancha.",
+        pdfCardEsTag: "Versión en Español",
+        pdfCardEsTitle: "Descargar en Español",
+        pdfCardEsDesc: "+162 Rutinas de Gimnasio y Funcional (171 Páginas • PDF)",
+        pdfCardEsBtn: "Descargar en Español",
+        pdfCardPtTag: "Versión en Portugués",
+        pdfCardPtTitle: "Descargar en Portugués",
+        pdfCardPtDesc: "+162 Fichas de Entrenamiento de Gimnasio (171 Páginas • PDF)",
+        pdfCardPtBtn: "Descargar en Portugués",
+        blocksSectionTitle: "Los 5 Bloques del Programa (Descarga por Separado o Completa):",
+        bonosBadge: "EXCLUSIVO PARA ALUMNOS VIP",
+        bonosHeroTitle: "4 Bonos de Alto Rendimiento",
+        bonosHeroDesc: "Manuales complementarios para acelerar tu recuperación, nutrición y blindaje muscular.",
+        mobExercicios: "124 Ejercicios",
+        mobFichas: "+162 Rutinas",
+        mobBonos: "4 Bonos",
+        mobSidebar: "Ejercicios",
+        downloadToast: "¡Descargando {name}!",
+        blocks: [
+          { id: 1, title: "Bloque 1: Fuerza Máxima y Explosiva", emoji: "🔴", desc: "Sentadillas pesadas, peso muerto, estocadas con barra y empujes explosivos para ganar fuerza pura.", meta: "36 Rutinas • PDF Oficial", color: "red" },
+          { id: 2, title: "Bloque 2: Pliometría y Salto Vertical", emoji: "⚡", desc: "Saltos en cajón, saltos con vallas, multisaltos y aterrizajes seguros para dominar el juego aéreo.", meta: "28 Rutinas • PDF Oficial", color: "cyan" },
+          { id: 3, title: "Bloque 3: Velocidad y Aceleración", emoji: "💨", desc: "Trineos de empuje, sprints resistidos y arranques reactivos para ganar todas las divididas.", meta: "32 Rutinas • PDF Oficial", color: "emerald" },
+          { id: 4, title: "Bloque 4: Resistencia y Match Fitness", emoji: "⏱️", desc: "Circuitos metabólicos de alta intensidad y carrera intermitente para rendir los 90 minutos.", meta: "34 Rutinas • PDF Oficial", color: "purple" },
+          { id: 5, title: "Bloque 5: Core y Blindaje Anti-Lesión", emoji: "🛡️", desc: "Planchas dinámicas, rotaciones de tronco y fortalecimiento de isquiotibiales y aductores.", meta: "32 Rutinas • PDF Oficial", color: "teal" }
+        ],
+        bonosList: [
+          { id: 1, title: "Manual de Movilidad para Futbolistas", emoji: "🧘", desc: "Rutinas dinámicas para soltar la cadera, tobillos y columna torácica antes de los entrenamientos.", meta: "PDF Oficial • 14 Páginas" },
+          { id: 2, title: "Guía de Nutrición Deportiva para Futbolistas", emoji: "🥗", desc: "Qué comer en el pre-partido, en el entretiempo y en el post-partido para tener energía constante.", meta: "PDF Oficial • 16 Páginas" },
+          { id: 3, title: "Protocolo Anti-Lesiones en el Fútbol", emoji: "🩹", desc: "Ejercicios prácticos para blindar los tendones y prevenir pubalgias y lesiones de rodilla.", meta: "PDF Oficial • 14 Páginas" },
+          { id: 4, title: "Guía de Suplementación Estratégica", emoji: "💊", desc: "Creatina, beta-alanina, electrolitos y cafeína explicados de forma directa para el deportista.", meta: "PDF Oficial • 14 Páginas" }
+        ]
+      },
+      pt: {
+        htmlTitle: "Área de Membros VIP | FutForce - 124 Exercícios & +162 Treinos",
+        brandSubtitle: "124 EXERCÍCIOS EM VÍDEO (FASES 1-5) • +162 TREINOS PDF • 4 BÓNUS VIP",
+        navExercicios: "124 Exercícios (Fases 1-5)",
+        navFichas: "+162 Treinos PDF",
+        navBonos: "4 Bónus VIP",
+        lblProgress: "Progresso:",
+        btnList: "Lista",
+        badgeLoop: "LOOPING CONTÍNUO",
+        btnPrev: "⏮ Anterior",
+        btnNext: "Próximo ⏭",
+        btnPlay: "▶ Despausar (Loop)",
+        btnPause: "⏸ Pausar",
+        lblSpeed: "Velocidade:",
+        loopTip: '💡 <strong class="text-white">Looping automático:</strong> O vídeo fica rodando continuamente após o despause. Ele só pausa se você clicar em Pausar ou na tela.',
+        quickFichasTitle: "+162 Treinos PDF",
+        quickFichasSub: "171 Páginas",
+        quickBonosTitle: "4 Bónus VIP",
+        quickBonosSub: "Baixar PDFs",
+        btnComplete: "Marcar como Concluído",
+        btnCompleted: "✓ Concluído",
+        tabFicha: "Ficha do Exercício",
+        tabConsejos: "Erros Comuns",
+        tabNotas: "Minhas Cargas",
+        lblSeries: "Séries",
+        lblReps: "Repetições",
+        lblRest: "Descanso",
+        lblGoal: "Objetivo",
+        lblKeys: "💡 Chaves de Execução no Futebol:",
+        lblMistakes: "<span>❌</span> <span>O que NUNCA fazer neste movimento:</span>",
+        lblNotes: "Registre suas cargas e anotações para este exercício:",
+        notesPlaceholder: "Ex: Hoje fiz com 70kg, senti ótima explosão na subida...",
+        notesSaved: "✓ Salvo automaticamente",
+        sidebarTitle: "Banco de 124 Exercícios do FutForce",
+        searchPlaceholder: "Buscar exercício...",
+        closeSidebar: "Fechar",
+        filterAll: "Todas (124)",
+        filter1: "Fase 1: Força Base (24)",
+        filter2: "Fase 2: Potência (23)",
+        filter3: "Fase 3: Velocidade (23)",
+        filter4: "Fase 4: Prevenção (28)",
+        filter5: "Fase 5: Core Atleta (26)",
+        fichasBadge: "PREPARAÇÃO FÍSICA PARA FUTEBOL",
+        fichasPages: "171 Páginas • 162 Treinos",
+        fichasHeroTitle: "+162 Treinos de Ginásio e Funcional para Futebolistas",
+        fichasHeroDesc: "Desenvolva força explosiva, velocidade, resistência e potência física com treinos prontos para academia e campo, pensados para fazer a diferença nos 90 minutos de jogo.",
+        pdfCardEsTag: "Versão em Espanhol",
+        pdfCardEsTitle: "Baixar em Espanhol",
+        pdfCardEsDesc: "+162 Rutinas de Ginásio e Funcional (171 Páginas • PDF)",
+        pdfCardEsBtn: "Baixar em Espanhol",
+        pdfCardPtTag: "Versão em Português",
+        pdfCardPtTitle: "Baixar em Português",
+        pdfCardPtDesc: "+162 Fichas de Treino de Ginásio (171 Páginas • PDF)",
+        pdfCardPtBtn: "Baixar em Português",
+        blocksSectionTitle: "Os 5 Blocos do Programa (Descarregue por Bloco ou Livro Completo):",
+        bonosBadge: "EXCLUSIVO PARA ALUNOS VIP",
+        bonosHeroTitle: "4 Bónus de Alta Performance",
+        bonosHeroDesc: "Manuais complementares para acelerar a sua recuperação, nutrição e blindagem muscular.",
+        mobExercicios: "124 Exercícios",
+        mobFichas: "+162 Treinos",
+        mobBonos: "4 Bónus VIP",
+        mobSidebar: "Lista",
+        downloadToast: "A descarregar {name}!",
+        blocks: [
+          { id: 1, title: "Bloco 1: Força Máxima & Explosiva", emoji: "🔴", desc: "Agachamentos pesados, levantamento terra, passadas e impulsões para construir força pura.", meta: "36 Treinos • PDF Oficial", color: "red" },
+          { id: 2, title: "Bloco 2: Pliometria & Salto Vertical", emoji: "⚡", desc: "Saltos no caixote, vedações, saltos com barreiras e aterrissagens seguras para vencer duelos aéreos.", meta: "28 Treinos • PDF Oficial", color: "cyan" },
+          { id: 3, title: "Bloco 3: Velocidade & Aceleração", emoji: "💨", desc: "Trenó, sprints resistidos e tiros curtos reativos para ganhar a frente dos adversários.", meta: "32 Treinos • PDF Oficial", color: "emerald" },
+          { id: 4, title: "Bloco 4: Resistência & Match Fitness", emoji: "⏱️", desc: "Circuitos metabólicos de alta intensidade para manter o fôlego nos 90 minutos.", meta: "34 Treinos • PDF Oficial", color: "purple" },
+          { id: 5, title: "Bloco 5: Core & Blindagem Anti-Lesão", emoji: "🛡️", desc: "Pranchas dinâmicas, rotações de tronco e reforço de isquiotibiais para evitar lesões musculares.", meta: "32 Treinos • PDF Oficial", color: "teal" }
+        ],
+        bonosList: [
+          { id: 1, title: "Manual de Mobilidade para Futebolistas", emoji: "🧘", desc: "Rotinas dinâmicas para soltar o quadril, tornozelos e coluna torácica antes dos treinos.", meta: "PDF Oficial • 14 Páginas" },
+          { id: 2, title: "Guia de Nutrição Desportiva para Jogadores", emoji: "🥗", desc: "O que comer no pré-jogo, no intervalo e no pós-jogo para ter energia de ponta a ponta.", meta: "PDF Oficial • 16 Páginas" },
+          { id: 3, title: "Protocolo Anti-Lesões no Futebol", emoji: "🩹", desc: "Exercícios práticos para blindar os tendões e eliminar dores na virilha e joelhos.", meta: "PDF Oficial • 14 Páginas" },
+          { id: 4, title: "Guia de Suplementação Estratégica", emoji: "💊", desc: "Creatina, beta-alanina, eletrólitos e cafeína explicados de forma direta para o atleta.", meta: "PDF Oficial • 14 Páginas" }
+        ]
+      }
+    };
+
+    // ESTADO GLOBAL
     let currentExerciseId = 1;
     let completedExercises = JSON.parse(localStorage.getItem('futforce_completed_exercises') || '[]');
     let currentFilterPhase = 'all';
     let searchQuery = '';
+    
+    // DETECÇÃO DE IDIOMA INICIAL
+    let currentLang = 'pt';
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramLang = urlParams.get('lang');
+      const savedLang = localStorage.getItem('futforce_member_lang');
+      if (paramLang === 'pt' || paramLang === 'es') {
+        currentLang = paramLang;
+      } else if (savedLang === 'pt' || savedLang === 'es') {
+        currentLang = savedLang;
+      } else {
+        const isEsContext = (window.location.href || '').toLowerCase().includes('espanhol') || 
+                            (window.location.href || '').toLowerCase().includes('-es') ||
+                            (navigator.language || '').toLowerCase().startsWith('es');
+        currentLang = isEsContext ? 'es' : 'pt';
+      }
+    } catch(e) {
+      currentLang = 'pt';
+    }
+
+    // FORMATAÇÃO ADAPTATIVA DE EXERCÍCIOS PARA I18N
+    function formatExerciseI18n(ex) {
+      const isES = currentLang === 'es';
+      let phaseName = ex.phaseTitle;
+      let category = ex.category;
+      let title = ex.title;
+      let series = ex.series;
+      let reps = ex.reps;
+      let rest = ex.rest;
+      let goal = ex.goal;
+      let desc = ex.desc;
+      let mistakes = (ex.mistakes || []).slice();
+
+      if (isES) {
+        series = series.replace(/Séries/gi, 'Series');
+        reps = reps.replace(/perna/gi, 'pierna')
+                   .replace(/cada lado/gi, 'cada lado')
+                   .replace(/seg/gi, 'seg');
+        rest = rest.replace(/seg/gi, 'seg')
+                   .replace(/min/gi, 'min');
+        phaseName = phaseName.replace('Força de Base & Unilateral', 'Fuerza de Base y Unilateral')
+                             .replace('Pliometria & Salto Vertical', 'Pliometría y Salto Vertical')
+                             .replace('Potência & Velocidade de Reação', 'Potencia y Velocidad de Reacción')
+                             .replace('Prevenção & Blindagem Muscular', 'Prevención y Blindaje Muscular')
+                             .replace('Core Atlético & Ombro a Ombro', 'Core Atlético y Cuerpo a Cuerpo');
+        category = category.replace('Agachamento', 'Sentadilla')
+                           .replace('Posterior de Coxa', 'Isquiotibiales')
+                           .replace('Panturrilha', 'Pantorrilla')
+                           .replace('Potência', 'Potencia')
+                           .replace('Velocidade', 'Velocidad')
+                           .replace('Resistência', 'Resistencia')
+                           .replace('Membros Inferiores', 'Miembros Inferiores')
+                           .replace('Membros Superiores', 'Miembros Superiores')
+                           .replace('Mobilidade', 'Movilidad');
+        title = title.replace(/Agachamento Livre com Barra/gi, 'Sentadilla Libre con Barra')
+                     .replace(/Agachamento Frontal com Barra/gi, 'Sentadilla Frontal con Barra')
+                     .replace(/Agachamento Búlgaro/gi, 'Sentadilla Búlgara')
+                     .replace(/Agachamento/gi, 'Sentadilla')
+                     .replace(/Levantamento Terra/gi, 'Peso Muerto')
+                     .replace(/Elevação Pélvica/gi, 'Hip Thrust / Empuje de Cadera')
+                     .replace(/Passada/gi, 'Zancadas')
+                     .replace(/Avanço/gi, 'Estocadas')
+                     .replace(/Afundo/gi, 'Zancada')
+                     .replace(/Flexão de Braços/gi, 'Flexiones de Brazos')
+                     .replace(/Barra Fixa/gi, 'Dominadas')
+                     .replace(/Salto no Caixote/gi, 'Salto al Cajón')
+                     .replace(/Pular Corda/gi, 'Salto a la Comba')
+                     .replace(/Prancha/gi, 'Plancha')
+                     .replace(/com Barra/gi, 'con Barra')
+                     .replace(/com Halteres/gi, 'con Mancuernas')
+                     .replace(/com Caneleira/gi, 'con Tobillera')
+                     .replace(/no Smith/gi, 'en Multipower')
+                     .replace(/no Banco/gi, 'en Banco')
+                     .replace(/na Polia/gi, 'en Polea')
+                     .replace(/no Elástico/gi, 'con Banda');
+        goal = goal.replace(/Força Máxima/gi, 'Fuerza Máxima')
+                   .replace(/de Pernas/gi, 'de Piernas')
+                   .replace(/Estabilidade/gi, 'Estabilidad')
+                   .replace(/de Tronco/gi, 'de Tronco')
+                   .replace(/Geral/gi, 'General')
+                   .replace(/Potência/gi, 'Potencia')
+                   .replace(/Velocidade/gi, 'Velocidad')
+                   .replace(/Prevenção/gi, 'Prevención');
+      }
+      return { phaseName, category, title, series, reps, rest, goal, desc, mistakes };
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
       initPlayerListeners();
-      renderExerciseList();
+      applyLanguage(currentLang);
       loadExercise(1);
       updateGlobalProgress();
-      updateLanguageUI();
     });
+
+    // MUDANÇA DE IDIOMA EM TEMPO REAL (CLICÁVEL 100% REATIVO)
+    function setLanguage(lang) {
+      if (lang !== 'es' && lang !== 'pt') lang = 'pt';
+      currentLang = lang;
+      try {
+        localStorage.setItem('futforce_member_lang', lang);
+      } catch(e) {}
+      applyLanguage(lang);
+      loadExercise(currentExerciseId);
+      renderExerciseList();
+    }
+
+    function applyLanguage(lang) {
+      const t = i18n[lang];
+      document.documentElement.lang = lang === 'pt' ? 'pt-PT' : 'es';
+      document.title = t.htmlTitle;
+
+      // Botões seletores de idioma
+      const btnEs = document.getElementById('lang-btn-es');
+      const btnPt = document.getElementById('lang-btn-pt');
+      if (btnEs && btnPt) {
+        if (lang === 'es') {
+          btnEs.className = "px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs font-black transition-all flex items-center gap-1 bg-sport-green text-black shadow-sm cursor-pointer";
+          btnPt.className = "px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs font-bold text-sport-gray hover:text-white transition-all flex items-center gap-1 cursor-pointer";
+        } else {
+          btnPt.className = "px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs font-black transition-all flex items-center gap-1 bg-sport-green text-black shadow-sm cursor-pointer";
+          btnEs.className = "px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs font-bold text-sport-gray hover:text-white transition-all flex items-center gap-1 cursor-pointer";
+        }
+      }
+
+      // Navbar
+      if (document.getElementById('brand-subtitle')) document.getElementById('brand-subtitle').innerText = t.brandSubtitle;
+      if (document.getElementById('nav-text-exercicios')) document.getElementById('nav-text-exercicios').innerText = t.navExercicios;
+      if (document.getElementById('nav-text-fichas')) document.getElementById('nav-text-fichas').innerText = t.navFichas;
+      if (document.getElementById('nav-text-bonos')) document.getElementById('nav-text-bonos').innerText = t.navBonos;
+      if (document.getElementById('lbl-desktop-progress')) document.getElementById('lbl-desktop-progress').innerText = t.lblProgress;
+      if (document.getElementById('lbl-mob-progress')) document.getElementById('lbl-mob-progress').innerText = t.lblProgress;
+      if (document.getElementById('btn-text-list')) document.getElementById('btn-text-list').innerText = t.btnList;
+
+      // Player & Controles
+      if (document.getElementById('badge-loop-text')) document.getElementById('badge-loop-text').innerText = t.badgeLoop;
+      if (document.getElementById('btn-text-prev')) document.getElementById('btn-text-prev').innerText = t.btnPrev;
+      if (document.getElementById('btn-text-next')) document.getElementById('btn-text-next').innerText = t.btnNext;
+      if (document.getElementById('lbl-speed')) document.getElementById('lbl-speed').innerText = t.lblSpeed;
+      if (document.getElementById('lbl-loop-tip')) document.getElementById('lbl-loop-tip').innerHTML = t.loopTip;
+      if (document.getElementById('quick-fichas-title')) document.getElementById('quick-fichas-title').innerText = t.quickFichasTitle;
+      if (document.getElementById('quick-fichas-sub')) document.getElementById('quick-fichas-sub').innerText = t.quickFichasSub;
+      if (document.getElementById('quick-bonos-title')) document.getElementById('quick-bonos-title').innerText = t.quickBonosTitle;
+      if (document.getElementById('quick-bonos-sub')) document.getElementById('quick-bonos-sub').innerText = t.quickBonosSub;
+
+      // Ficha Técnica Tabs & Labels
+      if (document.getElementById('tab-text-ficha')) document.getElementById('tab-text-ficha').innerText = t.tabFicha;
+      if (document.getElementById('tab-text-consejos')) document.getElementById('tab-text-consejos').innerText = t.tabConsejos;
+      if (document.getElementById('tab-text-notas')) document.getElementById('tab-text-notas').innerText = t.tabNotas;
+      if (document.getElementById('lbl-series')) document.getElementById('lbl-series').innerText = t.lblSeries;
+      if (document.getElementById('lbl-reps')) document.getElementById('lbl-reps').innerText = t.lblReps;
+      if (document.getElementById('lbl-rest')) document.getElementById('lbl-rest').innerText = t.lblRest;
+      if (document.getElementById('lbl-goal')) document.getElementById('lbl-goal').innerText = t.lblGoal;
+      if (document.getElementById('lbl-keys')) document.getElementById('lbl-keys').innerText = t.lblKeys;
+      if (document.getElementById('lbl-mistakes')) document.getElementById('lbl-mistakes').innerHTML = t.lblMistakes;
+      if (document.getElementById('lbl-notes')) document.getElementById('lbl-notes').innerText = t.lblNotes;
+      if (document.getElementById('user-notes')) document.getElementById('user-notes').placeholder = t.notesPlaceholder;
+      if (document.getElementById('notes-saved-msg')) document.getElementById('notes-saved-msg').innerText = t.notesSaved;
+
+      // Sidebar Header & Filtros
+      if (document.getElementById('sidebar-title')) document.getElementById('sidebar-title').innerText = t.sidebarTitle;
+      if (document.getElementById('exercise-search')) document.getElementById('exercise-search').placeholder = t.searchPlaceholder;
+      if (document.getElementById('btn-text-close-sidebar')) document.getElementById('btn-text-close-sidebar').innerText = t.closeSidebar;
+      if (document.getElementById('filter-pill-all')) document.getElementById('filter-pill-all').innerText = t.filterAll;
+      if (document.getElementById('filter-pill-1')) document.getElementById('filter-pill-1').innerText = t.filter1;
+      if (document.getElementById('filter-pill-2')) document.getElementById('filter-pill-2').innerText = t.filter2;
+      if (document.getElementById('filter-pill-3')) document.getElementById('filter-pill-3').innerText = t.filter3;
+      if (document.getElementById('filter-pill-4')) document.getElementById('filter-pill-4').innerText = t.filter4;
+      if (document.getElementById('filter-pill-5')) document.getElementById('filter-pill-5').innerText = t.filter5;
+
+      // Seção Fichas (+162 Treinos / Rutinas)
+      if (document.getElementById('fichas-badge')) document.getElementById('fichas-badge').innerText = t.fichasBadge;
+      if (document.getElementById('fichas-pages')) document.getElementById('fichas-pages').innerText = t.fichasPages;
+      if (document.getElementById('fichas-hero-title')) document.getElementById('fichas-hero-title').innerText = t.fichasHeroTitle;
+      if (document.getElementById('fichas-hero-desc')) document.getElementById('fichas-hero-desc').innerText = t.fichasHeroDesc;
+      
+      // Dual Download Cards do Livro Mestre
+      if (document.getElementById('pdf-card-es-tag')) document.getElementById('pdf-card-es-tag').innerText = t.pdfCardEsTag;
+      if (document.getElementById('pdf-card-es-title')) document.getElementById('pdf-card-es-title').innerText = t.pdfCardEsTitle;
+      if (document.getElementById('pdf-card-es-desc')) document.getElementById('pdf-card-es-desc').innerText = t.pdfCardEsDesc;
+      if (document.getElementById('pdf-card-es-btn')) document.getElementById('pdf-card-es-btn').innerText = t.pdfCardEsBtn;
+
+      if (document.getElementById('pdf-card-pt-tag')) document.getElementById('pdf-card-pt-tag').innerText = t.pdfCardPtTag;
+      if (document.getElementById('pdf-card-pt-title')) document.getElementById('pdf-card-pt-title').innerText = t.pdfCardPtTitle;
+      if (document.getElementById('pdf-card-pt-desc')) document.getElementById('pdf-card-pt-desc').innerText = t.pdfCardPtDesc;
+      if (document.getElementById('pdf-card-pt-btn')) document.getElementById('pdf-card-pt-btn').innerText = t.pdfCardPtBtn;
+
+      if (document.getElementById('blocks-section-title')) document.getElementById('blocks-section-title').innerHTML = '<span>🏋️</span> <span>' + t.blocksSectionTitle + '</span>';
+      renderBlocksGrid(t.blocks);
+
+      // Seção Bônus VIP
+      if (document.getElementById('bonos-badge')) document.getElementById('bonos-badge').innerText = t.bonosBadge;
+      if (document.getElementById('bonos-hero-title')) document.getElementById('bonos-hero-title').innerText = t.bonosHeroTitle;
+      if (document.getElementById('bonos-hero-desc')) document.getElementById('bonos-hero-desc').innerText = t.bonosHeroDesc;
+      renderBonosGrid(t.bonosList);
+
+      // Bottom Nav Mobile
+      if (document.getElementById('mob-text-exercicios')) document.getElementById('mob-text-exercicios').innerText = t.mobExercicios;
+      if (document.getElementById('mob-text-fichas')) document.getElementById('mob-text-fichas').innerText = t.mobFichas;
+      if (document.getElementById('mob-text-bonos')) document.getElementById('mob-text-bonos').innerText = t.mobBonos;
+      if (document.getElementById('mob-text-sidebar')) document.getElementById('mob-text-sidebar').innerText = t.mobSidebar;
+
+      updateCompletionButtonState();
+    }
+
+    // RENDERIZAR OS 5 BLOCOS COM BOTÕES DUPLOS (PT & ES)
+    function renderBlocksGrid(blocks) {
+      const container = document.getElementById('blocks-grid-container');
+      if (!container) return;
+      const isPT = currentLang === 'pt';
+      container.innerHTML = blocks.map(b => {
+        const borderClass = b.color === 'red' ? 'border-red-500/30 hover:border-red-500/70' :
+                            b.color === 'cyan' ? 'border-cyan-500/30 hover:border-cyan-500/70' :
+                            b.color === 'emerald' ? 'border-emerald-500/30 hover:border-emerald-500/70' :
+                            b.color === 'purple' ? 'border-purple-500/30 hover:border-purple-500/70' :
+                            'border-teal-500/30 hover:border-teal-500/70';
+
+        return '<div class="bg-sport-surface border ' + borderClass + ' p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-lg">' +
+          '<div class="space-y-2">' +
+            '<div class="flex items-center justify-between">' +
+              '<span class="text-2xl">' + b.emoji + '</span>' +
+              '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-sport-card text-sport-gray border border-sport-border">' + b.meta + '</span>' +
+            '</div>' +
+            '<h4 class="font-display font-black text-white text-base group-hover:text-sport-green transition-colors">' + b.title + '</h4>' +
+            '<p class="text-xs text-slate-300 leading-relaxed">' + b.desc + '</p>' +
+          '</div>' +
+          '<div class="pt-3 mt-3 border-t border-sport-border flex flex-col gap-2">' +
+            '<div class="text-[10px] text-sport-gray font-bold uppercase tracking-wider">' + (isPT ? 'Opções de Download:' : 'Opciones de Descarga:') + '</div>' +
+            '<div class="grid grid-cols-2 gap-2">' +
+              '<button onclick="downloadPDF(\'' + b.title + '\', \'pt\')" class="py-2 px-2 rounded-lg bg-sport-green hover:bg-emerald-400 text-black text-[11px] font-black transition-all flex items-center justify-center gap-1 active:scale-95 shadow-sm cursor-pointer" title="' + (isPT ? 'Baixar em Português' : 'Descargar en Portugués') + '">' +
+                '<span>🇵🇹</span> <span>' + (isPT ? 'Baixar PT' : 'Descargar PT') + '</span>' +
+              '</button>' +
+              '<button onclick="downloadPDF(\'' + b.title + '\', \'es\')" class="py-2 px-2 rounded-lg bg-sport-card hover:bg-amber-400 hover:text-black text-white text-[11px] font-black border border-sport-border hover:border-amber-400 transition-all flex items-center justify-center gap-1 active:scale-95 cursor-pointer" title="' + (isPT ? 'Baixar em Espanhol' : 'Descargar en Español') + '">' +
+                '<span>🇪🇸</span> <span>' + (isPT ? 'Baixar ES' : 'Descargar ES') + '</span>' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    // RENDERIZAR OS 4 BÔNUS COM BOTÕES DUPLOS (PT & ES)
+    function renderBonosGrid(bonos) {
+      const container = document.getElementById('bonos-grid-container');
+      if (!container) return;
+      const isPT = currentLang === 'pt';
+      container.innerHTML = bonos.map(b => {
+        return '<div class="bg-sport-surface border border-sport-border p-5 rounded-2xl flex flex-col justify-between shadow-xl">' +
+          '<div class="space-y-2">' +
+            '<div class="flex items-center justify-between">' +
+              '<span class="text-2xl">' + b.emoji + '</span>' +
+              '<span class="text-xs font-black text-sport-green uppercase">' + (isPT ? 'BÓNUS #' : 'BONO #') + b.id + '</span>' +
+            '</div>' +
+            '<h3 class="font-display text-lg font-black text-white">' + b.title + '</h3>' +
+            '<p class="text-xs text-slate-300 leading-relaxed">' + b.desc + '</p>' +
+          '</div>' +
+          '<div class="pt-4 mt-4 border-t border-sport-border space-y-2.5">' +
+            '<div class="flex items-center justify-between text-xs text-sport-gray font-bold">' +
+              '<span>' + (isPT ? 'Opções de Download:' : 'Opciones de Descarga:') + '</span>' +
+              '<span class="text-slate-300 font-semibold">' + b.meta + '</span>' +
+            '</div>' +
+            '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">' +
+              '<button onclick="downloadPDF(\'' + b.title + '\', \'pt\')" class="w-full py-2.5 px-3 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer" title="' + (isPT ? 'Baixar em Português' : 'Descargar en Portugués') + '">' +
+                '<span>🇵🇹</span> <span>' + (isPT ? 'Baixar em Português' : 'Descargar en Portugués') + '</span>' +
+              '</button>' +
+              '<button onclick="downloadPDF(\'' + b.title + '\', \'es\')" class="w-full py-2.5 px-3 rounded-xl bg-sport-card hover:bg-amber-400 hover:text-black border border-sport-border hover:border-amber-400 text-white font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer" title="' + (isPT ? 'Baixar em Espanhol' : 'Descargar en Español') + '">' +
+                '<span>🇪🇸</span> <span>' + (isPT ? 'Baixar em Espanhol' : 'Descargar en Español') + '</span>' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
 
     // SISTEMA DO REPRODUTOR EM LOOP CONTÍNUO
     function initPlayerListeners() {
       const video = document.getElementById('exercise-video');
-      video.loop = true; // Garante looping contínuo nativo!
+      video.loop = true;
 
       video.addEventListener('play', () => {
         const overlay = document.getElementById('video-overlay');
         const btn = document.getElementById('btn-play-pause');
         overlay.classList.add('opacity-0', 'pointer-events-none');
-        btn.innerHTML = '<span>⏸ Pausar</span>';
+        btn.innerHTML = '<span>' + i18n[currentLang].btnPause + '</span>';
       });
 
       video.addEventListener('pause', () => {
         const overlay = document.getElementById('video-overlay');
         const btn = document.getElementById('btn-play-pause');
         overlay.classList.remove('opacity-0', 'pointer-events-none');
-        btn.innerHTML = '<span>▶ Despausar (Loop)</span>';
+        btn.innerHTML = '<span>' + i18n[currentLang].btnPlay + '</span>';
       });
 
-      // Garantia absoluta: se porventura o navegador pausar no fim do arquivo, reinicia imediatamente!
       video.addEventListener('ended', () => {
         video.currentTime = 0;
         video.play();
       });
     }
 
-    // TOGGLE PLAY / PAUSA
     function togglePlayPause() {
       const video = document.getElementById('exercise-video');
       if (video.paused) {
@@ -3094,7 +3280,6 @@
       }
     }
 
-    // AJUSTE DE VELOCIDADE
     function setVideoSpeed(speed) {
       const video = document.getElementById('exercise-video');
       video.playbackRate = speed;
@@ -3114,7 +3299,7 @@
       }
     }
 
-    // CARREGAR EXERCÍCIO
+    // CARREGAR EXERCÍCIO COM FORMATAÇÃO ADAPTATIVA DE IDIOMA
     function loadExercise(id) {
       currentExerciseId = id;
       const ex = exercisesData.find(e => e.id === id);
@@ -3127,29 +3312,30 @@
       const video = document.getElementById('exercise-video');
       video.src = ex.videoFile;
       video.poster = ex.poster;
-      video.loop = true; // Força looping contínuo
+      video.loop = true;
       
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {
-          // Autoplay restrito pelo navegador: mostra overlay para despausar
           document.getElementById('video-overlay').classList.remove('opacity-0', 'pointer-events-none');
-          document.getElementById('btn-play-pause').innerHTML = '<span>▶ Despausar (Loop)</span>';
+          document.getElementById('btn-play-pause').innerHTML = '<span>' + i18n[currentLang].btnPlay + '</span>';
         });
       }
 
-      // Atualizar textos e badges
-      document.getElementById('badge-phase').innerText = ex.phaseTitle.toUpperCase();
-      document.getElementById('badge-category').innerText = ex.category;
-      document.getElementById('exercise-title').innerText = ex.id + '. ' + ex.title;
+      // Tradução adaptativa de exercício
+      const data = formatExerciseI18n(ex);
+
+      document.getElementById('badge-phase').innerText = data.phaseName.toUpperCase();
+      document.getElementById('badge-category').innerText = data.category;
+      document.getElementById('exercise-title').innerText = ex.id + '. ' + data.title;
 
       // Ficha Técnica
-      document.getElementById('tech-series').innerText = ex.series;
-      document.getElementById('tech-reps').innerText = ex.reps;
-      document.getElementById('tech-rest').innerText = ex.rest;
-      document.getElementById('tech-goal').innerText = ex.goal;
-      document.getElementById('tech-desc').innerText = ex.desc;
-      document.getElementById('tech-mistakes').innerHTML = ex.mistakes.map(m => '<li>' + m + '</li>').join('');
+      document.getElementById('tech-series').innerText = data.series;
+      document.getElementById('tech-reps').innerText = data.reps;
+      document.getElementById('tech-rest').innerText = data.rest;
+      document.getElementById('tech-goal').innerText = data.goal;
+      document.getElementById('tech-desc').innerText = data.desc;
+      document.getElementById('tech-mistakes').innerHTML = data.mistakes.map(m => '<li>' + m + '</li>').join('');
 
       updateCompletionButtonState();
       loadSavedNotes();
@@ -3161,7 +3347,54 @@
       }
     }
 
-    // NAVEGAÇÃO ANTERIOR / PRÓXIMO
+    function toggleCurrentExerciseCompleted() {
+      const idx = completedExercises.indexOf(currentExerciseId);
+      if (idx > -1) {
+        completedExercises.splice(idx, 1);
+      } else {
+        completedExercises.push(currentExerciseId);
+      }
+
+      try {
+        localStorage.setItem('futforce_completed_exercises', JSON.stringify(completedExercises));
+      } catch(e) {}
+      updateCompletionButtonState();
+      updateGlobalProgress();
+      renderExerciseList();
+    }
+
+    function updateCompletionButtonState() {
+      const isDone = completedExercises.includes(currentExerciseId);
+      const btn = document.getElementById('btn-complete');
+      const icon = document.getElementById('complete-icon');
+      const label = document.getElementById('complete-label');
+      const t = i18n[currentLang];
+
+      if (isDone) {
+        btn.className = "shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-display text-xs font-black uppercase tracking-wider transition-all duration-300 bg-sport-green text-black border-2 border-sport-green shadow-[0_0_15px_rgba(57,255,20,0.4)] active:scale-95 cursor-pointer";
+        icon.innerText = "✓";
+        label.innerText = t.btnCompleted;
+      } else {
+        btn.className = "shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-display text-xs font-black uppercase tracking-wider transition-all duration-300 bg-sport-card border-2 border-sport-green text-sport-green hover:bg-sport-green hover:text-black shadow-md active:scale-95 cursor-pointer";
+        icon.innerText = "⭕";
+        label.innerText = t.btnComplete;
+      }
+    }
+
+    function updateGlobalProgress() {
+      const total = exercisesData.length;
+      const count = completedExercises.length;
+      const pct = Math.round((count / total) * 100);
+
+      document.getElementById('completed-count').innerText = count;
+      document.getElementById('progress-text').innerText = pct + '%';
+      document.getElementById('progress-bar').style.width = pct + '%';
+
+      document.getElementById('completed-count-mobile').innerText = count;
+      document.getElementById('progress-text-mobile').innerText = pct + '%';
+      document.getElementById('progress-bar-mobile').style.width = pct + '%';
+    }
+
     function nextExercise() {
       const filtered = getFilteredExercises();
       const currentIndex = filtered.findIndex(e => e.id === currentExerciseId);
@@ -3182,18 +3415,17 @@
       }
     }
 
-    // FILTROS DE EXERCÍCIOS
     function setPhaseFilter(phase) {
       currentFilterPhase = phase;
       ['all', '1', '2', '3', '4', '5'].forEach(p => {
         const pill = document.getElementById('filter-pill-' + p);
         if (pill) {
-          pill.className = "px-3 py-1 rounded-lg bg-sport-card text-sport-gray hover:text-white border border-sport-border whitespace-nowrap transition-all";
+          pill.className = "px-3 py-1 rounded-lg bg-sport-card text-sport-gray hover:text-white border border-sport-border whitespace-nowrap transition-all cursor-pointer";
         }
       });
       const activePill = document.getElementById('filter-pill-' + phase);
       if (activePill) {
-        activePill.className = "px-3 py-1 rounded-lg bg-sport-green text-black font-black whitespace-nowrap transition-all";
+        activePill.className = "px-3 py-1 rounded-lg bg-sport-green text-black font-black whitespace-nowrap transition-all cursor-pointer";
       }
       renderExerciseList();
     }
@@ -3214,127 +3446,89 @@
       });
     }
 
-    // RENDERIZAR LISTA LATERAL
+    // LISTA DE EXERCÍCIOS 100% TRADUZIDA ADAPTATIVAMENTE
     function renderExerciseList() {
       const container = document.getElementById('exercises-list-container');
       const filtered = getFilteredExercises();
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div class="p-6 text-center text-xs text-sport-gray">Nenhum exercício encontrado.</div>';
+        container.innerHTML = '<div class="p-8 text-center text-sport-gray text-xs">' + (currentLang === 'pt' ? 'Nenhum exercício encontrado.' : 'Ningún ejercicio encontrado.') + '</div>';
         return;
       }
 
       container.innerHTML = filtered.map(ex => {
+        const isActive = ex.id === currentExerciseId;
         const isDone = completedExercises.includes(ex.id);
-        const isCurrent = ex.id === currentExerciseId;
+        const data = formatExerciseI18n(ex);
+        const activeClass = isActive 
+          ? 'bg-sport-card border-sport-green/80 shadow-[0_0_15px_rgba(57,255,20,0.2)]' 
+          : 'bg-sport-card/50 border-sport-border/60 hover:border-sport-border hover:bg-sport-card';
 
-        return `
-          <div 
-            onclick="loadExercise(${ex.id})"
-            class="p-2 sm:p-2.5 rounded-xl border border-sport-border/60 flex items-center justify-between gap-3 text-xs cursor-pointer transition-all ${isCurrent ? 'bg-sport-green/15 border-sport-green/80 font-bold text-white shadow-sm' : 'bg-sport-card/60 hover:bg-white/5 text-slate-300'}"
-          >
-            <div class="flex items-center gap-2.5 truncate">
-              <!-- Thumbnail do Vídeo -->
-              <div class="w-11 h-9 rounded-lg bg-black shrink-0 overflow-hidden border border-sport-border relative">
-                <img src="${ex.poster}" alt="Thumb" class="w-full h-full object-cover" />
-              </div>
-              <span class="${isDone ? 'text-sport-green font-black' : 'text-sport-gray'} text-xs shrink-0">
-                ${isDone ? '✓' : '▶'}
-              </span>
-              <div class="truncate">
-                <div class="text-[10px] text-sport-gray uppercase font-bold">${ex.category}</div>
-                <div class="truncate text-xs font-bold ${isCurrent ? 'text-sport-green' : 'text-white'}">${ex.id}. ${ex.title}</div>
-              </div>
-            </div>
-            <span class="text-[10px] text-sport-gray shrink-0 font-medium">${ex.series}</span>
-          </div>
-        `;
+        return '<div ' +
+          'onclick="loadExercise(' + ex.id + ')" ' +
+          'class="p-2.5 sm:p-3 rounded-2xl border ' + activeClass + ' cursor-pointer flex items-center justify-between gap-3 transition-all active:scale-[0.99] group">' +
+          '<div class="flex items-center gap-3 min-w-0">' +
+            '<div class="w-12 h-12 rounded-xl bg-black overflow-hidden relative shrink-0 border border-white/10">' +
+              '<img src="' + ex.poster + '" alt="' + data.title + '" class="w-full h-full object-cover" loading="lazy" />' +
+              '<div class="absolute inset-0 bg-black/30 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity">▶</div>' +
+            '</div>' +
+            '<div class="truncate">' +
+              '<div class="flex items-center gap-1.5 mb-0.5">' +
+                '<span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-black/60 text-sport-gray border border-white/5">' + data.category + '</span>' +
+                '<span class="text-[9px] text-sport-green font-bold truncate">Fase ' + ex.phaseId + '</span>' +
+              '</div>' +
+              '<h4 class="font-bold text-xs text-white truncate group-hover:text-sport-green transition-colors">' +
+                ex.id + '. ' + data.title +
+              '</h4>' +
+              '<span class="text-[10px] text-sport-gray block truncate">' + data.series + ' • ' + data.reps + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="shrink-0 flex items-center gap-2">' +
+            (isDone ? '<span class="w-5 h-5 rounded-full bg-sport-green text-black flex items-center justify-center text-[10px] font-black">✓</span>' : '<span class="w-5 h-5 rounded-full border border-sport-border text-sport-gray flex items-center justify-center text-[10px]">○</span>') +
+          '</div>' +
+        '</div>';
       }).join('');
     }
 
-    // MARCAR COMO CONCLUÍDO
-    function toggleCurrentExerciseCompleted() {
-      const idx = completedExercises.indexOf(currentExerciseId);
-      if (idx > -1) {
-        completedExercises.splice(idx, 1);
-      } else {
-        completedExercises.push(currentExerciseId);
-      }
-
-      localStorage.setItem('futforce_completed_exercises', JSON.stringify(completedExercises));
-      updateCompletionButtonState();
-      updateGlobalProgress();
-      renderExerciseList();
-    }
-
-    function updateCompletionButtonState() {
-      const isDone = completedExercises.includes(currentExerciseId);
-      const btn = document.getElementById('btn-complete');
-      const icon = document.getElementById('complete-icon');
-      const label = document.getElementById('complete-label');
-
-      if (isDone) {
-        btn.className = "shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-display text-xs font-black uppercase tracking-wider transition-all duration-300 bg-sport-green text-black border-2 border-sport-green shadow-[0_0_15px_rgba(57,255,20,0.4)] active:scale-95";
-        icon.innerText = "✓";
-        label.innerText = "Concluído";
-      } else {
-        btn.className = "shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-display text-xs font-black uppercase tracking-wider transition-all duration-300 bg-sport-card border-2 border-sport-green text-sport-green hover:bg-sport-green hover:text-black shadow-md active:scale-95";
-        icon.innerText = "⭕";
-        label.innerText = "Marcar como Concluído";
-      }
-    }
-
-    function updateGlobalProgress() {
-      const total = exercisesData.length;
-      const count = completedExercises.length;
-      const pct = Math.round((count / total) * 100);
-
-      document.getElementById('completed-count').innerText = count;
-      document.getElementById('progress-text').innerText = pct + '%';
-      document.getElementById('progress-bar').style.width = pct + '%';
-
-      document.getElementById('completed-count-mobile').innerText = count;
-      document.getElementById('progress-text-mobile').innerText = pct + '%';
-      document.getElementById('progress-bar-mobile').style.width = pct + '%';
-    }
-
-    // TABS DA FICHA TÉCNICA
     function switchTab(tabName) {
       document.getElementById('tab-ficha').classList.add('hidden');
       document.getElementById('tab-consejos').classList.add('hidden');
       document.getElementById('tab-notas').classList.add('hidden');
 
-      document.getElementById('tab-btn-ficha').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap";
-      document.getElementById('tab-btn-consejos').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap";
-      document.getElementById('tab-btn-notas').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap";
+      document.getElementById('tab-btn-ficha').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap cursor-pointer";
+      document.getElementById('tab-btn-consejos').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap cursor-pointer";
+      document.getElementById('tab-btn-notas').className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white transition-colors whitespace-nowrap cursor-pointer";
 
       if (tabName === 'ficha') {
         document.getElementById('tab-ficha').classList.remove('hidden');
-        document.getElementById('tab-btn-ficha').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap";
+        document.getElementById('tab-btn-ficha').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap cursor-pointer";
       } else if (tabName === 'consejos') {
         document.getElementById('tab-consejos').classList.remove('hidden');
-        document.getElementById('tab-btn-consejos').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap";
+        document.getElementById('tab-btn-consejos').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap cursor-pointer";
       } else if (tabName === 'notas') {
         document.getElementById('tab-notas').classList.remove('hidden');
-        document.getElementById('tab-btn-notas').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap";
+        document.getElementById('tab-btn-notas').className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black whitespace-nowrap cursor-pointer";
       }
     }
 
-    // NOTAS DO USUÁRIO
     function saveUserNotes() {
       const text = document.getElementById('user-notes').value;
-      localStorage.setItem('futforce_notes_' + currentExerciseId, text);
+      try {
+        localStorage.setItem('futforce_notes_' + currentExerciseId, text);
+      } catch(e) {}
       const msg = document.getElementById('notes-saved-msg');
       msg.classList.remove('hidden');
       setTimeout(() => msg.classList.add('hidden'), 2000);
     }
 
     function loadSavedNotes() {
-      const saved = localStorage.getItem('futforce_notes_' + currentExerciseId) || '';
+      let saved = '';
+      try {
+        saved = localStorage.getItem('futforce_notes_' + currentExerciseId) || '';
+      } catch(e) {}
       document.getElementById('user-notes').value = saved;
     }
 
-    // ALTERNAR VISTAS PRINCIPAIS (EXERCÍCIOS / FICHAS / BÔNUS)
     function switchMainView(viewName) {
       document.getElementById('view-exercicios').classList.add('hidden');
       document.getElementById('view-fichas').classList.add('hidden');
@@ -3344,30 +3538,30 @@
       const navFichas = document.getElementById('nav-btn-fichas');
       const navBonos = document.getElementById('nav-btn-bonos');
 
-      navEx.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all";
-      navFichas.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all";
-      navBonos.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all";
+      navEx.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all cursor-pointer";
+      navFichas.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all cursor-pointer";
+      navBonos.className = "px-3.5 py-1.5 rounded-lg text-sport-gray hover:text-white flex items-center gap-1.5 transition-all cursor-pointer";
 
       const mobEx = document.getElementById('mob-nav-exercicios');
       const mobFichas = document.getElementById('mob-nav-fichas');
       const mobBonos = document.getElementById('mob-nav-bonos');
 
-      mobEx.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]";
-      mobFichas.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]";
-      mobBonos.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px]";
+      mobEx.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px] cursor-pointer";
+      mobFichas.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px] cursor-pointer";
+      mobBonos.className = "flex flex-col items-center gap-0.5 text-sport-gray font-bold text-[10px] cursor-pointer";
 
       if (viewName === 'exercicios') {
         document.getElementById('view-exercicios').classList.remove('hidden');
-        navEx.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all";
-        mobEx.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]";
+        navEx.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all cursor-pointer";
+        mobEx.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px] cursor-pointer";
       } else if (viewName === 'fichas') {
         document.getElementById('view-fichas').classList.remove('hidden');
-        navFichas.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all";
-        mobFichas.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]";
+        navFichas.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all cursor-pointer";
+        mobFichas.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px] cursor-pointer";
       } else if (viewName === 'bonos') {
         document.getElementById('view-bonos').classList.remove('hidden');
-        navBonos.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all";
-        mobBonos.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px]";
+        navBonos.className = "px-3.5 py-1.5 rounded-lg bg-sport-green text-black font-black flex items-center gap-1.5 transition-all cursor-pointer";
+        mobBonos.className = "flex flex-col items-center gap-0.5 text-sport-green font-black text-[10px] cursor-pointer";
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3391,61 +3585,6 @@
 
       sidebar.classList.remove('fixed', 'inset-y-0', 'right-0', 'z-50', 'w-5/6', 'max-w-sm', 'h-full', 'rounded-none');
       overlay.classList.add('hidden');
-    }
-
-    // ESTADO DE IDIOMA E DOWNLOAD BILÍNGUE
-    let currentLang = 'es';
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const paramLang = urlParams.get('lang');
-      const savedLang = localStorage.getItem('futforce_member_lang');
-      if (paramLang === 'pt' || paramLang === 'es') {
-        currentLang = paramLang;
-      } else if (savedLang === 'pt' || savedLang === 'es') {
-        currentLang = savedLang;
-      } else {
-        const isPtContext = (window.location.href || '').toLowerCase().includes('portugal') || 
-                            (window.location.href || '').toLowerCase().includes('-pt') ||
-                            (navigator.language || navigator.userLanguage || '').toLowerCase().startsWith('pt');
-        currentLang = isPtContext ? 'pt' : 'es';
-      }
-    } catch(e) {
-      currentLang = 'es';
-    }
-
-    function setLanguage(lang) {
-      if (lang !== 'es' && lang !== 'pt') lang = 'es';
-      currentLang = lang;
-      localStorage.setItem('futforce_member_lang', lang);
-      updateLanguageUI();
-    }
-
-    function updateLanguageUI() {
-      const isPT = currentLang === 'pt';
-      const btnEs = document.getElementById('lang-btn-es');
-      const btnPt = document.getElementById('lang-btn-pt');
-      const mobEs = document.getElementById('mob-lang-es');
-      const mobPt = document.getElementById('mob-lang-pt');
-
-      if (btnEs && btnPt) {
-        if (!isPT) {
-          btnEs.className = "px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-black transition-all flex items-center gap-1 bg-sport-green text-black shadow-sm";
-          btnPt.className = "px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold text-sport-gray hover:text-white transition-all flex items-center gap-1";
-        } else {
-          btnPt.className = "px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-black transition-all flex items-center gap-1 bg-sport-green text-black shadow-sm";
-          btnEs.className = "px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold text-sport-gray hover:text-white transition-all flex items-center gap-1";
-        }
-      }
-
-      if (mobEs && mobPt) {
-        if (!isPT) {
-          mobEs.className = "px-2 py-0.5 rounded bg-sport-green text-black font-black";
-          mobPt.className = "px-2 py-0.5 rounded text-sport-gray font-bold";
-        } else {
-          mobPt.className = "px-2 py-0.5 rounded bg-sport-green text-black font-black";
-          mobEs.className = "px-2 py-0.5 rounded text-sport-gray font-bold";
-        }
-      }
     }
 
     // DOWNLOAD DE PDFS (COM SUPORTE A OVERRIDE EXPLÍCITO ES/PT)
@@ -3473,15 +3612,15 @@
         pdfUrl = 'pdfs/bono4-guia-suplementacion.pdf';
         downloadName = isPT ? 'Bonus-4-Guia-de-Suplementacao.pdf' : 'Bono-4-Guia-de-Suplementacion.pdf';
         displayName = isPT ? 'Bónus #4: Guia de Suplementação (PT)' : 'Bono #4: Guía de Suplementación (ES)';
-      } else if (key.includes('bloque 1') || key.includes('bloco 1')) {
+      } else if (key.includes('bloco 1') || key.includes('bloque 1')) {
         displayName = isPT ? 'Bloco 1 (Livro Mestre FUTFORCE)' : 'Bloque 1 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloque 2') || key.includes('bloco 2')) {
+      } else if (key.includes('bloco 2') || key.includes('bloque 2')) {
         displayName = isPT ? 'Bloco 2 (Livro Mestre FUTFORCE)' : 'Bloque 2 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloque 3') || key.includes('bloco 3')) {
+      } else if (key.includes('bloco 3') || key.includes('bloque 3')) {
         displayName = isPT ? 'Bloco 3 (Livro Mestre FUTFORCE)' : 'Bloque 3 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloque 4') || key.includes('bloco 4')) {
+      } else if (key.includes('bloco 4') || key.includes('bloque 4')) {
         displayName = isPT ? 'Bloco 4 (Livro Mestre FUTFORCE)' : 'Bloque 4 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloque 5') || key.includes('bloco 5')) {
+      } else if (key.includes('bloco 5') || key.includes('bloque 5')) {
         displayName = isPT ? 'Bloco 5 (Livro Mestre FUTFORCE)' : 'Bloque 5 (Libro Maestro FUTFORCE)';
       }
 
