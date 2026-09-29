@@ -252,7 +252,7 @@
       </p>
 
       <!-- Mockup do Produto Ultra Otimizado em Alta Resolução (Retina HD) -->
-      <div class="mt-6 sm:mt-8 w-full max-w-sm sm:max-w-2xl relative overflow-hidden rounded-2xl" style="contain: layout paint; aspect-ratio: 1024/682;">
+      <div class="mt-6 sm:mt-8 w-full max-w-sm sm:max-w-2xl relative overflow-hidden rounded-2xl" style="contain: layout paint; aspect-ratio: 1024/768;">
         <img src="hero-mockup-es.webp" 
               alt="Mockup Oficial +150 Rutinas de Gimnasio y Funcional para Futbolistas Método FUTFORCE" 
               class="w-full h-auto drop-shadow-2xl rounded-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300"
@@ -260,8 +260,8 @@
               fetchpriority="high"
               decoding="async"
               width="1024"
-              height="682"
-              style="width: 100%; height: auto; aspect-ratio: 1024/682;"
+              height="768"
+              style="width: 100%; height: auto; aspect-ratio: 1024/768;"
             />
       </div>
 
@@ -543,50 +543,78 @@
           Bonos Exclusivos Incluidos en tu Acceso
         </h2>
         <p class="mt-2 text-xs sm:text-base text-sport-gray font-medium">
-          Multiplica tus resultados con estos 4 materiales complementarios que te llevas sin costo adicional:
+          Multiplica tus resultados con estos 4 materiales complementarios (valorados en más de <span class="font-black text-black line-through">$117.00</span>), hoy incluidos sin costo adicional:
         </p>
       </div>
 
       <div class="grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4">
         
         <!-- Bono 1 -->
-        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center hover:border-black transition-all">
-          <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
-            <img src="bono1-movilidad.webp" alt="Bono 1: Movilidad para Atletas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center justify-between hover:border-black transition-all">
+          <div class="w-full flex flex-col items-center">
+            <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
+              <img src="bono1-movilidad.webp" alt="Bono 1: Movilidad para Atletas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+            </div>
+            <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #1</span>
+            <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Movilidad para Atletas</h3>
+            <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Aumenta tu rango de movimiento, agilidad y fluidez en cambios de dirección.</p>
           </div>
-          <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #1</span>
-          <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Movilidad para Atletas</h3>
-          <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Aumenta tu rango de movimiento, agilidad y fluidez en cambios de dirección.</p>
+          <!-- Anclaje de Precio Tachado -->
+          <div class="mt-3 pt-2.5 border-t border-sport-border/60 w-full flex items-center justify-center gap-1.5 flex-wrap">
+            <span class="text-xs sm:text-sm font-bold text-gray-400 line-through">$27.00</span>
+            <span class="px-2 py-0.5 rounded-full bg-black text-sport-green font-black text-[10px] sm:text-[11px] uppercase tracking-wider shadow-sm">GRATIS HOY</span>
+          </div>
         </div>
 
         <!-- Bono 2 -->
-        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center hover:border-black transition-all">
-          <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
-            <img src="bono2-alimentacion.webp" alt="Bono 2: Guía de Alimentación para Deportistas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center justify-between hover:border-black transition-all">
+          <div class="w-full flex flex-col items-center">
+            <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
+              <img src="bono2-alimentacion.webp" alt="Bono 2: Guía de Alimentación para Deportistas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+            </div>
+            <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #2</span>
+            <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Guía de Alimentación</h3>
+            <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Qué comer antes y después de los partidos para tener energía de sobra los 90 minutos.</p>
           </div>
-          <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #2</span>
-          <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Guía de Alimentación</h3>
-          <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Qué comer antes y después de los partidos para tener energía de sobra los 90 minutos.</p>
+          <!-- Anclaje de Precio Tachado -->
+          <div class="mt-3 pt-2.5 border-t border-sport-border/60 w-full flex items-center justify-center gap-1.5 flex-wrap">
+            <span class="text-xs sm:text-sm font-bold text-gray-400 line-through">$29.00</span>
+            <span class="px-2 py-0.5 rounded-full bg-black text-sport-green font-black text-[10px] sm:text-[11px] uppercase tracking-wider shadow-sm">GRATIS HOY</span>
+          </div>
         </div>
 
         <!-- Bono 3 -->
-        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center hover:border-black transition-all">
-          <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
-            <img src="bono3-antilesiones.webp" alt="Bono 3: Protocolo Anti-Lesiones para Futbolistas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center justify-between hover:border-black transition-all">
+          <div class="w-full flex flex-col items-center">
+            <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
+              <img src="bono3-antilesiones.webp" alt="Bono 3: Protocolo Anti-Lesiones para Futbolistas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+            </div>
+            <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #3</span>
+            <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Protocolo Anti-Lesiones</h3>
+            <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Fortalecimiento específico para blindar rodillas, tobillos y aductores.</p>
           </div>
-          <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #3</span>
-          <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Protocolo Anti-Lesiones</h3>
-          <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Fortalecimiento específico para blindar rodillas, tobillos y aductores.</p>
+          <!-- Anclaje de Precio Tachado -->
+          <div class="mt-3 pt-2.5 border-t border-sport-border/60 w-full flex items-center justify-center gap-1.5 flex-wrap">
+            <span class="text-xs sm:text-sm font-bold text-gray-400 line-through">$37.00</span>
+            <span class="px-2 py-0.5 rounded-full bg-black text-sport-green font-black text-[10px] sm:text-[11px] uppercase tracking-wider shadow-sm">GRATIS HOY</span>
+          </div>
         </div>
 
         <!-- Bono 4 -->
-        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center hover:border-black transition-all">
-          <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
-            <img src="bono4-suplementacion.webp" alt="Bono 4: Guía de Suplementación para Futbolistas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+        <div class="group h-full rounded-2xl sm:rounded-3xl border border-sport-border bg-sport-card p-3.5 sm:p-6 shadow-sm text-center flex flex-col items-center justify-between hover:border-black transition-all">
+          <div class="w-full flex flex-col items-center">
+            <div class="mb-3 sm:mb-5 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-sport-border shadow-inner" style="aspect-ratio: 1/1; contain: layout paint;">
+              <img src="bono4-suplementacion.webp" alt="Bono 4: Guía de Suplementación para Futbolistas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="600" height="600" style="aspect-ratio: 1/1;" />
+            </div>
+            <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #4</span>
+            <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Guia de Suplementación</h3>
+            <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Los únicos suplementos con base científica que realmente funcionan para futbolistas.</p>
           </div>
-          <span class="text-[10px] sm:text-xs font-black text-sport-gray uppercase mb-0.5">BONO #4</span>
-          <h3 class="font-display text-xs sm:text-base font-black text-black leading-tight">Guía de Suplementación</h3>
-          <p class="mt-1 text-[11px] sm:text-xs text-sport-gray hidden sm:block">Los únicos suplementos con base científica que realmente funcionan para futbolistas.</p>
+          <!-- Anclaje de Precio Tachado -->
+          <div class="mt-3 pt-2.5 border-t border-sport-border/60 w-full flex items-center justify-center gap-1.5 flex-wrap">
+            <span class="text-xs sm:text-sm font-bold text-gray-400 line-through">$24.00</span>
+            <span class="px-2 py-0.5 rounded-full bg-black text-sport-green font-black text-[10px] sm:text-[11px] uppercase tracking-wider shadow-sm">GRATIS HOY</span>
+          </div>
         </div>
 
       </div>
@@ -789,21 +817,45 @@
                   <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
                   <span>Vídeos Explicativos de Cada Ejercicio</span>
                 </li>
-                <li class="flex items-center gap-2 font-bold bg-white/10 p-2.5 rounded-xl border border-white/15">
-                  <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
-                  <span>Bono #1: Movilidad para Atletas</span>
+                <li class="flex items-center justify-between font-bold bg-white/10 p-2.5 rounded-xl border border-white/15 text-xs">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
+                    <span class="truncate">Bono #1: Movilidad para Atletas</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                    <span class="text-[11px] text-gray-400 line-through font-bold">$27.00</span>
+                    <span class="text-[10px] text-sport-green font-black bg-sport-green/20 px-1.5 py-0.5 rounded">GRATIS</span>
+                  </div>
                 </li>
-                <li class="flex items-center gap-2 font-bold bg-white/10 p-2.5 rounded-xl border border-white/15">
-                  <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
-                  <span>Bono #2: Guía de Alimentación</span>
+                <li class="flex items-center justify-between font-bold bg-white/10 p-2.5 rounded-xl border border-white/15 text-xs">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
+                    <span class="truncate">Bono #2: Guía de Alimentación</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                    <span class="text-[11px] text-gray-400 line-through font-bold">$29.00</span>
+                    <span class="text-[10px] text-sport-green font-black bg-sport-green/20 px-1.5 py-0.5 rounded">GRATIS</span>
+                  </div>
                 </li>
-                <li class="flex items-center gap-2 font-bold bg-white/10 p-2.5 rounded-xl border border-white/15">
-                  <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
-                  <span>Bono #3: Protocolo Anti-Lesiones</span>
+                <li class="flex items-center justify-between font-bold bg-white/10 p-2.5 rounded-xl border border-white/15 text-xs">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
+                    <span class="truncate">Bono #3: Protocolo Anti-Lesiones</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                    <span class="text-[11px] text-gray-400 line-through font-bold">$37.00</span>
+                    <span class="text-[10px] text-sport-green font-black bg-sport-green/20 px-1.5 py-0.5 rounded">GRATIS</span>
+                  </div>
                 </li>
-                <li class="flex items-center gap-2 font-bold bg-white/10 p-2.5 rounded-xl border border-white/15">
-                  <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
-                  <span>Bono #4: Guía de Suplementación</span>
+                <li class="flex items-center justify-between font-bold bg-white/10 p-2.5 rounded-xl border border-white/15 text-xs">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
+                    <span class="truncate">Bono #4: Guía de Suplementación</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                    <span class="text-[11px] text-gray-400 line-through font-bold">$24.00</span>
+                    <span class="text-[10px] text-sport-green font-black bg-sport-green/20 px-1.5 py-0.5 rounded">GRATIS</span>
+                  </div>
                 </li>
                 <li class="flex items-center gap-2 font-bold bg-white/10 p-2.5 rounded-xl border border-white/15">
                   <span class="text-black font-black bg-sport-green w-4 h-4 rounded-full grid place-items-center text-[10px] shrink-0">✓</span>
