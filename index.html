@@ -11,6 +11,7 @@
   <link rel="preload" as="image" href="hero-mockup-es-mobile.webp" media="(max-width: 640px)" type="image/webp" fetchpriority="high" />
   <link rel="preload" as="image" href="hero-mockup-es.webp" media="(min-width: 641px)" type="image/webp" fetchpriority="high" />
 
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>" />
   <!-- Open Graph -->
   <meta property="og:title" content="+150 Entrenamientos Funcionales y de Gimnasio para Futbolistas" />
   <meta property="og:description" content="Entrenamientos de gimnasio y funcionales para desarrollar fuerza, resistencia, potencia y condición física para futbolistas." />
@@ -53,6 +54,7 @@
       width: max-content;
       will-change: transform;
       animation: scrollMobile 18s linear infinite;
+      animation-play-state: paused;
       transform: translate3d(0, 0, 0);
       -webkit-transform: translate3d(0, 0, 0);
       backface-visibility: hidden;
@@ -301,10 +303,10 @@
           <source media="(max-width: 640px)" srcset="hero-mockup-es-mobile.webp" type="image/webp" width="500" height="375" />
           <img src="hero-mockup-es.webp" 
                 alt="Mockup Oficial +150 Rutinas de Gimnasio y Funcional para Futbolistas Método FUTFORCE" 
-                class="w-full h-auto drop-shadow-2xl rounded-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300 block"
+                class="w-full h-auto rounded-2xl mx-auto block shadow-2xl"
                 loading="eager"
                 fetchpriority="high"
-                decoding="async"
+                decoding="sync"
                 width="1024"
                 height="768"
                 style="width: 100%; height: auto; aspect-ratio: 1024/768;"
@@ -346,7 +348,7 @@
   </section>
 
   <!-- SECCIÓN: CARROUSEL INFINITO DE FICHAS (GPU ACCELERATED 60FPS) -->
-  <section class="bg-white py-10 sm:py-16 overflow-hidden border-t border-sport-border">
+  <section class="bg-white py-10 sm:py-16 overflow-hidden border-t border-sport-border" style="content-visibility: auto; contain-intrinsic-size: 1px 650px;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 mb-6 sm:mb-8 text-center">
       <span class="inline-block px-3 py-1 bg-black text-sport-green font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-md mb-2">
         VISTA PREVIA REAL
@@ -405,7 +407,7 @@
 
 
   <!-- SECCIÓN: TESTIMONIOS / PRUEBA SOCIAL (CARROUSEL INTERATIVO) -->
-  <section class="bg-white py-12 sm:py-20 border-t border-sport-border overflow-hidden">
+  <section class="bg-white py-12 sm:py-20 border-t border-sport-border overflow-hidden" style="content-visibility: auto; contain-intrinsic-size: 1px 650px;">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 text-black">
       
       <div class="text-center mb-8 sm:mb-12">
@@ -537,7 +539,7 @@
   </section>
 
   <!-- SECCIÓN: AUTORIDAD / PREPARADOR FÍSICO -->
-  <section class="bg-white py-12 sm:py-20 border-t border-sport-border">
+  <section class="bg-white py-12 sm:py-20 border-t border-sport-border" style="content-visibility: auto; contain-intrinsic-size: 1px 500px;">
     <div class="mx-auto max-w-5xl px-4 sm:px-6">
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-14">
         
@@ -580,7 +582,7 @@
   </section>
 
   <!-- SECCIÓN: BONOS EXCLUSIVOS (IMAGENS WEBP ULTRA COMPACTAS) -->
-  <section class="bg-white py-12 sm:py-20 border-t border-sport-border">
+  <section class="bg-white py-12 sm:py-20 border-t border-sport-border" style="content-visibility: auto; contain-intrinsic-size: 1px 700px;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="mx-auto max-w-2xl text-center mb-8 sm:mb-12">
         <span class="inline-block px-3 py-1 bg-black text-sport-green font-black text-[10px] sm:text-xs uppercase tracking-widest rounded-md mb-2">
@@ -678,7 +680,7 @@
   </section>
 
   <!-- SECCIÓN: CÓMO FUNCIONA (3 PASOS) -->
-  <section class="bg-white py-12 sm:py-20 border-t border-sport-border">
+  <section class="bg-white py-12 sm:py-20 border-t border-sport-border" style="content-visibility: auto; contain-intrinsic-size: 1px 600px;">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-black text-black">
@@ -711,7 +713,7 @@
   </section>
 
   <!-- SECCIÓN: TABLA DE OFERTAS (BÁSICO $9.90 vs COMPLETO $19.90) -->
-  <section id="oferta" class="bg-white py-14 sm:py-24 border-t border-sport-border scroll-mt-14">
+  <section id="oferta" class="bg-white py-14 sm:py-24 border-t border-sport-border scroll-mt-14" style="content-visibility: auto; contain-intrinsic-size: 1px 900px;">
     <div class="mx-auto max-w-5xl px-4 sm:px-6">
       
       <div class="mx-auto max-w-2xl text-center mb-8 sm:mb-14">
@@ -936,7 +938,7 @@
   </section>
 
   <!-- SECCIÓN: GARANTÍA -->
-  <section class="bg-white py-12 border-t border-sport-border">
+  <section class="bg-white py-12 border-t border-sport-border" style="content-visibility: auto; contain-intrinsic-size: 1px 400px;">
     <div class="mx-auto max-w-4xl px-4 sm:px-6">
       <div class="rounded-2xl sm:rounded-3xl border-2 border-black bg-black p-6 sm:p-10 text-center flex flex-col items-center shadow-2xl">
         
@@ -957,7 +959,7 @@
   </section>
 
   <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ INTERATIVO) -->
-  <section class="bg-white py-12 sm:py-20 border-t border-sport-border">
+  <section class="bg-white py-12 sm:py-20 border-t border-sport-border" style="content-visibility: auto; contain-intrinsic-size: 1px 600px;">
     <div class="mx-auto max-w-3xl px-4 sm:px-6">
       
       <div class="text-center mb-8">
@@ -1018,7 +1020,7 @@
   </section>
 
   <!-- SECCIÓN FINAL: CTA DE CIERRE -->
-  <section class="bg-black py-12 sm:py-20 text-center text-white border-t border-sport-border">
+  <section class="bg-black py-12 sm:py-20 text-center text-white border-t border-sport-border" style="content-visibility: auto; contain-intrinsic-size: 1px 400px;">
     <div class="mx-auto max-w-4xl px-4 sm:px-6">
       
       <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-black leading-tight text-white">
@@ -1077,6 +1079,21 @@
 
     // Controle do Carrossel de Depoimentos
     document.addEventListener('DOMContentLoaded', () => {
+      
+    // Activa la animación del carrusel solo cuando es visible en pantalla (ahorra GPU y batería)
+    if ('IntersectionObserver' in window) {
+      const carouselObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          } else {
+            entry.target.style.animationPlayState = 'paused';
+          }
+        });
+      }, { rootMargin: '200px' });
+      document.querySelectorAll('.animate-scroll').forEach(el => carouselObserver.observe(el));
+    }
+
       const slider = document.getElementById('testimonialSlider');
       const prevBtn = document.getElementById('prevTestimonial');
       const nextBtn = document.getElementById('nextTestimonial');
