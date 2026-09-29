@@ -412,15 +412,45 @@
         <p id="fichas-hero-desc" class="text-slate-300 text-xs sm:text-sm leading-relaxed">
           Desarrollá fuerza explosiva, velocidad, resistencia y potencia física con rutinas listas para el gimnasio y el trabajo funcional, pensadas para marcar una verdadera diferencia dentro de la cancha.
         </p>
-        <div class="pt-2 flex flex-wrap gap-3">
-          <button 
-            onclick="downloadPDF('libro-maestro')"
-            id="btn-download-master"
-            class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg hover:scale-[1.02] active:scale-95 inline-flex items-center justify-center gap-2"
-          >
-            <span>📥</span>
-            <span id="btn-text-master">DESCARGAR LIBRO MAESTRO COMPLETO (+162 RUTINAS PDF)</span>
-          </button>
+        <!-- DOWNLOAD DUPLO DO LIVRO MAESTRO: ESPANHOL E PORTUGUÊS -->
+        <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5 w-full max-w-2xl">
+          <!-- Card Espanhol -->
+          <div class="bg-black/60 border border-amber-400/40 hover:border-amber-400 p-4 sm:p-5 rounded-2xl flex flex-col justify-between gap-3 shadow-lg transition-all group">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🇪🇸</span>
+                <span class="text-xs font-black text-amber-400 uppercase tracking-wider">Versión en Español</span>
+              </div>
+              <h4 class="font-display font-black text-white text-base">Baixar em Espanhol</h4>
+              <p class="text-[11px] text-slate-300 leading-snug">+162 Rutinas de Gimnasio y Funcional (171 Páginas • PDF)</p>
+            </div>
+            <button 
+              onclick="downloadPDF('libro-maestro', 'es')"
+              class="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-display font-black text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+            >
+              <span>📥</span>
+              <span>Baixar em Espanhol</span>
+            </button>
+          </div>
+
+          <!-- Card Português -->
+          <div class="bg-black/60 border border-sport-green/40 hover:border-sport-green p-4 sm:p-5 rounded-2xl flex flex-col justify-between gap-3 shadow-lg transition-all group">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🇵🇹</span>
+                <span class="text-xs font-black text-sport-green uppercase tracking-wider">Versão em Português</span>
+              </div>
+              <h4 class="font-display font-black text-white text-base">Baixar em Português</h4>
+              <p class="text-[11px] text-slate-300 leading-snug">+162 Fichas de Treino de Ginásio (171 Páginas • PDF)</p>
+            </div>
+            <button 
+              onclick="downloadPDF('libro-maestro', 'pt')"
+              class="w-full py-3 px-4 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+            >
+              <span>📥</span>
+              <span>Baixar em Português</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1635,7 +1665,8 @@
       document.getElementById('fichas-pages').innerText = t.fichasPages;
       document.getElementById('fichas-hero-title').innerText = t.fichasHeroTitle;
       document.getElementById('fichas-hero-desc').innerText = t.fichasHeroDesc;
-      document.getElementById('btn-text-master').innerText = t.btnDownloadMaster;
+      const btnMaster = document.getElementById('btn-text-master');
+      if (btnMaster) btnMaster.innerText = t.btnDownloadMaster;
       document.getElementById('weekly-plan-title').innerText = t.weeklyPlanTitle;
       document.getElementById('weekly-plan-level').innerText = t.weeklyPlanLevel;
       document.getElementById('th-day').innerText = t.thDay;
@@ -1704,14 +1735,27 @@
                 ${b.content.map(c => `<div>${c}</div>`).join('')}
               </div>
             </div>
-            <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between gap-2">
-              <span class="text-[11px] text-sport-gray font-bold truncate">${b.meta}</span>
-              <button 
-                onclick="downloadPDF('${b.title}')"
-                class="px-3 py-2 rounded-lg bg-sport-card hover:bg-sport-green hover:text-black text-white text-xs font-black border border-sport-border transition-all active:scale-95 shrink-0"
-              >
-                ${b.btnText}
-              </button>
+            <div class="pt-3 mt-3 border-t border-sport-border flex flex-col gap-2">
+              <div class="text-[10px] text-sport-gray font-bold uppercase tracking-wider flex items-center justify-between">
+                <span>Opções de Download:</span>
+                <span class="text-slate-400 font-semibold">${b.meta}</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button 
+                  onclick="downloadPDF('${b.title}', 'pt')"
+                  class="py-2 px-2 rounded-lg bg-sport-green hover:bg-emerald-400 text-black text-[11px] font-black transition-all flex items-center justify-center gap-1 active:scale-95 shadow-sm"
+                  title="Descarregar em Português"
+                >
+                  <span>🇵🇹</span> <span>Baixar PT</span>
+                </button>
+                <button 
+                  onclick="downloadPDF('${b.title}', 'es')"
+                  class="py-2 px-2 rounded-lg bg-sport-card hover:bg-amber-400 hover:text-black text-white text-[11px] font-black border border-sport-border hover:border-amber-400 transition-all flex items-center justify-center gap-1 active:scale-95"
+                  title="Descargar en Español"
+                >
+                  <span>🇪🇸</span> <span>Baixar ES</span>
+                </button>
+              </div>
             </div>
           </div>
         `;
@@ -1737,14 +1781,29 @@
               ${b.bullets.map(bullet => `<div>${bullet}</div>`).join('')}
             </div>
           </div>
-          <div class="pt-4 mt-4 border-t border-sport-border flex items-center justify-between gap-2">
-            <span class="text-xs text-sport-gray font-bold truncate">${b.meta}</span>
-            <button 
-              onclick="downloadPDF('${b.title}')"
-              class="px-4 py-2.5 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-black text-xs transition-all shadow-md active:scale-95 shrink-0"
-            >
-              ${b.btnText}
-            </button>
+          
+          <!-- DUAL DOWNLOAD: BAIXAR EM PORTUGUÊS / BAIXAR EM ESPANHOL -->
+          <div class="pt-4 mt-4 border-t border-sport-border space-y-2.5">
+            <div class="flex items-center justify-between text-xs text-sport-gray font-bold">
+              <span>Opções de Download:</span>
+              <span class="text-slate-300 font-semibold">${b.meta}</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <button 
+                onclick="downloadPDF('${b.title}', 'pt')"
+                class="w-full py-2.5 px-3 rounded-xl bg-sport-green hover:bg-emerald-400 text-black font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
+                title="Descarregar Bónus em Português"
+              >
+                <span>🇵🇹</span> <span>Baixar em Português</span>
+              </button>
+              <button 
+                onclick="downloadPDF('${b.title}', 'es')"
+                class="w-full py-2.5 px-3 rounded-xl bg-sport-card hover:bg-amber-400 hover:text-black border border-sport-border hover:border-amber-400 text-white font-display font-black text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5"
+                title="Descargar Bono en Español"
+              >
+                <span>🇪🇸</span> <span>Baixar em Espanhol</span>
+              </button>
+            </div>
           </div>
         </div>
       `).join('');
@@ -2089,29 +2148,30 @@
     }
 
     // SISTEMA OFICIAL DE DESCARGAS DE PDF BILÍNGUE
-    function downloadPDF(itemKey, customName) {
-      const isPT = currentLang === 'pt';
+    function downloadPDF(itemKey, langOverride, customName) {
+      const targetLang = (langOverride === 'pt' || langOverride === 'es') ? langOverride : currentLang;
+      const isPT = targetLang === 'pt';
       let pdfUrl = 'pdfs/libro-162-rutinas-futforce.pdf';
       let downloadName = isPT ? 'Livro-Mestre-162-Treinos-Futforce.pdf' : 'Libro-Maestro-162-Rutinas-Futforce.pdf';
-      let displayName = isPT ? '+162 Fichas de Treino de Ginásio' : '+162 Rutinas de Gimnasio y Funcional';
+      let displayName = isPT ? '+162 Fichas de Treino de Ginásio (PT)' : '+162 Rutinas de Gimnasio y Funcional (ES)';
 
       const key = (itemKey || '').toLowerCase();
       if (key.includes('bono 1') || key.includes('bono #1') || key.includes('bónus 1') || key.includes('bónus #1') || key.includes('movilidad') || key.includes('mobilidade')) {
         pdfUrl = 'pdfs/bono1-movilidad-futbolistas.pdf';
         downloadName = isPT ? 'Bonus-1-Mobilidade-para-Futebolistas.pdf' : 'Bono-1-Movilidad-para-Futbolistas.pdf';
-        displayName = isPT ? 'Bónus #1: Mobilidade para Futebolistas' : 'Bono #1: Movilidad para Futbolistas';
-      } else if (key.includes('bono 2') || key.includes('bono #2') || key.includes('bónus 2') || key.includes('bónus #2') || key.includes('nutrici') || key.includes('nutrição')) {
+        displayName = isPT ? 'Bónus #1: Mobilidade para Futebolistas (PT)' : 'Bono #1: Movilidad para Futbolistas (ES)';
+      } else if (key.includes('bono 2') || key.includes('bono #2') || key.includes('bónus 2') || key.includes('bónus #2') || key.includes('nutrici') || key.includes('nutrição') || key.includes('alimentacion')) {
         pdfUrl = 'pdfs/bono2-nutricion-deportiva.pdf';
         downloadName = isPT ? 'Bonus-2-Nutricao-Desportiva.pdf' : 'Bono-2-Nutricion-Deportiva.pdf';
-        displayName = isPT ? 'Bónus #2: Guia de Nutrição Desportiva' : 'Bono #2: Guía de Nutrición Deportiva';
+        displayName = isPT ? 'Bónus #2: Guia de Nutrição Desportiva (PT)' : 'Bono #2: Guía de Nutrición Deportiva (ES)';
       } else if (key.includes('bono 3') || key.includes('bono #3') || key.includes('bónus 3') || key.includes('bónus #3') || key.includes('lesion') || key.includes('anti-lesiones') || key.includes('lesões')) {
         pdfUrl = 'pdfs/bono3-protocolo-antilesiones.pdf';
         downloadName = isPT ? 'Bonus-3-Protocolo-Anti-Lesoes.pdf' : 'Bono-3-Protocolo-Anti-Lesiones.pdf';
-        displayName = isPT ? 'Bónus #3: Protocolo Anti-Lesões' : 'Bono #3: Protocolo Anti-Lesiones';
+        displayName = isPT ? 'Bónus #3: Protocolo Anti-Lesões (PT)' : 'Bono #3: Protocolo Anti-Lesiones (ES)';
       } else if (key.includes('bono 4') || key.includes('bono #4') || key.includes('bónus 4') || key.includes('bónus #4') || key.includes('suplementaci') || key.includes('suplementação')) {
         pdfUrl = 'pdfs/bono4-guia-suplementacion.pdf';
         downloadName = isPT ? 'Bonus-4-Guia-de-Suplementacao.pdf' : 'Bono-4-Guia-de-Suplementacion.pdf';
-        displayName = isPT ? 'Bónus #4: Guia de Suplementação' : 'Bono #4: Guía de Suplementación';
+        displayName = isPT ? 'Bónus #4: Guia de Suplementação (PT)' : 'Bono #4: Guía de Suplementación (ES)';
       } else if (key.includes('bloque 1') || key.includes('bloco 1')) {
         displayName = isPT ? 'Bloco 1 (Livro Mestre FUTFORCE)' : 'Bloque 1 (Libro Maestro FUTFORCE)';
       } else if (key.includes('bloque 2') || key.includes('bloco 2')) {
@@ -2132,7 +2192,7 @@
       const toast = document.getElementById('download-toast');
       const text = document.getElementById('toast-text');
       if (toast && text) {
-        text.innerText = (i18n[currentLang].downloadToast || '¡Descargando {name}!').replace('{name}', displayName);
+        text.innerText = (isPT ? 'A descarregar {name}...' : '¡Descargando {name}!').replace('{name}', displayName);
         toast.classList.remove('translate-y-[-120px]');
         toast.classList.add('translate-y-0');
 
