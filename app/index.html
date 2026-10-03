@@ -3591,37 +3591,34 @@
     function downloadPDF(itemKey, langOverride) {
       const targetLang = (langOverride === 'pt' || langOverride === 'es') ? langOverride : currentLang;
       const isPT = targetLang === 'pt';
-      let pdfUrl = 'pdfs/libro-162-rutinas-futforce.pdf';
+      let pdfUrl = isPT ? 'pdfs/livro-162-treinos-futforce-pt.pdf' : 'pdfs/libro-162-rutinas-futforce.pdf';
       let downloadName = isPT ? 'Livro-Mestre-162-Treinos-Futforce.pdf' : 'Libro-Maestro-162-Rutinas-Futforce.pdf';
       let displayName = isPT ? '+162 Fichas de Treino de Ginásio (PT)' : '+162 Rutinas de Gimnasio y Funcional (ES)';
 
       const key = (itemKey || '').toLowerCase();
       if (key.includes('bono 1') || key.includes('bono #1') || key.includes('bónus 1') || key.includes('bónus #1') || key.includes('movilidad') || key.includes('mobilidade')) {
-        pdfUrl = 'pdfs/bono1-movilidad-futbolistas.pdf';
+        pdfUrl = isPT ? 'pdfs/bono1-mobilidade-futebolistas-pt.pdf' : 'pdfs/bono1-movilidad-futbolistas.pdf';
         downloadName = isPT ? 'Bonus-1-Mobilidade-para-Futebolistas.pdf' : 'Bono-1-Movilidad-para-Futbolistas.pdf';
         displayName = isPT ? 'Bónus #1: Mobilidade para Futebolistas (PT)' : 'Bono #1: Movilidad para Futbolistas (ES)';
       } else if (key.includes('bono 2') || key.includes('bono #2') || key.includes('bónus 2') || key.includes('bónus #2') || key.includes('nutri')) {
-        pdfUrl = 'pdfs/bono2-nutricion-deportiva.pdf';
+        pdfUrl = isPT ? 'pdfs/bono2-nutricao-desportiva-pt.pdf' : 'pdfs/bono2-nutricion-deportiva.pdf';
         downloadName = isPT ? 'Bonus-2-Nutricao-Desportiva.pdf' : 'Bono-2-Nutricion-Deportiva.pdf';
         displayName = isPT ? 'Bónus #2: Guia de Nutrição Desportiva (PT)' : 'Bono #2: Guía de Nutrición Deportiva (ES)';
       } else if (key.includes('bono 3') || key.includes('bono #3') || key.includes('bónus 3') || key.includes('bónus #3') || key.includes('lesion') || key.includes('anti-les') || key.includes('lesões')) {
-        pdfUrl = 'pdfs/bono3-protocolo-antilesiones.pdf';
+        pdfUrl = isPT ? 'pdfs/bono3-protocolo-antilesoes-pt.pdf' : 'pdfs/bono3-protocolo-antilesiones.pdf';
         downloadName = isPT ? 'Bonus-3-Protocolo-Anti-Lesoes.pdf' : 'Bono-3-Protocolo-Anti-Lesiones.pdf';
         displayName = isPT ? 'Bónus #3: Protocolo Anti-Lesões (PT)' : 'Bono #3: Protocolo Anti-Lesiones (ES)';
       } else if (key.includes('bono 4') || key.includes('bono #4') || key.includes('bónus 4') || key.includes('bónus #4') || key.includes('suplementa') || key.includes('suplementação')) {
-        pdfUrl = 'pdfs/bono4-guia-suplementacion.pdf';
+        pdfUrl = isPT ? 'pdfs/bono4-guia-suplementacao-pt.pdf' : 'pdfs/bono4-guia-suplementacion.pdf';
         downloadName = isPT ? 'Bonus-4-Guia-de-Suplementacao.pdf' : 'Bono-4-Guia-de-Suplementacion.pdf';
         displayName = isPT ? 'Bónus #4: Guia de Suplementação (PT)' : 'Bono #4: Guía de Suplementación (ES)';
-      } else if (key.includes('bloco 1') || key.includes('bloque 1')) {
-        displayName = isPT ? 'Bloco 1 (Livro Mestre FUTFORCE)' : 'Bloque 1 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloco 2') || key.includes('bloque 2')) {
-        displayName = isPT ? 'Bloco 2 (Livro Mestre FUTFORCE)' : 'Bloque 2 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloco 3') || key.includes('bloque 3')) {
-        displayName = isPT ? 'Bloco 3 (Livro Mestre FUTFORCE)' : 'Bloque 3 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloco 4') || key.includes('bloque 4')) {
-        displayName = isPT ? 'Bloco 4 (Livro Mestre FUTFORCE)' : 'Bloque 4 (Libro Maestro FUTFORCE)';
-      } else if (key.includes('bloco 5') || key.includes('bloque 5')) {
-        displayName = isPT ? 'Bloco 5 (Livro Mestre FUTFORCE)' : 'Bloque 5 (Libro Maestro FUTFORCE)';
+      } else if (key.includes('bloco') || key.includes('bloque')) {
+        pdfUrl = isPT ? 'pdfs/livro-162-treinos-futforce-pt.pdf' : 'pdfs/libro-162-rutinas-futforce.pdf';
+        if (key.includes('1')) displayName = isPT ? 'Bloco 1 (Livro Mestre FUTFORCE)' : 'Bloque 1 (Libro Maestro FUTFORCE)';
+        else if (key.includes('2')) displayName = isPT ? 'Bloco 2 (Livro Mestre FUTFORCE)' : 'Bloque 2 (Libro Maestro FUTFORCE)';
+        else if (key.includes('3')) displayName = isPT ? 'Bloco 3 (Livro Mestre FUTFORCE)' : 'Bloque 3 (Libro Maestro FUTFORCE)';
+        else if (key.includes('4')) displayName = isPT ? 'Bloco 4 (Livro Mestre FUTFORCE)' : 'Bloque 4 (Libro Maestro FUTFORCE)';
+        else if (key.includes('5')) displayName = isPT ? 'Bloco 5 (Livro Mestre FUTFORCE)' : 'Bloque 5 (Libro Maestro FUTFORCE)';
       }
 
       const toast = document.getElementById('download-toast');
